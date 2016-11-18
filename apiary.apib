@@ -19,7 +19,7 @@ The base URL for Giftbit's API is <em>https://currencyapi.giftbit.com/v1/</em>.
 
 ## Account creation and authorization
 
-You'll need your test or production `access_token` from your Giftbit merchant account details page to use the API. If you don't already have a merchant account you can <em><a href="http://info.giftbit.com/cf/currency_invite" target="_blank">sign up here</a></em>. Once you've signed up, contact Giftbit to get test credentials.
+You'll need your test or production `access_token` from your Giftbit merchant account details page to use the API. If you don't already have a merchant account you can <em><a href="http://info.giftbit.com/cf/currency_invite" target="_blank">sign up here</a></em>. Once you've signed up, you can get both test and production API tokens from your Account page.
 
 Be sure to store your production API token extremely securely in your production configurations.
 
@@ -82,13 +82,15 @@ Attempting to reuse a userSuppliedId but providing different request parameters 
 
 Note that userSuppliedIds are considered per endpoint and do not need to be unique across different endpoints.
 
-## Reserved Categories: understanding giftbit_order and giftbit_type
+## Reserved Categories: understanding giftbit_order, giftbit_type, and giftbit_status
 
-Giftbit currently has two reserved Category keys: "giftbit_order" and "giftbit_type". A "giftbit_order" is the default grouping of Cards, and is assigned either through the web portal or the /cards endpoint; in this document, an order refers to a group of Cards that are attached to the same {"giftbit-order": "order name"} Category. 
+Giftbit currently has three reserved Category keys: "giftbit_order", "giftbit_type", and "giftbit_status". A "giftbit_order" is the default grouping of Cards, and is assigned either through the web portal or the /cards endpoint; in this document, an order refers to a group of Cards that are attached to the same {"giftbit-order": "order name"} Category. 
 
 Like any Category, stats are tracked by order - so descriptive order names applied to the right Cards will help you get the stats you are looking for. To group cards in the same order, you can supply the same value for {"giftbit_order": "your order name here"} Category when creating Cards through the /cards endpoint via the API, or you can order many cards at once through the web portal. If a "giftbit_order" Category is not provided on Card creation, the Cards will be assigned a default {"giftbit_order": "YYYY-MM-DD"} Category corresponding to the date they were created.
 
 A "giftbit_type" refers to the Card's purpose, and corresponds to the types that can be assigned through the web portal. There are four allowed values for the "giftbit_type" key: PROMO, GIFT_CARD, ACCOUNT_CREDIT, and UNCATEGORIZED. If a "giftbit_type" is not provided on Card creation, the Cards will be assigned the UNCATEGORIZED value. 
+
+A "giftbit_status" refers to whether or not the Card has been cancelled; if the Card has the {"giftbit_status": "CANCELLED"} Category, it has been cancelled.
 
 ## Handling error responses
 
@@ -169,7 +171,6 @@ Use the /ping endpoint to check that your authorization is working correctly or 
                 "user": 
                 {
                     "username":"example_merchant_account@yourdomain.com",
-                    "servertime": "2016-09-08T18:44:02.124+0000",
                     "mode": "LIVE"
                 }
             }
@@ -190,7 +191,7 @@ Cards represent a gift card, promotional offer, credit, or other means of eComme
 
 Create a Card and its corresponding Code.  Note that cardId on response should be persisted to lookup or interact with the Code.  The Code is not returned as part of the response.  If you provide an expiry, please ensure you have confirmed the legality of expiring value for your implementation.
 
-You can also provide a "giftbit_order" Category, which will assign the Card to whichever order you specify. If no "giftbit_order" is provided, the Card will be assigned to a default {"giftbit_order": "YYYY-MM-DD"} Category indicating the date the Card was created. Categories are not returned as part of the response.
+You can also provide a "giftbit_order" Category, which will assign the Card to whichever order you specify. If no "giftbit_order" is provided, the Card will be assigned to a default {"giftbit_order": "YYYY-MM-DD"} Category indicating the date the Card was created.
 
 + Request (application/json)
 The categories object is optional. If provided, it will attach the given Category objects to the Card, creating any that do not exist already.
@@ -227,7 +228,13 @@ The categories object is optional. If provided, it will attach the given Categor
             {
                 "cardId":"card-5c1c1760-b185-4861-a4fc-47eca84bf52b",
                 "userSuppliedId":"12345678",
-                "dateCreated":"2016-08-10T08:00:00.000+0000"
+                "dateCreated":"2016-08-10T08:00:00.000+0000",
+                "categories":
+                {
+                    "giftbit_type": "PROMO",
+                    "giftbit_order": "My Order",
+                    "My Custom Category Key": "My Custom Category Value"
+                }
             }
     
 
@@ -311,7 +318,13 @@ Look up a single Card by by the Giftbit assigned cardId.
                 "card":{
                     "userSuppliedId" : "1234",
                     "cardId": "card-8f893901-c143-4def-9124-bd0c25a0c3a8",
-                    "dateCreated": "2016-09-01T23:47:02.000+0000"
+                    "dateCreated": "2016-09-01T23:47:02.000+0000",
+                    "categories":
+                    {
+                        "giftbit_type": "PROMO",
+                        "giftbit_order": "My Order",
+                        "My Custom Category Key": "My Custom Category Value"
+                    }
                 }
             }
             
@@ -337,9 +350,15 @@ Look up a single Card by the userSuppliedId.
             {
                 "cards":[
                     {
-                        "userSuppliedId" : "1234",
-                        "cardId": "card-8f893901-c143-4def-9124-bd0c25a0c3a8",
-                        "dateCreated": "2016-09-01T23:47:02.000+0000"
+                        "cardId":"card-5c1c1760-b185-4861-a4fc-47eca84bf52b",
+                        "userSuppliedId":"12345678",
+                        "dateCreated":"2016-08-10T08:00:00.000+0000",
+                        "categories":
+                        {
+                            "giftbit_type": "PROMO",
+                            "giftbit_order": "My Order",
+                            "My Custom Category Key": "My Custom Category Value"
+                        }
                     }
                 ]
             }
@@ -424,7 +443,6 @@ Use this endpoint if your system or internal staff need to retrieve basic inform
             {
                 "code":{
                     "currency": "CAD",
-                    "initialValue": 5000,
                     "codeLastFour": "WXYZ",
                     "dateCreated": "2016-08-10T08:00:00.000+0000",
                     "expires": "2017-03-03T08:00:00.000+0000"
@@ -449,7 +467,10 @@ Use this endpoint if your system or internal staff need to retrieve up-to-date b
     
             {
                 "balance":{
-                    "currentValue": 200
+                    "currentValue": 200,
+                    "drawdownValue": 300,
+                    "refundValue": 0,
+                    "cancellationValue": 0
                 }
             }
 
@@ -477,7 +498,6 @@ Use this endpoint if your system or internal staff need to retrieve all the Tran
                     {
                         "transactionId": "transaction-86251f7b040b45d3b7364bae04c74870",
                         "value": 500,
-                        "valueAvailableAfterTransaction": 500,
                         "userSuppliedId": "someTransaction",
                         "dateCreated": "2016-08-10T09:00:00.000+0000"
                     }
@@ -514,7 +534,6 @@ Use this endpoint if your system or internal staff need to retrieve all the Tran
                 "transaction" {
                     "transactionId": "transaction-86251f7b040b45d3b7364bae04c74870",
                     "value": 500,
-                    "valueAvailableAfterTransaction": 500,
                     "userSuppliedId": "someTransaction",
                     "dateCreated": "2016-08-10T09:00:00.000+0000"
                 }
@@ -555,12 +574,38 @@ To transact against the Code in your checkout or when a recipient presents their
                 "transaction" {
                     "transactionId": "transaction-86251f7b040b45d3b7364bae04c74870",
                     "value": -250,
-                    "valueAvailableAfterTransaction": 4750,
                     "userSuppliedId": "someTransaction",
                     "dateCreated": "2016-08-10T09:00:00.000+0000"
                 }
             }
     
+### Cancel a Card [POST /cards/{cardId}/cancel]
+
+This will mark a Card as cancelled by attaching the Category {"giftbit_status": "CANCELLED"}, and will draw down the balance on the associated Code to zero. An expired Card cannot be cancelled.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer <YOUR_ACCESS_TOKEN>
+
++ Parameters 
+    + cardId (string) - The identifier returned when the Card and Code were created.
+    
++ Response 200
+    + Body
+    
+            {
+                "cardId":"card-5c1c1760-b185-4861-a4fc-47eca84bf52b",
+                "userSuppliedId":"12345678",
+                "dateCreated":"2016-08-10T08:00:00.000+0000",
+                "categories":
+                {
+                    "giftbit_type": "PROMO",
+                    "giftbit_order": "My Order",
+                    "giftbit_status": "CANCELLED",
+                    "My Custom Category Key": "My Custom Category Value"
+                }
+            }
 
 ## Categories [/categories/]
 
@@ -572,10 +617,11 @@ Retrieve a list of Categories that have been created.
 
 + Request (application/json)
     + Headers
-    
+
             Authorization: Bearer <YOUR_ACCESS_TOKEN>
         
 + Response 200
+    
     + Body
     
             {
@@ -597,6 +643,31 @@ Retrieve a list of Categories that have been created.
                     }
                 ]
             }
+
+### Cancel Category [POST /categories/{categoryKey}/{categoryValue}/cards/cancel]
+
+Cancel all Cards in a Category and their associated Codes. 
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Bearer <YOUR_ACCESS_TOKEN>
+            
++ Parameters
+    + categoryKey (string) - The key of the category. Examples: "giftbit_type", "giftbit_order", "city"
+    + categoryValue (string) - The value of the category. Examples: "PROMO", "My Order", "Victoria"
+        
++ Response 200
+    + Attributes (CancellationRequest)
+        
+    + Body
+    
+            {
+                "categoryKey": "giftbit_order",
+                "categoryValue": "my order name",
+                "request": "cancel"
+            }
+
 
 ## Codes [/codes/{fullcode}]
 
@@ -627,7 +698,6 @@ Look up information about a code given the fullcode.
                 {
                     "codeLast4": "BF8Z",
                     "currency":"USD",
-                    "initialValue":2500,
                     "expires":"2020-08-06T08:00:00.000+0000",
                     "dateCreated":"2016-08-10T08:00:00.000+0000"
                 }
@@ -652,7 +722,10 @@ Retrieve the balance of a Code considering all previous Transactions.
     
             {
                 "balance":{
-                    "currentValue": 200
+                    "currentValue": 200,
+                    "drawdownValue": 300,
+                    "refundValue": 0,
+                    "cancellationValue": 0
                 }
             }
 
@@ -702,7 +775,6 @@ Attempting to use value for a Code that is expired or does not have enough remai
                     "transactionId":"transaction-d7yc1b55-6de6-49e5-82d5-fd37edb5f8ea",
                     "value": -165,
                     "dateCreated": "2016-08-10T08:00:00.000+0000",
-                    "valueAvailableAfterTransaction": 4835
                     }
                 }
             }
@@ -730,14 +802,12 @@ Retrieve all Transactions for a Code given the fullcode.  Useful if you'd like t
                         "transactionId":"transaction-d7yc1b55-6de6-49e5-82d5-fd37edb5f8ea",
                         "value": -500,
                         "dateCreated": "2016-08-11T08:32:00.000+0000",
-                        "valueAvailableAfterTransaction": 800
                     },
                     {
                         "userSuppliedId": "12344",
                         "transactionId":"transaction-avji1b55-6gu7-4ke5-82s5-fd37edb5ju9a",
                         "value": -700,
                         "dateCreated": "2016-08-10T08:00:00.000+0000",
-                        "valueAvailableAfterTransaction": 1300
                     }
                 ],
                 "pagination":{
@@ -794,7 +864,6 @@ Retrieve a Transaction for a Code given the fullcode and the userSuppliedId.
                     "transactionId":"transaction-d7yc1b55-6de6-49e5-82d5-fd37edb5f8ea",
                     "value": -165,
                     "dateCreated": "2016-08-10T08:00:00.000+0000",
-                    "valueAvailableAfterTransaction": 4835
                     }
                 }
             }
@@ -843,6 +912,12 @@ Retrieve a Transaction for a Code given the fullcode and the userSuppliedId.
 ## CardResponse (Card)
 + cardId (string, required) - Giftbit's unique identifier for this Card. Be sure to persist this value for future operations.
 + dateCreated (string, required) - The Giftbit system time of the creation in ISO-8601 format.
++ categories (object, required) - The Categories that are attached to the Card. 
+
+## CancellationRequest (object)
++ categoryKey (string) - The key of the category. Examples: "giftbit_type", "giftbit_order", "city"
++ categoryValue (string) - The value of the category. Examples: "PROMO", "My Order", "Victoria"
++ request (string) - The type of request; currently returns "cancel"
 
 ## Transaction (IdempotentObject)
 + value (number, required) - The amount of the transaction in the smallest currency unit (such as cents). A transaction cannot reduce the code balance below 0
@@ -853,7 +928,6 @@ Retrieve a Transaction for a Code given the fullcode and the userSuppliedId.
 
 ## TransactionResponse (Transaction) 
 + dateCreated(string, required) - Giftbit system time of the creation of the transaction. ISO-8601 format.
-+ valueAvailableAfterTransaction(number, required) - The remaining balance of the `Code` as a result of the transaction in the smallest currency unit (such as cents).
 
 ## Category (object)
 + categoryKey (string) - The key of the category. Examples: "giftbit_type", "giftbit_order", "city"
@@ -866,8 +940,11 @@ Retrieve a Transaction for a Code given the fullcode and the userSuppliedId.
 
 ## BalanceResponse (object)
 + currentValue (number) - The current balance of the Code.
++ drawdownValue (number) - The value of all DRAWDOWN transactions on this Code.
++ refundValue (number) - The value of all REFUND transactions on this Code.
++ cancellationValue (number) - The value of all CANCELLATION transactions on this Code.
 
 ## Healthcheck (object)
-+ username (string) - The email address associated with the credentials provided.
-+ servertime (string) - The current time on the server (ISO 8601 format).
-+ mode (string) - String indicating whether the credentials provided are for TEST or LIVE mode.
++ user (object)
+    + username (string) - The email address associated with the credentials provided.
+    + mode (string) - String indicating whether the credentials provided are for TEST or LIVE mode.
