@@ -1,6 +1,6 @@
 # Accounts
 
-Accounts are basic infrastructure for identity-based customer engagement. Track customer spending habits to find out who's buying what and when, then apply  [gift cards](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) and [promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md) to directly engage individual customers. 
+Accounts are basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) and [promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md) to directly engage individual customers. 
 
 ## Getting Started
 
@@ -246,3 +246,13 @@ simulated_charge = Lightrail::Account.simulate_charge({
 ```
 
 The response will be similar to the response for posting a transaction, with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
+
+## Next Steps
+
+Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md). You can also take customer engagement to the next level with targeted [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
+
+## Support
+
+Contact us any time at hello@lightrail.com —- we are here to help.
+
+You can also check out our [sample app](https://github.com/Giftbit/stripe-integration-sample-webapp) for a working example of Accounts infrastructure supporting our Drop-in Gift Card solution.
