@@ -1,7 +1,7 @@
 # Lightrail Documentation
 Welcome to Lightrail. Lightrail is a platform for managing value.
 
-Lightrail offers a Drop-in Gift Card solution along with providing the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on-top of your account credit or gift card programs allowing you to build long last relationships with your customers.
+Lightrail offers a Drop-in Gift Card solution along with providing the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on-top of your account credit or gift card programs allowing you to build long lasting relationships with your customers.
 
 Contact us anytime at hello@lightrail.com —we are here to help you solidify your use-case and implementation.
 
@@ -9,6 +9,7 @@ You're looking at the full reference documentation providing detailed informatio
 Many integrations can be done using only our client libraries and the quick starts below.   
 
 ## Common Use Cases - Quick Starts
+We recommend starting with the following quick start guides. 
 
 ### Drop-in Gift Cards
 The Drop-in Gift Card solution empowers you to offer gift cards from your site in days. It is component based, using simple HTML snippets.
@@ -27,7 +28,7 @@ With customer accounts in place you can learn from their purchase history and dr
 ### Promotions
 Lightrail promotions are rule-based value that are attached to gift cards or accounts.
 Promotions can be used to incentive when customers by, along with what they buy.
-For example, a promotion could be _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.  
+For example, a promotion could be a _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.  
 
 Find out more here.
 
