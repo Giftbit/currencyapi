@@ -175,7 +175,7 @@ POST https://api.lightrail.com/v1/cards/{cardId}/transactions/dryRun
 ```
 
 Example response:
-```json
+```
 {
     "transaction": {
         "value": -30000,
@@ -208,11 +208,11 @@ Example response:
 
 Note the `value` requested against the `/dryRun` endpoint was $325 but the Account only could transact up to $300. Since `nsf:false` was set it allowed for the endpoint to return the maximum value the Account could transact; otherwise, it would have returned `400 - InsufficientFunds`. 
 
-You can also use `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions can be used for a given transaction (for example in your checkout summary before processing the transaction). 
+You can also use the `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions will be used for a given transaction (for example in your checkout summary before processing the transaction). 
 
 ### Step 4: Transacting 
 
-To create a Transaction against an Account you can use either our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) or use our REST API. If using the REST API you can find full endpoint documentation [here](https://giftbitcurrencyapi.docs.apiary.io/#reference/0/transactions). Also, be sure to include the metadata if using rule-based promotions.
+To create a transaction against an Account you can use either our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) or use our REST API. If using the REST API, check out the Transactions section of our [full reference documentation](www.lightrail.com/docs). Also, be sure to include the metadata if using rule-based promotions.
 
 ## Support
 
