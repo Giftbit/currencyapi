@@ -82,7 +82,7 @@ Now that the Promotion is attached to the Account, its value will be added to th
 
 ## Example 2: High Value Purchase Incentive (a "what-to-buy" incentive)
 
-This type of Promotion which incentivizes specific spending behaviour relies on Lightrail's Redemption Rules. These conditional promotions attach value to an Account that can only be redeemed if certain conditions are met. For example, there is an additional $25 in your Account, but it's only available if your total purchase is $300 or more. 
+This type of Promotion, which incentivizes specific spending behaviour, relies on Lightrail's Redemption Rules. These conditional promotions attach value to an Account that can only be redeemed if certain conditions are met. For example, there is an additional $25 in your Account, but it's only available if your total purchase is $300 or more. 
 
 For more detailed information, see our [Redemption Rules guide](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md).
 
@@ -156,7 +156,7 @@ Example response:
 }
 ```
 
-Now that the Promotion is attached to the Account, its value will be added to the Account's available credit and will be automatically used for a transaction with a `cart.total` that is over $300. 
+Now that the Promotion is attached to the Account, its value will be added to the Account's available credit and will be automatically used for a transaction with a `cart.total` >= $300. 
 
 If you want to check to make sure that the Promotion was properly attached, you can simulate a qualifying transaction: 
 ```
@@ -205,6 +205,8 @@ Example response:
     }
 }
 ```
+
+Note the `value` requested against the `/dryRun` endpoint was $325 but the Account only could transact up to $300. Since `nsf:false` was set it allowed for the endpoint to return the maximum value the Account could transact; otherwise, it would have returned `400 - InsufficientFunds`. 
 
 You can also use `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions can be used for a given transaction (for example in your checkout summary before processing the transaction). 
 
