@@ -208,9 +208,9 @@ Example response:
 
 You can also use `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions can be used for a given transaction (for example in your checkout summary before processing the transaction). 
 
-### Step 4: Transacting Against Accounts With Promotions
-To create a Transaction against an Account you can use either our client libraries or use our Rest API.
-TODO - add links to client libaries / REST API reference docs.
+### Step 4: Transacting 
+
+To create a Transaction against an Account you can use either our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) or use our REST API. If using the REST API you can find full endpoint documentation [here](https://giftbitcurrencyapi.docs.apiary.io/#reference/0/transactions). Also, be sure to include the metadata if using rule-based promotions.
 
 ## Support
 
