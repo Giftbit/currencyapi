@@ -191,7 +191,7 @@ The return value includes the full details of the transaction, including both th
 
 ### Transaction Simulation and Balance Checking
 
-Because Accounts can contain conditionally-available value such as [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md), doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
+Because Accounts can contain conditional value such as [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md), doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
 
 To display the maximum value of a customer's account, use our drop-in [Balance Widget](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#displaying-account-balance). 
 
@@ -245,7 +245,7 @@ simulated_charge = Lightrail::Account.simulate_charge({
   })
 ```
 
-The response will be similar to the response for posting a transaction, with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
+The response will be similar to the response for posting a transaction with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
 
 ## Next Steps
 
