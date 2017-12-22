@@ -1,27 +1,12 @@
 ## Implementation Details
 
 ### Idempotency 
+Our API is idempotent. HTTP `POST` requests against the API require a `userSuppliedId` provided in the request body. 
+This means that making the same request twice with the same `userSuppliedId` will only result in creating a single object in the API. Note, both requests will have an identical response.
+  
+If the request body has changed but is using the same `userSuppliedId` you'll receive a `HTTP 409 - Conflict Error`. 
 
-Ensuring idempotency means providing the option of repeating a request in a way that it will not result in repeated actions on the server. This is an important feature for RESTful APIs as it enables the client to safely repeat a potentially failed request without the fear of repeated consequences. 
-
-For example, if the call to post a _drawdown_ Transaction encounters a network failure and you are not sure whether it failed before or after reaching the server, you would want to be able to repeat this request without worrying about charging the Card multiple times. 
-
-Lightrail supports idempotency via `userSuppliedId`, a unique string value provided by the client. This is a required parameter in every API endpoint which is not naturally idempotent. When using the same `userSuppliedId`, Lightrail guarantees that the requested operation is only invoked once, regardless of how many times the request is received. This provides a mechanism for you to _retry_ when a request times out or fails for unknown reasons. 
-
-Note that the `userSuppliedId` must also be unique to the request; if you repeat the same `userSuppliedId` with a different request, you will receive an `HTTP 409` error indicating idempotency failure. 
-
-Here is an example of a _drawdown_ request which includes a `userSuppliedId`. No matter how many time this request is received by the server, it will charge the Card only once. Moreover, if you try posting a different Transaction (e.g. with a different value) using this `userSuppliedId` you will get an error. 
-
-```
-POST https://www.lightrail.com/v1/cards/{cardId}/transactions
-{
-  "userSuppliedId": "tx-2403423",
-  "value": -13500,
-  "currency": "USD"
-}
-```
-
-Since Lightrail persists and returns the `userSuppliedId` with the corresponding object, you can also use it as a client-side unique identifier to link your client-side objects to Lightrail objects. For example, you can use your local Customer ID as the `userSuppliedId` when creating a new Lightrail Contact to associate your local Customer object with the Lightrail Contact object (as an alternative to saving the server-generated `contactId` with your local Customer object). You can use the `userSuppliedId` to retrieve the corresponding Contact object when necessary by [searching Contacts](#contact-list-anchor) and providing the `userSuppliedId` as a search parameter. 
+Lightrail's 'list' endpoints accept `userSuppliedId` as a query parameter. This provides a way with linking objects from your system to Lightrail.  
 
 ### Currencies 
 Lightrail API uses the three-character currency codes from the ISO-4217 standard, e.g. `USD`,` CDN`, and `AUD`. The special value `XXX` is defined by this standard for representing any non-currency values such as points.
