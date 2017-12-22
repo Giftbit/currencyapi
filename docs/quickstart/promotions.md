@@ -1,8 +1,8 @@
 # Promotions
 
-Promotions enables you to incentive and engage your customers. Once you’re set up with [customer accounts](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md) that tell you who’s spending and how they’re spending, take the next step by adding tailor-made promotions that match your customer’s preferences. 
+Promotions enable you to incentive and engage your customers. Once you’re set up with [customer accounts](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md) that tell you who’s spending and how they’re spending, take the next step by adding tailor-made promotions that match your customer’s preferences. 
 
-This is a quick step-by-step guide to adding two types of promotions to existing customer accounts using the Lightrail API: a sign-up bonus (this type of promotion can be applied to any use case that incentivizes customers to spend at a particular time), and a high value purchase incentive (this type of promotion can be applied to any use case that rewards customers for making a particular type of purchase). 
+This is a quick step-by-step guide using two examples to illustrate the types of promotions you can run with Lightrail. The promotions are attached to existing customer accounts using the Lightrail API. The first example is a sign-up bonus (this type of promotion can be applied to any use case that incentivizes customers to spend at a particular time); the second is a high-value purchase incentive (this type of promotion can be applied to any use case that rewards customers for making a particular type of purchase). 
 
 Want more? Lightrail supports many more complex types of promotions. See [Redemption Rules](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md) to take your incentives to the next level or [contact us](mailto:hello@lightrail.com) for more options. 
 
@@ -29,13 +29,13 @@ For a $10 bonus that can be used for 60 days after a customer signs up, set the 
 - Set the Currency Type to 'USD' (or your store's currency)
 - Set the Value Options to 'Fixed Value' and set the amount to $10
 - In Promotion Expiry, set the default validity period to 60 days (this means the bonus will be valid for 60 days once it's attached to a customer's account)
-- Skip the Redemption Rules section (these are used for [other types of promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md))
+- Skip the Redemption Rules section (these are used for [rule-based promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md))
 
 Once saved, you’ll need to copy the `programId` to be used in the API calls below.
 
 ### Step 2: Attach Promotion to Account
 
-This step takes place in the code that handles new sign-ups. 
+This step takes place in your code that handles new sign-ups. 
 
 Promotions are attached to Accounts as new `valueStores`. A `valueStore` is simply a container for value that can be subject to extra rules and conditions -- for example, "this value expires after 60 days". 
 
@@ -46,8 +46,8 @@ After creating the new Account, save the `cardId` for the new Account Card and u
 - The `initialValue` of the sign-up bonus -- an integer in the smallest currency unit (e.g., $10.00 USD is `1000`); amount must match the value (or be within the value range) set in the Promotion Program's Value Options in Step 1
 
 If you are using this example as a starting point for creating a different promotion, you may also (optionally) include a `startDate` and `expires` to override the default validity period set by the Promotion Program. Considerations: 
-- The `startDate` must still be within the range set by the Promotion Program (in the context of this example, this can be any date because we set the Program Period from 'Now' to 'Forever' in Step 1)
-- The `expires` date can be set to any future date and will override the validity period set in the Promotion Program (in the context of this example, you could set the sign-up bonus to be valid until August 31 regardless of when sign-up occurred, instead of just letting it expire after 60 days)
+- The `startDate` must still be within the range set by the Promotion Program 
+- The `expires` date can be set to any future date and will override the validity period set in the Promotion Program (for example, suppose you want to run a promotion which expires at the end of the month regardless of when the promotion is issued)
 
 Sample request call: 
 
@@ -82,7 +82,7 @@ Now that the Promotion is attached to the Account, its value will be added to th
 
 ## Example 2: High Value Purchase Incentive (a "what-to-buy" incentive)
 
-This type of Promotion -- incentivizing specific spending behaviour -- relies on Lightrail's Redemption Rules. These conditional promotions attach value to an Account, that can only be redeemed if certain conditions are met: for example, there is an additional $25 in your Account, but it's only available if your total purchase is $300 or more. 
+This type of Promotion which incentivizes specific spending behaviour relies on Lightrail's Redemption Rules. These conditional promotions attach value to an Account that can only be redeemed if certain conditions are met. For example, there is an additional $25 in your Account, but it's only available if your total purchase is $300 or more. 
 
 For more detailed information, see our [Redemption Rules guide](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md).
 
@@ -156,7 +156,7 @@ Example response:
 }
 ```
 
-Now that the Promotion is attached to the Account, its value will be added to the Account's available credit and will be automatically used for any transactions with a `cart.total` over $300. 
+Now that the Promotion is attached to the Account, its value will be added to the Account's available credit and will be automatically used for a transaction with a `cart.total` that is over $300. 
 
 If you want to check to make sure that the Promotion was properly attached, you can simulate a qualifying transaction: 
 ```
@@ -178,7 +178,7 @@ Example response:
 ```json
 {
     "transaction": {
-        "value": -32500,
+        "value": -30000,
         "userSuppliedId": "testing-over-300-promo-is-attached",
         "dateCreated": null,
         "transactionType": "DRAWDOWN",
@@ -187,7 +187,7 @@ Example response:
         "currency": "USD",
         "transactionBreakdown": [
             {
-                "value": -30000,
+                "value": -27500,
                 "valueStoreId": "value-f070bb15b79c4064a206c66c7342dc5c"
             },
             {
@@ -198,13 +198,19 @@ Example response:
         "transactionId": null,
         "metadata": {
             "cart": {
-                "total": 30500
+                "total": 30000
             }
         },
         "codeLastFour": "8665"
     }
 }
 ```
+
+You can also use `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions can be used for a given transaction (for example in your checkout summary before processing the transaction). 
+
+### Step 4: Transacting Against Accounts With Promotions
+To create a Transaction against an Account you can use either our client libraries or use our Rest API.
+TODO - add links to client libaries / REST API reference docs.
 
 ## Support
 
