@@ -247,6 +247,8 @@ simulated_charge = Lightrail::Account.simulate_charge({
 
 The response will be similar to the response for posting a transaction with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
 
+Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](TODO ADD LINK TO ABOVE SECTION) method.
+
 ## Next Steps
 
 Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md). You can also take customer engagement to the next level with targeted [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
