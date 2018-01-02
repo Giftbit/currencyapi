@@ -26,7 +26,7 @@ Check out our [accounts documentation](https://github.com/Giftbit/Lightrail-API-
 With customer accounts in place you can learn your customers' purchase history and drive engagement using promotions.
 
 ### Promotions
-A Lightrail promotion is rule-based value that is attached to gift cards or accounts
+A Lightrail promotion is rule-based value that is attached to gift cards or accounts.
 Promotions can be used to incentive customers "when" to buy, along with "what" to buy. 
 For example, a promotion could be a _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.
 
