@@ -26,7 +26,7 @@ Optionally, you can also provide an `email`, `firstName`, and `lastName`. Here i
 
 ```javascript
 const newContactParams = {
-  userSuppliedId: 'customer-9f50629d',
+  shopperId: 'customer-9f50629d',
   email: 'test@test.ca',
   firstName: 'Test',
   lastName: 'McTest'
@@ -120,13 +120,11 @@ new_account_params = {
 new_account = Lightrail::Account.create(new_account_params)
 ```
 
-The return value will include both the `userSuppliedId` and a server-generated `cardId` which you can persist and use to retrieve the Account Card later.
-
 ## Step 2: Transacting against Accounts
 
 ### Funding and Charging
 
-You can transact against a customer's Account using either their `shopperId`. 
+You can transact against a customer's Account using their `shopperId`. 
 
 Required parameters:
 - The customer's `shopperId`
@@ -135,7 +133,7 @@ Required parameters:
 - A `userSuppliedId`, which is a unique transaction identifier to ensure idempotence (for example, the order ID from your e-commerce system)
 
 Optional parameters: 
-- Arbitrary `metadata` (important if you are using complex [Promotions](#TODO add link))
+- Arbitrary `metadata` (important if you are using complex [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md))
 - A boolean indicating if the transaction should be `pending` (default is `false`)
 
 
@@ -247,7 +245,7 @@ simulated_charge = Lightrail::Account.simulate_charge({
 
 The response will be similar to the response for posting a transaction with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
 
-Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](TODO ADD LINK TO ABOVE SECTION) method.
+Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](#funding-and-charging) method.
 
 ## Next Steps
 
