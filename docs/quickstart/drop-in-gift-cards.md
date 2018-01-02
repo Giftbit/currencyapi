@@ -11,7 +11,7 @@ Your checkout process requires a simple update to accept payment from your custo
 
 Note this quickstart assumes you are using Stripe to process payments: if you are using another payment processor and want to build a custom solution, please [contact us](mailto:hello@lightrail.com).
 
-Configure your Drop-in Gift Card [template](https://www.lightrail.com/app/#/cards/template) within your Lightrail account to customize the appearance of widgets and gift card emails.
+Configure your Drop-in Gift Card [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of widgets and gift card emails.
 (For development, toggle your Lightrail account to test mode, this will allow you to use Stripe's test credit cards.) 
 
 This is also where you'll connect your Stripe account and provide the URL to a redemption page where customers can redeem their gift cards (see Step 2).
