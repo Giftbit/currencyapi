@@ -19,18 +19,18 @@ Minor updates must be made to your checkout process to allow the customer's acco
 To get started check out our [Drop-in Gift Card documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards).
 
 ### Accounts
-Use Lightrail to apply gift cards and points directly to customer accounts to create a seamless purchase experience.
+Use Lightrail to apply gift cards and points directly to customer accounts. This allows you to create a seamless purchase experiences for your customers.
 
 Check out our [accounts documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md#accounts) to get started.
 
 With customer accounts in place you can learn your customers' purchase history and drive engagement using promotions.
 
 ### Promotions
-Lightrail promotions are rule-based value that is attached to gift cards or accounts
+A Lightrail promotion is rule-based value that is attached to gift cards or accounts
 Promotions can be used to incentive customers "when" to buy, along with "what" to buy. 
 For example, a promotion could be a _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.
 
-Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md#promotions) for more info.  
+Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md#promotions) for more information.  
 
 ## Getting Started
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 

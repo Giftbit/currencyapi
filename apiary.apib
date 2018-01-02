@@ -22,18 +22,18 @@ Minor updates must be made to your checkout process to allow the customer's acco
 To get started check out our [Drop-in Gift Card documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards).
 
 ### Accounts
-Use Lightrail to apply gift cards and points directly to customer accounts to create a seamless purchase experience.
+Use Lightrail to apply gift cards and points directly to customer accounts. This allows you to create a seamless purchase experiences for your customers.
 
 Check out our [accounts documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md#accounts) to get started.
 
 With customer accounts in place you can learn your customers' purchase history and drive engagement using promotions.
 
 ### Promotions
-Lightrail promotions are rule-based value that is attached to gift cards or accounts
+A Lightrail promotion is rule-based value that is attached to gift cards or accounts
 Promotions can be used to incentive customers "when" to buy, along with "what" to buy. 
 For example, a promotion could be a _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.
 
-Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md#promotions) for more info.  
+Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md#promotions) for more information.  
 
 ## Getting Started
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
@@ -71,7 +71,7 @@ If the request body has changed but is using the same `userSuppliedId` you'll re
 Lightrail's 'list' endpoints accept `userSuppliedId` as a query parameter. This provides a way of linking objects from your system to Lightrail.  
 
 ### ShopperIds
-If you've been using the Lightrail [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) you'll have seen references to the `shopperId`. The `shopperId` is simply a customer ID from your system. Using the client-libraries allows you to make requests against a customer's account in Lightrail directly based off their customer ID in your system. 
+If you've been using the Lightrail [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) you'll have seen references to the `shopperId`. The `shopperId` is simply a customer ID from your system. Using the client-libraries allows you to make requests against a customer's account in Lightrail directly based off their customer ID from your system. 
 
 ### Currencies 
 The Lightrail API uses the three-character currency codes from the ISO-4217 standard, e.g. USD, CDN, and AUD. The special value XXX is defined by this standard for representing any non-currency values such as points.

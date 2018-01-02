@@ -9,7 +9,7 @@ If the request body has changed but is using the same `userSuppliedId` you'll re
 Lightrail's 'list' endpoints accept `userSuppliedId` as a query parameter. This provides a way of linking objects from your system to Lightrail.  
 
 ### ShopperIds
-If you've been using the Lightrail [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) you'll have seen references to the `shopperId`. The `shopperId` is simply a customer ID from your system. Using the client-libraries allows you to make requests against a customer's account in Lightrail directly based off their customer ID in your system. 
+If you've been using the Lightrail [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) you'll have seen references to the `shopperId`. The `shopperId` is simply a customer ID from your system. Using the client-libraries allows you to make requests against a customer's account in Lightrail directly based off their customer ID from your system. 
 
 ### Currencies 
 The Lightrail API uses the three-character currency codes from the ISO-4217 standard, e.g. USD, CDN, and AUD. The special value XXX is defined by this standard for representing any non-currency values such as points.
