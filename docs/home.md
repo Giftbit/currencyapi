@@ -1,60 +1,44 @@
 # Lightrail Documentation
-Welcome to Lightrail. Lightrail is a platform for managing digital value.
+Welcome to Lightrail. Lightrail is a platform for managing value.
 
-Lightrail offers a Drop-in Gift Card solution along with providing the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on-top of your account credit or gift card programs allowing you to build long last relationships with your customers.
+Lightrail offers a [Drop-in Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards) and also provides the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on top of your account credit or gift card programs allowing you to build long lasting relationships with your customers.
 
-Contact us anytime at hello@lightrail.com —we are here to help you solidify your use-case and implementation.
+Contact us anytime at hello@lightrail.com — we are here to help you solidify your use-case and implementation.
+ 
+Many integrations can be done using only our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) and the quickstarts below.   
 
-## Drop-in Gift Cards
-The Drop-in Gift Card solution empowers you to offer gift cards from your site in days. It is component based, using simple HTML snippets.
-When a customer redeems a gift card, the value is applied to an account that belongs to the customer, also managed by Lightrail.
-Minor updates must be made to your checkout process to allow the customer's account to be used as a payment option.
+## Common Use Cases - Quickstarts
+We recommend starting with the following quickstart guides. 
 
-Find out more here.
+### Drop-in Gift Cards
+The [Drop-in Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards) empowers you to offer gift cards from your site in days. It is component based, using simple HTML snippets. When a customer redeems a gift card, the value is applied to an account that belongs to the customer, also powered by Lightrail. Minor updates must be made to your checkout process to allow the customer's account to be used as a payment option.
 
-## Accounts
-Apply gift cards and points directly to customer accounts in Lightrail. 
-Create a seamless purchase experience for your customer.
-Learn from their purchase history and drive user engagement using promotions.
+To get started check out our [Drop-in Gift Card documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards).
 
-Check out our accounts documentation.
+### Accounts
+Use Lightrail to apply gift cards and points directly to customer accounts. This allows you to create a seamless purchase experiences for your customers.
 
-## Promotions
-Lightrail promotions are rule-based value that are attached to gift cards or accounts.
-A promotion could be _$5 off if your purchase is over $25_, or _$10 off if your order contains two pairs of jeans_; the possibilities are endless. 
-Promotions allow you to increase customer acquisition and retention. 
-By utilizing Lightrail filter and segment capabilities you're able to created targeted incentives programs, allowing you to pinpoint the customer's that mean the most to you. 
+Check out our [accounts documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md#accounts) to get started.
 
-Find out more here.
+With customer accounts in place you can learn your customers' purchase history and drive engagement using promotions.
 
-## Within Your Lightrail Account
-All of your gift cards, accounts and promotions can be viewed through your Lightrail account. Effortlessly locate an account or giftcard to view its transaction history. 
+### Promotions
+A Lightrail promotion is rule-based value that is attached to gift cards or accounts. Promotions can be used to incentive customers "when" to buy, along with "what" to buy. For example, a promotion could be a _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.
 
-This enables an out-of-the-box customer service solution for your team.  
-
-### Segment Actions
-Your Lightrail account offers powerful search and filter functionality. 
-Filter for customer's with certain purchase behaviors and create tagged segments. You can preform segment actions that apply to all gift cards or accounts in that segment. Examples of such actions can be to add a promotion to incentive that segment, or to temporarily freeze the objects, preventing further transactions.      
+Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md#promotions) for more information.  
 
 ## Getting Started
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
-### Test Mode
-When you first sign into your account you will be in test mode. Test mode is used for development allowing you to build in safely. It comes with sample data to give you a sense of what your Lightrail account will look like with data and allows you to try out features such as the search and filter capabilities. 
+### API Keys
+Create your API key in the [Integrations](https://www.lightrail.com/app/#/account/api) section of your account. 
 
-### API Keys and Authorization
-Create your API key in the [Integrations](todo get link) section of your account. 
+To make an API call Lightrail requires the HTTP header `Authorization: Bearer {{API_KEY}}`.
 
-To make an API call Lightrail requires the HTTP header `Authorization` with value `Bearer {{API_KEY}}`.
-
-#### Base URL
-The base URL for the Lightrail API is `https://api.lightrail.com/v1/`.
-
-#### First Call
-```curl https://www.lightrail.com/v1/ping --header "Authorization: Bearer <apiKey>"```
+### Testing 
+When you first sign into your account you will be in test mode. Test mode is used for development allowing you to build in and test functionality. It comes with sample data to give you a sense of what your Lightrail account will look like. 
 
 ## Support
-- We have sample projects
-- We have client-libraries
-- Contact us
+We have [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) in many languages to speed up your integration. We also have a sample [Drop-In Gift Card application]((https://github.com/Giftbit/stripe-integration-sample-webapp)) containing examples in JavaScript and PHP with Java and Ruby coming soon.   
 
+Please [contact us](mailto:hello@lightrail.com) any time, we're here to help.
