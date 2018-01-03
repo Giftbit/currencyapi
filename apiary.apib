@@ -1,63 +1,113 @@
 FORMAT: 1A
 HOST: https://api.lightrail.com/v1/
 
-# Lightrail API
+# Lightrail Documentation
+Welcome to Lightrail. Lightrail is a platform for managing value.
 
-Welcome to the Lightrail API documentation. Lightrail is a powerful and flexible platform for digital account credits, gift cards, promotions, and points. 
-Lightrail is carefully designed for rapid adoption and integration while maintaining flexibility to support various business use-cases and we would like this document 
-to be part of that experience. In addition to a fully-interactive REST reference, we will have a quick overview of Lightrail's 
-conceptual model, common use-cases, and common API calls with examples. 
+Lightrail offers a [Drop-in Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards) and also provides the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on top of your account credit or gift card programs allowing you to build long lasting relationships with your customers.
 
-Contact us anytime at hello@lightrail.com —we are here to help you solidify your use-cases and implementation.
+Contact us anytime at hello@lightrail.com — we are here to help you solidify your use-case and implementation.
 
-## Looking for Lightrail's Drop In Gift Card Solution?
-Lightrail is developing a drop in gift card solution that makes it very easy to add gift cards and account credits to your application.
-The solution is component based, using snippets that can be included for gift card sending and redemption.
-Checkout requires minimal updates to your existing checkout process and is easy to do using our existing libraries.
+You're looking at the full reference documentation providing detailed information on each API endpoint. 
+Many integrations can be done using only our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) and the quickstarts below.   
 
-Detailed solution documentation coming soon! Looking for early access to this feature? [Get in touch](mailto://hello@lightrail.com).
+## Common Use Cases - Quickstarts
+We recommend starting with the following quickstart guides. 
+
+### Drop-in Gift Cards
+The [Drop-in Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards) empowers you to offer gift cards from your site in days. It is component based, using simple HTML snippets.
+When a customer redeems a gift card, the value is applied to an account that belongs to the customer, also powered by Lightrail.
+Minor updates must be made to your checkout process to allow the customer's account to be used as a payment option.
+
+To get started check out our [Drop-in Gift Card documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards).
+
+### Accounts
+Use Lightrail to apply gift cards and points directly to customer accounts. This allows you to create a seamless purchase experiences for your customers.
+
+Check out our [accounts documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md#accounts) to get started.
+
+With customer accounts in place you can learn your customers' purchase history and drive engagement using promotions.
+
+### Promotions
+A Lightrail promotion is rule-based value that is attached to gift cards or accounts.
+Promotions can be used to incentive customers "when" to buy, along with "what" to buy. 
+For example, a promotion could be a _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.
+
+Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md#promotions) for more information.  
 
 ## Getting Started
-This section will go over the basic steps to make your first Lightrail API call. 
+[Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
-### Authorization
+### API Keys and Authorization
+Create your API key in the [Integrations](https://www.lightrail.com/app/#/account/api) section of your account. 
 
-In order to make API calls, you need to identify yourself using an API key. You can create a test or production API key in the _API Keys_ tab under _Account Settings_ (top right corner) in your Lightrail account. If you do not have a Lightrail account yet, you can <a href="https://www.lightrail.com/app/#/register" target="_blank">create one</a>. 
+To make an API call Lightrail requires the HTTP header `Authorization: Bearer `.
 
-After creating the key, you can view it only once and you will have to safely save it somewhere for future use. If you lose this API key you can create a new one, but you will not be able to see it again.
-
-Note that in your account settings, you will be in test mode by default which enables you to create test API keys and to make test calls to the API without affecting your production system and its statistics.
-Once you are ready for production, you can switch off the test mode and create production API keys. Make sure to take all the necessary measures to keep your API keys secure and store them safely in your production configurations.
-
-To make API calls, prefix your API key with the word `Bearer` followed by a space and pass it in the `Authorization` HTTP header:
-`Authorization: Bearer {apiKey}`
-
-### Base URL
-
+#### Base URL
 The base URL for the Lightrail API is `https://api.lightrail.com/v1/`.
 
-### First Call
+#### First Call
+To test your authorization use our `ping` endpoint.
 
-Once you have a test API key, you can hit the `ping` endpoint to invoke your first API call using a REST client. Here is what the command looks like using `curl`:
+```curl https://api.lightrail.com/v1/ping --header "Authorization: Bearer <apiKey>"```
 
-```sh
-curl https://www.lightrail.com/v1/ping --header "Authorization: Bearer <apiKey>"
-```
+### Testing 
+When you first sign into your account you will be in test mode. Test mode is used for development allowing you to build in and test functionality. It comes with sample data to give you a sense of what your Lightrail account will look like. 
 
-A successful response means your API key works fine and you are ready to go. 
-If you are curious about the response content, check out the [`ping` endpoint documentation](#ping-endpoint-anchor).
+## Support
+We have [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) in many languages to speed up your integration. 
+We also have a sample [Drop-In Gift Card application]((https://github.com/Giftbit/stripe-integration-sample-webapp)) containing examples in JavaScript and PHP with Java and Ruby coming soon.   
 
-### Next Step
-- More in-depth understanding of the Lightrail system: [Lightrail Object Model](#object-model-anchor). 
-- Get started on implementing one of the common use-cases for Lightrail: [Common Use-Cases](#use-cases-anchor). 
-- Check out the existing client libraries and plugins: [Lightrail Integrations](#integrations-anchor).
+Please [contact us](mailto:hello@lightrail.com) any time, we're here to help.
+
+## Implementation Details
+
+### Idempotency 
+The Lightrail API is idempotent. HTTP `POST` requests against the API require a `userSuppliedId` to be provided in the request body as an idempotency key. 
+This means that making the same request twice with the same `userSuppliedId` will only result in creating a single object in the API. Note, both requests will have an identical response.
+  
+If the request body has changed but is using the same `userSuppliedId` you'll receive a `HTTP 409 - Conflict Error`. 
+
+Lightrail's 'list' endpoints accept `userSuppliedId` as a query parameter. This provides a way of linking objects from your system to Lightrail.  
+
+#### ShopperIds
+If you've been using the Lightrail [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) you'll have seen references to the `shopperId`. The `shopperId` is simply a customer ID from your system. Using the client-libraries allows you to make requests against a customer's account in Lightrail directly based off their customer ID from your system. Note, the client libraries use `shopperId` as an alias for `userSuppliedId`.
+
+### Currencies 
+The Lightrail API uses the three-character currency codes from the ISO-4217 standard, e.g. USD, CDN, and AUD. The special value XXX is defined by this standard for representing any non-currency values such as points.
+
+All currency values are represented by the smallest currency unit, e.g. cents for USD or CAD. For example, to create a gift card for $1.00 USD, you would set the `initialValue=100`.
+
+Lightrail does not do any form of currency exchange. If you create a gift card or account, you can only attach promotions in that same currency.
+
+### Dates
+Lightrail uses the `yyyy-MM-dd'T'HH:mm:ss.SSSZ` format from the ISO-8601 standard for all dates. This allows you to control things such as value expiry dates in fine granularity to the time zone of your choosing. You can see various examples of date values in the endpoint documentation. 
+
+### Handling Error Responses
+
+Clients should always check the HTTP status code of the response and act accordingly if the response is not a 200.
+
+The response JSON object in case of an error will be in the following format:
+- `status`: (number) - echoing the HTTP response code.    
+- `message`: (string, optional) - a descriptive error message if one is available. 
+- `messageCode`: (string, optional) - a code for the error that can be consumed programmatically.
+
+Note that the error `message` is intended to be shown to an end user; it may change from time to time to improve clarity and might be translated into other languages. For programmatic use, you should use the `messageCode` which reliably corresponds to the particular error case and is not subject to change without notice.
+
+#### Example error responses:
+| Status | Description         | Message                                  |
+| :----- | ------------------- | ---------------------------------------- |
+| `400`  | bad request         | `Missing required parameter 'userSuppliedId'` |
+| `401`  | unauthorized        | `Unauthorized.`                          |
+| `409`  | idempotency failure | `A different transaction with the same userSuppliedId already exists.` |
+| `429`  | rate-limit failure  | `Too many requests.`                     |
 
 <a name="object-model-anchor"></a>
 ## The Lightrail Object Model
 The full API object model is here for your reference. We will discuss these objects and their relationships in this section. Depending on your use-case you may only need some of these objects and the corresponding endpoints. If you prefer to start with something more hands-on, feel free to move on to [Common Use-Cases](#use-cases-anchor).   
 
 
-![Lightrail Object Model](https://giftbit.github.io/Lightrail-API-Docs/assets/lightrail-objects.svg)
+![Lightrail Object Model](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/assets/lightrail-objects.svg?sanitize=true)
 
 ### Core Objects: Cards and Value Stores
 
@@ -156,7 +206,7 @@ Once this Transaction request is received, Lightrail will iterate through the Ca
 
 <a name="transaction-valustore-anchor"></a>
 
-![Transaction, Value Stores, and Redemption Rules](https://giftbit.github.io/Lightrail-API-Docs/assets/transaction-valustores.svg)
+![Transaction, Value Stores, and Redemption Rules](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/assets/transaction-valustores.svg?sanitize=true)
 
 Lightrail Transaction object includes a `transactionBreakdown` which provides the breakdown of how the value of the Transaction was extracted from the Card's Value Stores. Here is an example for the above example:
 
@@ -180,141 +230,6 @@ You can use this information to show the customer what promotions were unlocked 
 Moreover, when using the Transaction simulation endpoints, you can compare the list of unlocked Value Stores with the full list of all Value Stores on the Card, and show the customer what Value Stores were NOT unlocked together with a hint about what they can do to unlock more promotions. This is an important user experience to encourage customers to take advantage of available promotions and boost your sales.  
 
 Check out the <a href="https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md" target="_blank">Redemption Rules Implementation Guide</a> for a more detailed example.
-
-<a name="use-cases-anchor"></a>
-## Common Use-Cases
-This section reviews some of the most common use-cases supported by Lightrail in order to help you navigate and find the more detailed step-by-step guides discussing the detailed flow for each use-case. If your use-case is not listed here or if you need assistance about some particular details in your use-case feel free to contact us at hello@lightrail.com.
-
-### Powering Gift Cards
-
-Powering Gift Cards is the main use-case of Lightrail. Some of the most common use-cases for Gift Cards are the following. For an step-by-step guide to implementing each use-case, follow the link: 
-
-- [Issue a Gift Card](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/gift-card.md)
-- [View Card Details and Balance](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/card-details.md)
-- [Create and Attach Promotions to Cards](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/promotions.md)
-- [Redeem a Gift Card value at the Checkout](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/giftcode-checkout.md) 
-- [Split-Tender with Lightrail and Stripe](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/stripe-split.md)
-
-#### Common Requests in Gift Card Integration
-
-| Action                       | Endpoint                            | Verb   | Body                                     |
-| :--------------------------- | ----------------------------------- | ------ | ---------------------------------------- |
-| Create Gift Card             | `/v1/cards`                         | `POST` | `{'userSuppliedId':'gc1', 'cardType':'GIFT_CARD', 'programId':'program-123', 'initialValue':500, 'currency':'USD'}` |
-| Retrieve Gift Code           | `/v1/cards/<cardId>/fullcode`       | `GET`  |                                          |
-| Check Balance                | `/v1/codes/<fullcode>/card/balance` | `GET`  |                                          |
-| Create Transaction           | `/v1/codes/<fullcode>/transactions` | `POST` | `{'userSuppliedId':'tx1', 'value':-10, 'currency':'USD'}` |
-| Retrieve Transaction History | `/v1/codes/<fullcode>/transactions` | `GET`  |                                          |
-
-<a name="use-cases-account-credits-anchor"></a>
-
-### Powering Account Credits
-
-Lightrail can easily power your account credit or customer rewards programs. Some of the most common use-cases for account credits are the following. 
-
-- [Create a New Contact and Issue a New Account](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/account-credits.md)
-- [View Account Details and Balance](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/card-details.md)
-- [Charge or Fund an Account](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/account-credits.md)
-- [Create and Attach a Promotion to an Account](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/promotions.md) 
-- [Redeem Account Value at the Checkout](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/giftcode-checkout.md)
-- [Split-Tender with Lightrail and Stripe](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/stripe-split.md)
-
-Note that points programs can be implemented identically by setting the currency of Account Cards to points, i.e. `XXX` according to the ISO-4217 standard. 
-
-#### Common Requests in Account Credits or Points Program
-
-| Action                             | Endpoint                                 | Verb   | Body                                     |
-| :--------------------------------- | ---------------------------------------- | ------ | ---------------------------------------- |
-| Create Contact                     | `/v1/contacts`                           | `POST` | `{'userSuppliedId':'ct1', 'email':'name@example.com'}` |
-| Create Account Card                | `/v1/cards`                              | `POST` | `{'userSuppliedId':'ac1', 'cardType':'ACCOUNT_CARD', 'contactId':'contact-123', 'currency':'XXX'}` |
-| Retrieve Account Card from Contact | `/v1/cards?contactId=<contactId>&currency=<currency>&cardType=ACCOUNT_CARD` | `GET`  |                                          |
-| Check Balance                      | `/v1/cards/<cardId>/balance`             | `GET`  |                                          |
-| Create Transaction                 | `/v1/cards/<cardId>/transactions`        | `POST` | `{'userSuppliedId':'tx1', 'value':-10, 'currency':'XXX'}` |
-| Retrieve Transaction History       | `/v1/cards/<cardId>/transactions`        | `GET`  |                                          |
-
-## Implementation Details
-
-### Idempotency 
-
-Ensuring idempotency means providing the option of repeating a request in a way that it will not result in repeated actions on the server. This is an important feature for RESTful APIs as it enables the client to safely repeat a potentially failed request without the fear of repeated consequences. 
-
-For example, if the call to post a _drawdown_ Transaction encounters a network failure and you are not sure whether it failed before or after reaching the server, you would want to be able to repeat this request without worrying about charging the Card multiple times. 
-
-Lightrail supports idempotency via `userSuppliedId`, a unique string value provided by the client. This is a required parameter in every API endpoint which is not naturally idempotent. When using the same `userSuppliedId`, Lightrail guarantees that the requested operation is only invoked once, regardless of how many times the request is received. This provides a mechanism for you to _retry_ when a request times out or fails for unknown reasons. 
-
-Note that the `userSuppliedId` must also be unique to the request; if you repeat the same `userSuppliedId` with a different request, you will receive an `HTTP 409` error indicating idempotency failure. 
-
-Here is an example of a _drawdown_ request which includes a `userSuppliedId`. No matter how many time this request is received by the server, it will charge the Card only once. Moreover, if you try posting a different Transaction (e.g. with a different value) using this `userSuppliedId` you will get an error. 
-
-```
-POST https://www.lightrail.com/v1/cards/{cardId}/transactions
-{
-  "userSuppliedId": "tx-2403423",
-  "value": -13500,
-  "currency": "USD"
-}
-```
-
-Since Lightrail persists and returns the `userSuppliedId` with the corresponding object, you can also use it as a client-side unique identifier to link your client-side objects to Lightrail objects. For example, you can use your local Customer ID as the `userSuppliedId` when creating a new Lightrail Contact to associate your local Customer object with the Lightrail Contact object (as an alternative to saving the server-generated `contactId` with your local Customer object). You can use the `userSuppliedId` to retrieve the corresponding Contact object when necessary by [searching Contacts](#contact-list-anchor) and providing the `userSuppliedId` as a search parameter. 
-
-### Currencies 
-Lightrail API uses the three-character currency codes from the ISO-4217 standard, e.g. `USD`,` CDN`, and `AUD`. The special value `XXX` is defined by this standard for representing any non-currency values such as points.
-
-All currency values are represented by the smallest currency unit, e.g. cents for USD or CAD. For example, to create a Card for USD1.00, you would set the `initialValue=100`.
-
-Lightrail does not do any form of currency exchange and only enforces the consistency of currencies among connected Lightrail objects. For example, if you create a Card with the principal Value Store in USD, you can only attach USD promotions to this Card and transact against it in USD. Note that Lightrail Transaction endpoints do not presume a default currency and you must provide the currency explicitly when posting a Transaction.
-
-### Dates
-Lightrail uses the `yyyy-MM-dd'T'HH:mm:ss.SSSZ` format from the ISO-8601 standard for all dates. This allows you to control things such as value expiry dates in fine granularity to the time zone of your choosing. You can see various examples of date values in the endpoint documentation. 
-
-### Handling Error Responses
-
-Clients should always check the HTTP status code of the response and act accordingly if the response is not a 200.
-
-The response JSON object in case of an error will be in the following format:
-- `status`: (number) - echoing the HTTP response code.    
-- `message`: (string, optional) - a descriptive error message if one is available. 
-- `messageCode`: (string, optional) - a code for the error that can be consumed programmatically.
-
-Note that the error `message` is intended to be shown to an end user; it may change from time to time to improve clarity and might be translated into other languages. For programmatic use, you should use the `messageCode` which reliably corresponds to the particular error case and is not subject to change without notice.
-
-#### Example error responses:
-| Status | Description         | Message                                  |
-| :----- | ------------------- | ---------------------------------------- |
-| `400`  | bad request         | `Missing required parameter 'userSuppliedId'` |
-| `401`  | unauthorized        | `Unauthorized.`                          |
-| `409`  | idempotency failure | `A different transaction with the same userSuppliedId already exists.` |
-| `429`  | rate-limit failure  | `Too many requests.`                     |
-
-<a name="integrations-anchor"></a>
-## Integrations
-Here is the list of Lightrail integrations for different technologies and languages. If you are planning to integrate with Lightrail, before embarking on development check out this list to see if we already have a client library or plugin suitable for your project.
-
-### Languages
-
-#### Java
-- [Lightrail Java Client](https://github.com/Giftbit/lightrail-client-java)
-- [Lightrail Stripe Integration for Java](https://github.com/Giftbit/lightrail-stripe-java)
-
-#### PHP
-
-- [Lightrail WooCommerce Plugin](https://wordpress.org/plugins/lightrail-for-woocommerce/)
-
-#### Ruby
-- [Lightrail Ruby Client](https://github.com/Giftbit/lightrail-client-ruby)
-- [Lightrail Stripe Integration for Ruby](https://github.com/Giftbit/lightrail-stripe-ruby)
-
-#### Typescript
-- [Lightrail Typescript Client](https://github.com/Giftbit/lightrail-client-javascript)
-
-### Third-Party Platforms
-
-#### Stripe
-- [Lightrail Stripe Integration for Java](https://github.com/Giftbit/lightrail-stripe-java)
-- [Lightrail Stripe Integration for Ruby](https://github.com/Giftbit/lightrail-stripe-ruby)
-
-
-#### WooCommerce
-- [Lightrail WooCommerce Plugin](https://wordpress.org/plugins/lightrail-for-woocommerce/)
 
 ##Notes
 ### Legal Responsibilities

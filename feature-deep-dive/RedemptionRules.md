@@ -24,7 +24,7 @@ metadata.cartValue >= 5000
 
 This rule evaluates to true if the value of the shopping cart is greater or equal to 5000.  In the currency `USD` this is the rule for "purchase of $50.00 or more."  In the currency `JPY` this would be "purchase of ¥5000 or more."
 
-The four variables of a transaction that can be used for a rule are:
+The three variables of a transaction that can be used for a rule are:
 - `value`: a positive number for the value of the Lightrail transaction (which may not be the value of the full cart in split-tender transactions)
 - `currency`: a string for the ISO code of the currency of the transaction
 - `metadata`: a map of arbitrary data that can be sent with the transaction
@@ -151,7 +151,7 @@ max(1, 2, '3') → 3
 max(null, null) → 0
 ```
 
-## Examples
+## Example Rules
 
 ### Doughnut shop examples
 
@@ -188,10 +188,24 @@ In this `metadata` cart items are duplicated if more than one is bought.
       }, 
       {
         "id": "dripcoffee",
-        "quantity": 4,
         "unit_price": 315,
         "tags": ["coffee", "medium"]
-      }     
+      },
+      {
+        "id": "dripcoffee",
+        "unit_price": 315,
+        "tags": ["coffee", "medium"]
+      },
+      {
+        "id": "dripcoffee",
+        "unit_price": 315,
+        "tags": ["coffee", "medium"]
+      },
+      {
+        "id": "dripcoffee",
+        "unit_price": 315,
+        "tags": ["coffee", "medium"]
+      }
     ]
   },
   "delivery": {
@@ -209,7 +223,7 @@ metadata.cart.total >= 1000
 #### Buy any 5 items
 
 ```javascript
-metadata.cart.items.map(item => item.quantity).sum() >= 5
+metadata.cart.items.size() >= 5
 ```
 
 #### Canadian Special: discount maple glazed doughnuts
@@ -221,26 +235,26 @@ metadata.cart.items.some(item => item.id == 'mapleglazed')
 #### Buy a medium coffee and any doughnut
 
 ```javascript
-metadata.cart.items.some(item => item.tags.some(tag=> tag=='coffee') && item.tags.some(tag=> tag=='medium'))&& metadata.cart.items.some(item => item.tags.some(tag=> tag=='doughnut'))
+metadata.cart.items.some(item => item.tags.some(tag=> tag=='coffee') && item.tags.some(tag=> tag=='medium')) && metadata.cart.items.some(item => item.tags.some(tag=> tag=='doughnut'))
 ```
 
 #### Buy 4 coffees
 
 ```javascript
-metadata.cart.items.filter(item => item.tags.some(tag => tag == 'coffee')).map(item => item.quantity).sum() >= 4
+metadata.cart.items.filter(item => item.tags.some(tag => tag == 'coffee')).size() >= 4
 ```
 
 #### Buy 4 coffees and pickup in store
 
 ```javascript
-metadata.delivery.id=='store-pickup' && metadata.cart.items.filter(item => item.tags.some(tag => tag == 'coffee')).map(item => item.quantity).sum() >= 4
+metadata.delivery.id=='store-pickup' && metadata.cart.items.filter(item => item.tags.some(tag => tag == 'coffee')).size() >= 4
 
 ```
 
 #### Buy any 4 items of value > $1.00
 
 ```javascript
-metadata.cart.items.filter(item => item.unit_price > 100).map(item => item.quantity).sum() >= 4
+metadata.cart.items.filter(item => item.unit_price > 100).size() >= 4
 ```
 
 ### Concert tees examples
@@ -281,37 +295,37 @@ In this `metadata` cart items have a `quantity`.
 }
 ```
 
-### Buy any 5 items
+#### Buy any 5 items
 
 ```javascript
 metadata.cart.items.map(item => item.quantity).sum() >= 5
 ```
 
-### Buy any 2 t-shirts
+#### Buy any 2 t-shirts
 
 ```javascript
 metadata.cart.items.filter(item => item.tags.some(tag => tag=='shirt')).map(item => item.quantity).sum() >= 2
 ```
 
-### Buy any 2 Led Zeppelin items worth at least $5
+#### Buy any 2 Led Zeppelin items worth at least $5
 
 ```javascript
 metadata.cart.items.filter(item => item.unit_price >= 500 && item.tags.some(tag => tag=='ledzeppelin')).map(item => item.quantity).sum() >= 2
 ```
 
-### Buy any 4 stickers and a shirt
+#### Buy any 4 stickers and a shirt
 
 ```javascript
 metadata.cart.items.filter(item => item.tags.some(tag => tag=='sticker')).map(item => item.quantity).sum() >= 4 && metadata.cart.some(item => item.tags.some(tag => tag=='shirt'))
 ```
 
-### Buy $10 worth of stickers
+#### Buy $10 worth of stickers
 
 ```javascript
 metadata.cart.items.filter(item => item.tags.some(tag => tag=='sticker')).map(item => item.quantity * item.unit_price).sum() >= 1000
 ```
 
-### Buy $20 worth of stickers or CDs
+#### Buy $20 worth of stickers or CDs
 
 ```javascript
 metadata.cart.items.filter(item => item.tags.some(tag => tag=='sticker' || tag=='cd')).map(item => item.quantity * item.unit_price).sum() >= 2000

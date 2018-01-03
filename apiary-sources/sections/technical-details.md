@@ -1,34 +1,22 @@
 ## Implementation Details
 
 ### Idempotency 
+The Lightrail API is idempotent. HTTP `POST` requests against the API require a `userSuppliedId` to be provided in the request body as an idempotency key. 
+This means that making the same request twice with the same `userSuppliedId` will only result in creating a single object in the API. Note, both requests will have an identical response.
+  
+If the request body has changed but is using the same `userSuppliedId` you'll receive a `HTTP 409 - Conflict Error`. 
 
-Ensuring idempotency means providing the option of repeating a request in a way that it will not result in repeated actions on the server. This is an important feature for RESTful APIs as it enables the client to safely repeat a potentially failed request without the fear of repeated consequences. 
+Lightrail's 'list' endpoints accept `userSuppliedId` as a query parameter. This provides a way of linking objects from your system to Lightrail.  
 
-For example, if the call to post a _drawdown_ Transaction encounters a network failure and you are not sure whether it failed before or after reaching the server, you would want to be able to repeat this request without worrying about charging the Card multiple times. 
-
-Lightrail supports idempotency via `userSuppliedId`, a unique string value provided by the client. This is a required parameter in every API endpoint which is not naturally idempotent. When using the same `userSuppliedId`, Lightrail guarantees that the requested operation is only invoked once, regardless of how many times the request is received. This provides a mechanism for you to _retry_ when a request times out or fails for unknown reasons. 
-
-Note that the `userSuppliedId` must also be unique to the request; if you repeat the same `userSuppliedId` with a different request, you will receive an `HTTP 409` error indicating idempotency failure. 
-
-Here is an example of a _drawdown_ request which includes a `userSuppliedId`. No matter how many time this request is received by the server, it will charge the Card only once. Moreover, if you try posting a different Transaction (e.g. with a different value) using this `userSuppliedId` you will get an error. 
-
-```
-POST https://www.lightrail.com/v1/cards/{cardId}/transactions
-{
-  "userSuppliedId": "tx-2403423",
-  "value": -13500,
-  "currency": "USD"
-}
-```
-
-Since Lightrail persists and returns the `userSuppliedId` with the corresponding object, you can also use it as a client-side unique identifier to link your client-side objects to Lightrail objects. For example, you can use your local Customer ID as the `userSuppliedId` when creating a new Lightrail Contact to associate your local Customer object with the Lightrail Contact object (as an alternative to saving the server-generated `contactId` with your local Customer object). You can use the `userSuppliedId` to retrieve the corresponding Contact object when necessary by [searching Contacts](#contact-list-anchor) and providing the `userSuppliedId` as a search parameter. 
+#### ShopperIds
+If you've been using the Lightrail [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) you'll have seen references to the `shopperId`. The `shopperId` is simply a customer ID from your system. Using the client-libraries allows you to make requests against a customer's account in Lightrail directly based off their customer ID from your system. Note, the client libraries use `shopperId` as an alias for `userSuppliedId`.
 
 ### Currencies 
-Lightrail API uses the three-character currency codes from the ISO-4217 standard, e.g. `USD`,` CDN`, and `AUD`. The special value `XXX` is defined by this standard for representing any non-currency values such as points.
+The Lightrail API uses the three-character currency codes from the ISO-4217 standard, e.g. USD, CDN, and AUD. The special value XXX is defined by this standard for representing any non-currency values such as points.
 
-All currency values are represented by the smallest currency unit, e.g. cents for USD or CAD. For example, to create a Card for USD1.00, you would set the `initialValue=100`.
+All currency values are represented by the smallest currency unit, e.g. cents for USD or CAD. For example, to create a gift card for $1.00 USD, you would set the `initialValue=100`.
 
-Lightrail does not do any form of currency exchange and only enforces the consistency of currencies among connected Lightrail objects. For example, if you create a Card with the principal Value Store in USD, you can only attach USD promotions to this Card and transact against it in USD. Note that Lightrail Transaction endpoints do not presume a default currency and you must provide the currency explicitly when posting a Transaction.
+Lightrail does not do any form of currency exchange. If you create a gift card or account, you can only attach promotions in that same currency.
 
 ### Dates
 Lightrail uses the `yyyy-MM-dd'T'HH:mm:ss.SSSZ` format from the ISO-8601 standard for all dates. This allows you to control things such as value expiry dates in fine granularity to the time zone of your choosing. You can see various examples of date values in the endpoint documentation. 

@@ -3,7 +3,7 @@
 The full API object model is here for your reference. We will discuss these objects and their relationships in this section. Depending on your use-case you may only need some of these objects and the corresponding endpoints. If you prefer to start with something more hands-on, feel free to move on to [Common Use-Cases](#use-cases-anchor).   
 
 
-![Lightrail Object Model](https://giftbit.github.io/Lightrail-API-Docs/assets/lightrail-objects.svg)
+![Lightrail Object Model](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/assets/lightrail-objects.svg?sanitize=true)
 
 ### Core Objects: Cards and Value Stores
 
@@ -102,7 +102,7 @@ Once this Transaction request is received, Lightrail will iterate through the Ca
 
 <a name="transaction-valustore-anchor"></a>
 
-![Transaction, Value Stores, and Redemption Rules](https://giftbit.github.io/Lightrail-API-Docs/assets/transaction-valustores.svg)
+![Transaction, Value Stores, and Redemption Rules](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/assets/transaction-valustores.svg?sanitize=true)
 
 Lightrail Transaction object includes a `transactionBreakdown` which provides the breakdown of how the value of the Transaction was extracted from the Card's Value Stores. Here is an example for the above example:
 
