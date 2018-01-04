@@ -245,7 +245,7 @@ simulated_charge = Lightrail::Account.simulate_charge({
 
 The response will be similar to the response for posting a transaction with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
 
-Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](#funding-and-charging) method.
+Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](#accounts/funding-and-charging) method.
 
 ## Next Steps
 
