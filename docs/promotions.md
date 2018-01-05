@@ -10,7 +10,9 @@ The first example is a sign-up bonus. This type of promotion can be applied to a
 
 Want more? Lightrail supports many more complex types of promotions. See our [Redemption Rules](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md) to take your incentives to the next level or [contact us](mailto:hello@lightrail.com) for more options. 
 
-## Getting Started
+## Quickstart
+
+### Getting Started
 
 This guide assumes that you are already using Lightrail to power your customer accounts. 
 
@@ -18,13 +20,13 @@ If you don’t already have that set up, start by [signing up](https://www.light
 
 Note that our client libraries do not yet support Promotions: this guide will explain how to implement them with the web app and a few simple API calls. 
 
-## Example 1: Sign-up Bonus
+### Example 1: Sign-up Bonus
  
  **A "when-to-buy" incentive**
 
 This is a quick walk-through of how to set up a $10 sign-up bonus, valid for 60 days, that is automatically attached to every new customer account. It's an example of a generic type of promotion that can be widely applied to many different use cases. 
 
-### Step 1: Create the Promotion Program
+#### Step 1: Create the Promotion Program
 
 This step is done in the Lightrail webapp. 
 
@@ -39,7 +41,7 @@ For a $10 bonus that can be used for 60 days after a customer signs up, set the 
 
 Once saved, you’ll need to copy the `programId` to be used in the API calls below.
 
-### Step 2: Attach a Promotion to an Account
+#### Step 2: Attach a Promotion to an Account
 
 This step takes place in your code that handles new sign-ups. 
 
@@ -86,7 +88,7 @@ Now that the Promotion is attached to the Account, its value will be added to th
 - The `expires` date can be set to any future date and will override the validity period set in the Promotion Program. For example, suppose you want to run a promotion which expires at the end of the month regardless of when the promotion is issued.
 
 
-## Example 2: High Value Purchase Incentive
+### Example 2: High Value Purchase Incentive
 
 **A "what-to-buy" incentive**
 
@@ -94,7 +96,7 @@ This type of Promotion, which incentivizes specific spending behavior, relies on
 
 For more detailed information, see our [Redemption Rules guide](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md).
 
-### Step 1: Send Detailed Metadata with Transactions
+#### Step 1: Send Detailed Metadata with Transactions
 
 This step takes place in your checkout code. 
 
@@ -112,7 +114,7 @@ This means that it is important to send the right details, structured in the rig
 
 For more detailed recommendations on metadata contents and structure, see our full [Redemption Rules use case guide](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md).
 
-### Step 2: Create the Promotion Program
+#### Step 2: Create the Promotion Program
 
 This step takes place in the Lightrail webapp. It is analogous to [Step 1 of the Sign-Up Bonus](#promotions/step-1-initialize-promotion-program) flow, but involves setting more complex details. 
 
@@ -125,7 +127,7 @@ Create a new [Promotion Program](https://www.lightrail.com/app/#/promotions?_k=i
 
 Save the Promotion Program, then copy and save the Program ID that gets generated. 
 
-### Step 3: Attach the Promotion to an Account
+#### Step 3: Attach the Promotion to an Account
 
 This step is analogous to [Step 2 of the Sign-Up Bonus](#promotions/step-2-attach-promotion-to-account) flow. How you determine which customers should receive the Promotion is highly dependent on your system and marketing strategies. 
 
@@ -218,7 +220,7 @@ Note the `value` requested against the `/dryRun` endpoint was $325 but the Accou
 
 You can also use the `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions will be used for a given transaction; for example, in your checkout summary before processing the transaction. 
 
-### Step 4: Transacting 
+#### Step 4: Transacting
 
 To create a transaction against an Account you can use either our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) or use our REST API. If using the REST API, check out the Transactions section of our [full reference documentation](www.lightrail.com/docs). Also, be sure to include the metadata if using rule-based promotions.
 
