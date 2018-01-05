@@ -2,7 +2,9 @@
 
 Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) and [promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md) to directly engage individual customers. 
 
-## Getting Started
+## Quickstart
+
+### Getting Started
 
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
@@ -12,11 +14,11 @@ If you are using Stripe to process payments, add one of our [Stripe integration 
 
 **Note** if you're using our [Drop-In Gift Card](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
 
-## Step 1: Creating Accounts
+### Step 1: Creating Accounts
 
 Accounts are attached to Contacts, which are connected with a customer record in your system by a `shopperId`. The `shopperId` is a unique identifier from your system, such as their email address or customer ID. 
 
-### Creating Contacts
+#### Creating Contacts
 
 All client libraries provide methods for creating contacts. 
 
@@ -68,7 +70,7 @@ contact = Lightrail::Contact.create(new_contact_params)
 
 Note the `shopperId` is stored in the Lightrail system as `userSuppliedId`. 
 
-### Creating Accounts
+#### Creating Accounts
 
 Once you have created a Contact, you can create an Account for them based on their `shopperId`. 
 
@@ -120,9 +122,9 @@ new_account_params = {
 new_account = Lightrail::Account.create(new_account_params)
 ```
 
-## Step 2: Transacting against Accounts
+### Step 2: Transacting against Accounts
 
-### Funding and Charging
+#### Funding and Charging
 
 You can transact against a customer's Account using their `shopperId`. 
 
@@ -187,7 +189,7 @@ fund = Lightrail::Account.fund({
 
 The return value includes the full details of the transaction, including both the `userSuppliedId` you provided and a server-generated `transactionId`. 
 
-### Transaction Simulation and Balance Checking
+#### Transaction Simulation and Balance Checking
 
 Accounts can contain conditional value such as [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md), so doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
 
@@ -195,7 +197,7 @@ To display the maximum value of a customer's account, use our drop-in [Balance W
 
 To display details to a customer for confirmation before completing a transaction, use a transaction simulation.
 
-#### Transaction Simulation
+##### Transaction Simulation
 
 Transaction simulations can tell you whether or not an account has enough funds available before attempting to post the transaction. 
 
@@ -247,7 +249,7 @@ The response will be similar to the response for posting a transaction with a `v
 
 Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](#accounts/funding-and-charging) method.
 
-## Next Steps
+### Next Steps
 
 Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md). You can also take customer engagement to the next level with targeted [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
 
