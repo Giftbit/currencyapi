@@ -254,20 +254,17 @@ Below is a comprehensive list of values accepted by the **Card Purchase Widget**
 
 _*All overrides are optional_
 
+#### Gift Card Purchase Theming - 1
 ![Gift card purchase theming - 1](assets/gift-card-purchase-theming-1.svg)
 
-
-
+#### Gift Card Purchase Theming - 2
 ![Gift card purchase theming - 2](assets/gift-card-purchase-theming-2.svg)
 
-
-
+#### Gift Card Purchase Theming - 3
 ![Gift card purchase theming - 3](assets/gift-card-purchase-theming-3.svg)
 
-
-
+#### Gift Card Purchase Theming - 4
 ![Gift card purchase theming - 4](assets/gift-card-purchase-theming-4.svg)
-
 
 **Note:** #24 and #25 are special in the sense that you are able to pass in a label for the button text (#24), and if one isn’t provided, we default to "Buy a Gift Card". #25 accepts a button class name that you already use locally in your site, or you can define one to control the look of the button.
 
