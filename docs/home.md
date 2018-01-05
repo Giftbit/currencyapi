@@ -11,19 +11,19 @@ We recommend beginning with our quickstarts below as they support many integrati
 ## Common Use Cases - Quickstarts
 We recommend starting with the following quickstart guides. 
 
-### Drop-in Gift Cards
+#### Drop-in Gift Cards
 The [Drop-in Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards) empowers you to offer gift cards from your site in days. It is component based, using simple HTML snippets. When a customer redeems a gift card, the value is applied to an account that belongs to the customer, also powered by Lightrail. Minor updates must be made to your checkout process to allow the customer's account to be used as a payment option.
 
 To get started check out our [Drop-in Gift Card documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#drop-in-gift-cards).
 
-### Accounts
+#### Accounts
 Use Lightrail to apply gift cards and points directly to customer accounts. This allows you to create a seamless purchase experience for your customers.
 
 Check out our [accounts documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md#accounts) to get started.
 
 With customer accounts in place you can learn your customers' purchase history and drive engagement using promotions.
 
-### Promotions
+#### Promotions
 A Lightrail promotion is rule-based value that is attached to gift cards or accounts. Promotions can be used to incentivize customers "when" to buy, along with "what" to buy. For example, a promotion could be a _$10 off boxing week sale_ or _$5 off if your purchase is over $25_; the possibilities are endless.
 
 Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md#promotions) for more information.  
@@ -31,12 +31,12 @@ Check out our [promotions documentation](https://github.com/Giftbit/Lightrail-AP
 ## Getting Started
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
-### API Keys
+#### API Keys
 Create your API key in the [Integrations](https://www.lightrail.com/app/#/account/api) section of your account. 
 
 To make an API call Lightrail requires the HTTP header `Authorization: Bearer {{API_KEY}}`.
 
-### Testing 
+#### Testing
 When you first sign into your account you will be in test mode. Test mode is used for development allowing you to build in and test functionality. It comes with sample data to give you a sense of what your Lightrail account will look like. 
 
 ## Support
