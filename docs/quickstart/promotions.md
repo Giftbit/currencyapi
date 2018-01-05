@@ -6,7 +6,7 @@ This is a quick step-by-step guide using two examples to illustrate the types of
 
 The first example is a sign-up bonus. This type of promotion can be applied to any use case that incentivizes customers to spend at a particular time. The second is a high-value purchase incentive. This type of promotion can be applied to any use case that rewards customers for making a particular type of purchase. 
 
-**Note:** Promotions can also be applied in bulk using the [Lightrail web app](https://www.lightrail.com/app/#/login). Search or filter for the [accounts](https://www.lightrail.com/app/#/accounts) or [gift cards](https://www.lightrail.com/app/#/cards) you'd like to apply the promotion to, select them, and choose "Attach Promo" from the "Actions" dropdown menu. 
+**Note:** Promotions can also be applied in bulk using the [Lightrail web app](https://www.lightrail.com/app/#/login). Filter for the [accounts](https://www.lightrail.com/app/#/accounts) or [gift cards](https://www.lightrail.com/app/#/cards) you'd like to apply the promotion to, select them, and choose "Attach Promo" from the "Actions" dropdown menu. 
 
 Want more? Lightrail supports many more complex types of promotions. See our [Redemption Rules](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md) to take your incentives to the next level or [contact us](mailto:hello@lightrail.com) for more options. 
 
@@ -216,7 +216,7 @@ Example response:
 
 Note the `value` requested against the `/dryRun` endpoint was $325 but the Account only could transact up to $300. Since `nsf:false` was set it allowed for the endpoint to return the maximum value the Account could transact; otherwise, it would have returned `400 - InsufficientFunds`. 
 
-You can also use the `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions will be used for a given transaction, for example in your checkout summary before processing the transaction. 
+You can also use the `/dryRun` endpoint when simulating a transaction for a customer. This will allow you to provide the customer with a breakdown of what promotions will be used for a given transaction; for example, in your checkout summary before processing the transaction. 
 
 ### Step 4: Transacting 
 
