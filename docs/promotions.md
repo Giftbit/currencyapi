@@ -1,6 +1,6 @@
 # Promotions
 
-Promotions enable you to incentivize and engage your customers. Once you’re set up with [customer accounts](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md) that tell you who’s spending and how they’re spending, take the next step by adding tailor-made promotions that match your customer’s preferences. 
+Promotions enable you to incentivize and engage your customers. Once you’re set up with [customer accounts](#accounts/accounts) that tell you who’s spending and how they’re spending, take the next step by adding tailor-made promotions that match your customer’s preferences. 
 
 This is a quick step-by-step guide using two examples to illustrate the types of promotions you can run with Lightrail using the API. 
 
@@ -16,7 +16,7 @@ Want more? Lightrail supports many more complex types of promotions. See our [Re
 
 This guide assumes that you are already using Lightrail to power your customer accounts. 
 
-If you don’t already have that set up, start by [signing up](https://www.lightrail.com/app/#/register) for a Lightrail account and using our client libraries to get started with [customer accounts](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/accounts.md). 
+If you don’t already have that set up, start by [signing up](https://www.lightrail.com/app/#/register) for a Lightrail account and using our client libraries to get started with [customer accounts](#accounts/accounts). 
 
 Note that our client libraries do not yet support Promotions: this guide will explain how to implement them with the web app and a few simple API calls. 
 
@@ -37,7 +37,7 @@ For a $10 bonus that can be used for 60 days after a customer signs up, set the 
 - Set the Currency Type to 'USD' (or your store's currency)
 - Set the Value Options to 'Fixed Value' and set the amount to $10
 - In Promotion Expiry, set the default validity period to 60 days (this means the bonus will be valid for 60 days once it's attached to a customer's account)
-- Skip the Redemption Rules section (these are used for [rule-based promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md))
+- Skip the Redemption Rules section (these are used for [rule-based promotions](#promotions/example-2:-high-value-purchase-incentive))
 
 Once saved, you’ll need to copy the `programId` to be used in the API calls below.
 

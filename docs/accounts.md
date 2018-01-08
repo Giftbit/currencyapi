@@ -1,6 +1,6 @@
 # Accounts
 
-Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) and [promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md) to directly engage individual customers. 
+Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](#drop-in-gift-cards/drop-in-gift-cards) and [promotions](#promotions/promotions) to directly engage individual customers. 
 
 ## Quickstart
 
@@ -12,7 +12,7 @@ Add one of our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/
 
 If you are using Stripe to process payments, add one of our [Stripe integration libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/accounts_and_promotions/docs/client-libraries.md#stripe). If you are using a different payment processor, please [contact us](mailto:hello@lightrail.com) for details on building account credit into your checkout. 
 
-**Note** if you're using our [Drop-In Gift Card](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
+**Note** if you're using our [Drop-In Gift Card](#drop-in-gift-cards/drop-in-gift-cards) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](#promotions/promotions). 
 
 ### Step 1: Creating Accounts
 
@@ -135,7 +135,7 @@ Required parameters:
 - A `userSuppliedId`, which is a unique transaction identifier to ensure idempotence (for example, the order ID from your e-commerce system)
 
 Optional parameters: 
-- Arbitrary `metadata` (important if you are using complex [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md))
+- Arbitrary `metadata` (important if you are using complex [Promotions](#promotions/promotions))
 - A boolean indicating if the transaction should be `pending` (default is `false`)
 
 
@@ -191,9 +191,9 @@ The return value includes the full details of the transaction, including both th
 
 #### Transaction Simulation and Balance Checking
 
-Accounts can contain conditional value such as [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md), so doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
+Accounts can contain conditional value such as [Promotions](#promotions/promotions), so doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
 
-To display the maximum value of a customer's account, use our drop-in [Balance Widget](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#displaying-account-balance). 
+To display the maximum value of a customer's account, use our drop-in [Balance Widget](#drop-in-gift-cards/displaying-account-balance). 
 
 To display details to a customer for confirmation before completing a transaction, use a transaction simulation.
 
@@ -251,7 +251,7 @@ Once you're ready to charge the Account, simply pass the `value` returned from t
 
 ### Next Steps
 
-Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md). You can also take customer engagement to the next level with targeted [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
+Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](#drop-in-gift-cards/drop-in-gift-cards). You can also take customer engagement to the next level with targeted [Promotions](#promotions/promotions). 
 
 ## Support
 
