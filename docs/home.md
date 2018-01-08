@@ -35,7 +35,7 @@ Check out our [promotions documentation](#promotions/promotions) for more inform
 Create your API key in the [Integrations](https://www.lightrail.com/app/#/account/api) section of your account. 
 
 ##### Client Library Authorization
-If using a client library, you'll need to pass your Lightrail API key in. Authorization details for each library is explained in the library's README. 
+If using a client library, you'll need your Lightrail API key. You'll find library specific authorization details in the library's README. 
 
 ##### API Authorization
 To make an API call Lightrail requires the HTTP header `Authorization: Bearer {{API_KEY}}`.
