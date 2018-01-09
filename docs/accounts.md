@@ -8,11 +8,11 @@ Accounts are the basic infrastructure for identity-based value and customer enga
 
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
-Add one of our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md) to your project in the language of your choice. If you are using a language for which we don't yet have a client library, you can build directly into our REST API -- feel free to [contact us](mailto:hello@lightrail.com) for support. 
+Add one of our [client libraries](https://www.lightrail.com/docs/#client-libraries/client-libraries) to your project in the language of your choice. If you are using a language for which we don't yet have a client library, you can build directly into our REST API -- feel free to [contact us](mailto:hello@lightrail.com) for support. 
 
 If you are using Stripe to process payments, add one of our [Stripe integration libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/accounts_and_promotions/docs/client-libraries.md#stripe). If you are using a different payment processor, please [contact us](mailto:hello@lightrail.com) for details on building account credit into your checkout. 
 
-**Note** if you're using our [Drop-In Gift Card](#drop-in-gift-cards/drop-in-gift-cards) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](#promotions/promotions). 
+**Note** if you're using our [Drop-In Gift Card](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](#promotions/promotions). 
 
 ### Step 1: Creating Accounts
 
@@ -135,7 +135,7 @@ Required parameters:
 - A `userSuppliedId`, which is a unique transaction identifier to ensure idempotence (for example, the order ID from your e-commerce system)
 
 Optional parameters: 
-- Arbitrary `metadata` (important if you are using complex [Promotions](#promotions/promotions))
+- Arbitrary `metadata` (important if you are using complex [Promotions](https://www.lightrail.com/docs/#promotions/promotions))
 - A boolean indicating if the transaction should be `pending` (default is `false`)
 
 
@@ -191,9 +191,9 @@ The return value includes the full details of the transaction, including both th
 
 #### Transaction Simulation and Balance Checking
 
-Accounts can contain conditional value such as [Promotions](#promotions/promotions), so doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
+Accounts can contain conditional value such as [Promotions](https://www.lightrail.com/docs/#promotions/promotions), so doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
 
-To display the maximum value of a customer's account, use our drop-in [Balance Widget](#drop-in-gift-cards/displaying-account-balance). 
+To display the maximum value of a customer's account, use our drop-in [Balance Widget](https://www.lightrail.com/docs/#drop-in-gift-cards/displaying-account-balance). 
 
 To display details to a customer for confirmation before completing a transaction, use a transaction simulation.
 
@@ -247,11 +247,11 @@ simulated_charge = Lightrail::Account.simulate_charge({
 
 The response will be similar to the response for posting a transaction with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
 
-Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](#accounts/funding-and-charging) method.
+Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](https://www.lightrail.com/docs/#accounts/funding-and-charging) method.
 
 ### Next Steps
 
-Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](#drop-in-gift-cards/drop-in-gift-cards). You can also take customer engagement to the next level with targeted [Promotions](#promotions/promotions). 
+Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards). You can also take customer engagement to the next level with targeted [Promotions](#promotions/promotions). 
 
 ## Support
 

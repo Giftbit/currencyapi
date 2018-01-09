@@ -1,6 +1,6 @@
 # Promotions
 
-Promotions enable you to incentivize and engage your customers. Once you’re set up with [customer accounts](#accounts/accounts) that tell you who’s spending and how they’re spending, take the next step by adding tailor-made promotions that match your customer’s preferences. 
+Promotions enable you to incentivize and engage your customers. Once you’re set up with [customer accounts](https://www.lightrail.com/docs/#accounts/accounts) that tell you who’s spending and how they’re spending, take the next step by adding tailor-made promotions that match your customer’s preferences. 
 
 This is a quick step-by-step guide using two examples to illustrate the types of promotions you can run with Lightrail using the API. 
 
@@ -37,7 +37,7 @@ For a $10 bonus that can be used for 60 days after a customer signs up, set the 
 - Set the Currency Type to 'USD' (or your store's currency)
 - Set the Value Options to 'Fixed Value' and set the amount to $10
 - In Promotion Expiry, set the default validity period to 60 days (this means the bonus will be valid for 60 days once it's attached to a customer's account)
-- Skip the Redemption Rules section (these are used for [rule-based promotions](#promotions/example-2:-high-value-purchase-incentive))
+- Skip the Redemption Rules section (these are used for [rule-based promotions](https://www.lightrail.com/docs/#promotions/example-2:-high-value-purchase-incentive))
 
 Once saved, you’ll need to copy the `programId` to be used in the API calls below.
 
@@ -116,7 +116,7 @@ For more detailed recommendations on metadata contents and structure, see our fu
 
 #### Step 2: Create the Promotion Program
 
-This step takes place in the Lightrail webapp. It is analogous to [Step 1 of the Sign-Up Bonus](#promotions/step-1-initialize-promotion-program) flow, but involves setting more complex details. 
+This step takes place in the Lightrail webapp. It is analogous to [Step 1 of the Sign-Up Bonus](https://www.lightrail.com/docs/#promotions/step-1-initialize-promotion-program) flow, but involves setting more complex details. 
 
 Create a new [Promotion Program](https://www.lightrail.com/app/#/promotions?_k=ilb8m9) in your Lightrail dashboard. For a $25 Promotion that can only be used if the customer makes a purchase of $300 or more, set the following details:
 - Keep the default Program Period ('Start Date: Now' and 'End Date: Forever') - this lets you keep using this program indefinitely
@@ -129,7 +129,7 @@ Save the Promotion Program, then copy and save the Program ID that gets generate
 
 #### Step 3: Attach the Promotion to an Account
 
-This step is analogous to [Step 2 of the Sign-Up Bonus](#promotions/step-2-attach-promotion-to-account) flow. How you determine which customers should receive the Promotion is highly dependent on your system and marketing strategies. 
+This step is analogous to [Step 2 of the Sign-Up Bonus](https://www.lightrail.com/docs/#promotions/step-2-attach-promotion-to-account) flow. How you determine which customers should receive the Promotion is highly dependent on your system and marketing strategies. 
 
 Use the `cardId` for each Account that should receive the promotion to call the `.../cards/{cardId}/valueStores` endpoint with the following parameters: 
 - The `programId` for the Promotion Program you created in Step 2
