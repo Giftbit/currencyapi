@@ -1,22 +1,24 @@
 # Accounts
 
-Accounts are basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) and [promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md) to directly engage individual customers. 
+Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) and [promotions](https://www.lightrail.com/docs/#promotions/promotions) to directly engage individual customers. 
 
-## Getting Started
+## Quickstart
+
+### Getting Started
 
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
-Add one of our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md) to your project in the language of your choice. If you are using a language for which we don't yet have a client library, you can build directly into our REST API -- feel free to [contact us](mailto:hello@lightrail.com) for support. 
+Add one of our [client libraries](https://www.lightrail.com/docs/#client-libraries/client-libraries) to your project in the language of your choice. If you are using a language for which we don't yet have a client library, you can build directly into our REST API -- feel free to [contact us](mailto:hello@lightrail.com) for support. 
 
 If you are using Stripe to process payments, add one of our [Stripe integration libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/accounts_and_promotions/docs/client-libraries.md#stripe). If you are using a different payment processor, please [contact us](mailto:hello@lightrail.com) for details on building account credit into your checkout. 
 
-**Note** if you're using our [Drop-In Gift Card](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
+**Note** if you're using our [Drop-In Gift Card](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](https://www.lightrail.com/docs/#promotions/promotions). 
 
-## Step 1: Creating Accounts
+### Step 1: Creating Accounts
 
 Accounts are attached to Contacts, which are connected with a customer record in your system by a `shopperId`. The `shopperId` is a unique identifier from your system, such as their email address or customer ID. 
 
-### Creating Contacts
+#### Creating Contacts
 
 All client libraries provide methods for creating contacts. 
 
@@ -26,8 +28,8 @@ Optionally, you can also provide an `email`, `firstName`, and `lastName`. Here i
 
 ```javascript
 const newContactParams = {
-  userSuppliedId: 'customer-9f50629d',
-  email: 'test@test.ca',
+  shopperId: 'customer-9f50629d',
+  email: 'test@test.com',
   firstName: 'Test',
   lastName: 'McTest'
 };
@@ -39,7 +41,7 @@ Lightrail.createContact(newContactParams).then(
 ```php
 $contactParams = array(
     'shopperId' => 'customer-9f50629d',
-    'email' => 'test@test.ca',
+    'email' => 'test@test.com',
     'firstName' => 'Test',
     'lastName' => 'McTest',
 );
@@ -50,7 +52,7 @@ $contact = \Lightrail\LightrailContact::create($params);
 // NOTE the Java client is currently inconsistent with other client libraries, it will be updated soon. 
 // For contact creation, `email` is a required parameter instead of `shopperId`
 
-String email = "test@test.ca";
+String email = "test@test.com";
 String firstName = "Test";
 String lastName = "McTest";
 LightrailContact contact = LightrailContact.create(email, firstName, lastName);
@@ -59,7 +61,7 @@ LightrailContact contact = LightrailContact.create(email, firstName, lastName);
 ```ruby
 new_contact_params = {
                        shopperId: 'customer-9f50629d',
-                       email: 'test@test.ca',
+                       email: 'test@test.com',
                        firstName: 'Test',
                        lastName: 'McTest'
                      }
@@ -68,16 +70,16 @@ contact = Lightrail::Contact.create(new_contact_params)
 
 Note the `shopperId` is stored in the Lightrail system as `userSuppliedId`. 
 
-### Creating Accounts
+#### Creating Accounts
 
 Once you have created a Contact, you can create an Account for them based on their `shopperId`. 
 
 Required parameters: 
 - The `shopperId` of the Contact the Account belongs to
-- The Account's `currency` (for a points-only account, use `XXX`; otherwise use any standard ISO 4217 currency code)
-- A `userSuppliedId` to uniquely identify the Account and guarantee idempotence (since each Contact can have only one Account Card per currency, you can add the currency as a suffix to the `shopperId` you provided for the Contact)
+- The Account's `currency` (for a points-only account, use `XXX`; otherwise use any standard [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html))
+- A `userSuppliedId` to uniquely identify the Account and guarantee idempotence (since each Contact can have only one Account Card per currency, you can add the currency as a suffix to the `shopperId` you provided for the Contact - for example, for customer `cust-a95a09`, the `userSuppliedId` for their account could be `cust-a95a09-USD`)
 
-You may optionally include an `initialValue` for the account. If provided, this must be a positive integer in the smallest currency unit (for example, `500` is $5.00 USD).
+You may optionally include an `initialValue` for the account. If provided, this must be a positive integer in the smallest currency unit (for example, the smallest unit of USD is _cents_, so `500` is $5.00 USD).
 
 ```javascript
 const newAccountParams = {
@@ -86,7 +88,7 @@ const newAccountParams = {
   currency: 'USD',
   initialValue: 500,
 };
-Lightrail.accounts.createAccount({shopperId: 'customer-9f50629d'}, newAccountParams).then(
+Lightrail.accounts.createAccount({shopperId: 'cust-a95a09'}, newAccountParams).then(
   // called asynchronously
 );
 ```
@@ -104,10 +106,10 @@ $account = \Lightrail\LightrailAccount::createAccountCard($accountParams);
 
 ```java
 // NOTE the Java client is currently inconsistent with other client libraries, it will be updated soon. 
-// Accounts are currently managed through the Contact they are attached to. To create an Account, you simply add a supported currency (and amount) to an existing Contact
+// Accounts are currently managed as "supported currencies" for a Contact: adding a currency to a Contact creates the corresponding Account behind the scenes
 // Note that for the following retrieval method, a Contact’s `shopperId` is referred to as its `userSuppliedId`
 
-LightrailContact contact = LightrailContact.retrieveByUserSuppliedId('contact-8t3503');
+LightrailContact contact = LightrailContact.retrieveByUserSuppliedId('cust-a95a09');
 contact.addCurrency("USD", 500);
 ```
 
@@ -120,22 +122,20 @@ new_account_params = {
 new_account = Lightrail::Account.create(new_account_params)
 ```
 
-The return value will include both the `userSuppliedId` and a server-generated `cardId` which you can persist and use to retrieve the Account Card later.
+### Step 2: Transacting against Accounts
 
-## Step 2: Transacting against Accounts
+#### Funding and Charging
 
-### Funding and Charging
-
-You can transact against a customer's Account using either their `shopperId`. 
+You can transact against a customer's Account using their `shopperId`. 
 
 Required parameters:
 - The customer's `shopperId`
-- The `value` of the transaction: a positive `value` will add funds to the account, while a negative `value` will post a charge to the account. This amount must be in the smallest currency unit (e.g., `500` for $5.00 USD)
+- The `value` of the transaction: a positive `value` will add funds to the account, while a negative `value` will post a charge to the account. This amount must be in the smallest currency unit (for example, the smallest unit of USD is _cents_, so `500` is $5.00 USD)
 - The `currency` that the transaction is in (note that Lightrail does not handle currency conversion and the contact must have an account in the corresponding currency)
 - A `userSuppliedId`, which is a unique transaction identifier to ensure idempotence (for example, the order ID from your e-commerce system)
 
 Optional parameters: 
-- Arbitrary `metadata` (important if you are using complex [Promotions](#TODO add link))
+- Arbitrary `metadata` (important if you are using complex [Promotions](https://www.lightrail.com/docs/#promotions/promotions))
 - A boolean indicating if the transaction should be `pending` (default is `false`)
 
 
@@ -189,17 +189,17 @@ fund = Lightrail::Account.fund({
 
 The return value includes the full details of the transaction, including both the `userSuppliedId` you provided and a server-generated `transactionId`. 
 
-### Transaction Simulation and Balance Checking
+#### Transaction Simulation and Balance Checking
 
-Because Accounts can contain conditional value such as [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md), doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
+Accounts can contain conditional value such as [Promotions](https://www.lightrail.com/docs/#promotions/promotions), so doing a "balance check" means one of two things: checking the maximum value that an Account _could_ have available if all conditions are met on all attached promotions, or checking how much an Account has available for a particular transaction given its specific circumstances. 
 
-To display the maximum value of a customer's account, use our drop-in [Balance Widget](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md#displaying-account-balance). 
+To display the maximum value of a customer's account, use our drop-in [Balance Widget](https://www.lightrail.com/docs/#drop-in-gift-cards/displaying-account-balance). 
 
 To display details to a customer for confirmation before completing a transaction, use a transaction simulation.
 
-#### Transaction Simulation
+##### Transaction Simulation
 
-Transaction simulations can tell you whether or not an account has enough funds before attempting to post the transaction. 
+Transaction simulations can tell you whether or not an account has enough funds available before attempting to post the transaction. 
 
 In the case of insufficient funds, this method can also tell you the maximum value for which the transaction _would be_ successful. For example, if you simulate a $35 drawdown, the method can tell you that it _would be_ successful if it were only for $20. 
 
@@ -223,7 +223,7 @@ $simulationParams = array(
     'currency'       => 'USD',
     'value'          => -6960,
     'userSuppliedId' => 'order-s3xx30',
-    'nsf'            => 'false'
+    'nsf'            => false
 );
 
 \Lightrail\LightrailAccount::simulateTransaction($simulationParams);
@@ -247,14 +247,14 @@ simulated_charge = Lightrail::Account.simulate_charge({
 
 The response will be similar to the response for posting a transaction with a `value` that indicates the maximum value that the account can provide for this transaction. Since this is just a simulation and NOT an actual transaction, it will not have a `transactionId`. 
 
-Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](TODO ADD LINK TO ABOVE SECTION) method.
+Once you're ready to charge the Account, simply pass the `value` returned from the simulation into the [charge](https://www.lightrail.com/docs/#accounts/funding-and-charging) method.
 
-## Next Steps
+### Next Steps
 
-Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/drop-in-gift-cards.md). You can also take customer engagement to the next level with targeted [Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/quickstart/promotions.md). 
+Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards). You can also take customer engagement to the next level with targeted [Promotions](https://www.lightrail.com/docs/#promotions/promotions). 
 
 ## Support
 
-Contact us any time at hello@lightrail.com —- we are here to help.
+Contact us any time at [hello@lightrail.com](mailto:hello@lightrail.com) —- we are here to help.
 
 You can also check out our [sample app](https://github.com/Giftbit/stripe-integration-sample-webapp) for a working example of Accounts infrastructure supporting our Drop-in Gift Card solution.
