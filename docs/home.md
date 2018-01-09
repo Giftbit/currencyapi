@@ -2,7 +2,7 @@
 
 Welcome to Lightrail. Lightrail is a platform for managing value.
 
-Lightrail offers a [Drop-in Gift Card solution](#drop-in-gift-cards/drop-in-gift-cards) and also provides the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on top of your account credit or gift card programs allowing you to build long lasting relationships with your customers.
+Lightrail offers a [Drop-in Gift Card solution](/drop-in-gift-cards) and also provides the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on top of your account credit or gift card programs allowing you to build long lasting relationships with your customers.
 
 Contact us anytime at hello@lightrail.com — we are here to help you solidify your use-case and implementation.
  
