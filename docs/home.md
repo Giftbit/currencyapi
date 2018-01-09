@@ -8,7 +8,7 @@ Contact us anytime at hello@lightrail.com — we are here to help you solidify y
  
 We recommend beginning with our quickstarts below as they support many integrations and utilize our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries). For more complex integrations, see our full [reference documentation](https://www.lightrail.com/docs/reference).
 
-## Common Use Cases - Quickstarts
+### Common Use Cases - Quickstarts
 We recommend starting with the following quickstart guides. 
 
 #### Drop-in Gift Cards
@@ -28,7 +28,7 @@ A Lightrail promotion is rule-based value that is attached to gift cards or acco
 
 Check out our [promotions documentation](#promotions/promotions) for more information.
 
-## Getting Started
+### Getting Started
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
 #### API Keys
@@ -43,7 +43,7 @@ To make an API call Lightrail requires the HTTP header `Authorization: Bearer {{
 #### Testing
 When you first sign into your account you will be in test mode. Test mode is used for development allowing you to build in and test functionality. It comes with sample data to give you a sense of what your Lightrail account will look like. 
 
-## Support
+### Support
 We have [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries) in many languages to speed up your integration. We also have a sample [Drop-In Gift Card application]((https://github.com/Giftbit/stripe-integration-sample-webapp)) containing examples in JavaScript and PHP with Java and Ruby coming soon.   
 
 Please [contact us](mailto:hello@lightrail.com) any time, we're here to help.
