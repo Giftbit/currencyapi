@@ -44,6 +44,6 @@ To make an API call Lightrail requires the HTTP header `Authorization: Bearer {{
 When you first sign into your account you will be in test mode. Test mode is used for development allowing you to build in and test functionality. It comes with sample data to give you a sense of what your Lightrail account will look like. 
 
 ### Support
-We have [client libraries](https://www.lightrail.com/docs/#client-libraries/client-libraries) in many languages to speed up your integration. We also have a sample [Drop-In Gift Card application]((https://github.com/Giftbit/stripe-integration-sample-webapp)) containing examples in JavaScript and PHP with Java and Ruby coming soon.   
+We have [client libraries](https://www.lightrail.com/docs/#client-libraries/client-libraries) in many languages to speed up your integration. We also have a sample [Drop-In Gift Card application](https://github.com/Giftbit/stripe-integration-sample-webapp) containing examples in JavaScript and PHP with Java and Ruby coming soon.   
 
 Please [contact us](mailto:hello@lightrail.com) any time, we're here to help.
