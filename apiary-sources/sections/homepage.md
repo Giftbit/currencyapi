@@ -12,11 +12,11 @@ We recommend beginning with our quickstarts as they support many integrations an
 We recommend starting with the following quickstart guides. 
 
 ### Drop-in Gift Cards
-Lightrail's [Drop-in Gift Card solution](https://localhost:8181/docs/#drop-in-gift-cards/drop-in-gift-cards) empowers you to offer gift cards from your site in days. It is component based, using simple HTML snippets.
+Lightrail's [Drop-in Gift Card solution](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) empowers you to offer gift cards from your site in days. It is component based, using simple HTML snippets.
 When a customer redeems a gift card, the value is applied to an account that belongs to the customer, also powered by Lightrail.
 Minor updates must be made to your checkout process to allow the customer's account to be used as a payment option.
 
-To get started check out our [Drop-in Gift Card documentation](https://localhost:8181/docs/#drop-in-gift-cards/drop-in-gift-cardss).
+To get started check out our [Drop-in Gift Card documentation](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cardss).
 
 ### Accounts
 Use Lightrail to apply gift cards and points directly to customer accounts. This allows you to create a seamless purchase experience for your customers.

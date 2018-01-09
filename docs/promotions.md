@@ -16,7 +16,7 @@ Want more? Lightrail supports many more complex types of promotions. See our [Re
 
 This guide assumes that you are already using Lightrail to power your customer accounts. 
 
-If you don’t already have that set up, start by [signing up](https://www.lightrail.com/app/#/register) for a Lightrail account and using our client libraries to get started with [customer accounts](#accounts/accounts). 
+If you don’t already have that set up, start by [signing up](https://www.lightrail.com/app/#/register) for a Lightrail account and using our client libraries to get started with [customer accounts](https://www.lightrail.com/docs/#accounts/accounts). 
 
 Note that our client libraries do not yet support Promotions: this guide will explain how to implement them with the web app and a few simple API calls. 
 

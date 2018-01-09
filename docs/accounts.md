@@ -1,6 +1,6 @@
 # Accounts
 
-Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](#drop-in-gift-cards/drop-in-gift-cards) and [promotions](#promotions/promotions) to directly engage individual customers. 
+Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) and [promotions](https://www.lightrail.com/docs/#promotions/promotions) to directly engage individual customers. 
 
 ## Quickstart
 
@@ -12,7 +12,7 @@ Add one of our [client libraries](https://www.lightrail.com/docs/#client-librari
 
 If you are using Stripe to process payments, add one of our [Stripe integration libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/accounts_and_promotions/docs/client-libraries.md#stripe). If you are using a different payment processor, please [contact us](mailto:hello@lightrail.com) for details on building account credit into your checkout. 
 
-**Note** if you're using our [Drop-In Gift Card](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](#promotions/promotions). 
+**Note** if you're using our [Drop-In Gift Card](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) solution, you're probably already set up with Accounts. Go ahead and carry on with [Promotions](https://www.lightrail.com/docs/#promotions/promotions). 
 
 ### Step 1: Creating Accounts
 
@@ -251,7 +251,7 @@ Once you're ready to charge the Account, simply pass the `value` returned from t
 
 ### Next Steps
 
-Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards). You can also take customer engagement to the next level with targeted [Promotions](#promotions/promotions). 
+Once you're set up with Accounts, it's easy to add our [Drop-In Gift Card solution](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards). You can also take customer engagement to the next level with targeted [Promotions](https://www.lightrail.com/docs/#promotions/promotions). 
 
 ## Support
 
