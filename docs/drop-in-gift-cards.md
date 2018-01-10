@@ -23,7 +23,7 @@ If at any point you want to see a working example of the entire Drop-in Gift Car
 ### Step 1: Selling Gift Cards
 The Gift Card Purchase Widget allows your customers to purchase gift cards from your site. 
 Lightrail powers the entire gift card purchase and delivery flow. 
-![Gift card purchase widget](assets/purchase-widget.png)
+![Gift card purchase widget](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/purchase-widget.png)
 
 What you see here is our fictional brand called Rocketship. Once set up with our Drop-in solution, you will see your branding instead.
 
