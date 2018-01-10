@@ -1,5 +1,7 @@
 # Promotions
 
+## Quickstart
+
 Promotions enable you to incentivize and engage your customers. Once you’re set up with [customer accounts](https://www.lightrail.com/docs/#accounts/accounts) that tell you who’s spending and how they’re spending, take the next step by adding tailor-made promotions that match your customer’s preferences. 
 
 This is a quick step-by-step guide using two examples to illustrate the types of promotions you can run with Lightrail using the API. 
@@ -9,8 +11,6 @@ The first example is a sign-up bonus. This type of promotion can be applied to a
 **Note:** Promotions can also be applied in bulk using the [Lightrail web app](https://www.lightrail.com/app/#/login). Filter for the [accounts](https://www.lightrail.com/app/#/accounts) or [gift cards](https://www.lightrail.com/app/#/cards) you'd like to apply the promotion to, select them, and choose "Attach Promo" from the "Actions" dropdown menu. 
 
 Want more? Lightrail supports many more complex types of promotions. See our [Redemption Rules](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md) to take your incentives to the next level or [contact us](mailto:hello@lightrail.com) for more options. 
-
-## Quickstart
 
 ### Getting Started
 

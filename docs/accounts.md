@@ -1,8 +1,8 @@
 # Accounts
 
-Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) and [promotions](https://www.lightrail.com/docs/#promotions/promotions) to directly engage individual customers. 
-
 ## Quickstart
+
+Accounts are the basic infrastructure for identity-based value and customer engagement. Track customer spending habits to find out who's buying what and when, then apply [gift cards](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) and [promotions](https://www.lightrail.com/docs/#promotions/promotions) to directly engage individual customers. 
 
 ### Getting Started
 
