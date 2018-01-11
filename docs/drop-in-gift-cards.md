@@ -24,6 +24,7 @@ If at any point you want to see a working example of the entire Drop-in Gift Car
 The Gift Card Purchase Widget allows your customers to purchase gift cards from your site. 
 Lightrail powers the entire gift card purchase and delivery flow. 
 
+------
 ![Gift card purchase widget](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/purchase-widget.png)
 
 What you see here is our fictional brand called Rocketship. Once set up with our Drop-in solution, you will see your branding instead.
@@ -43,8 +44,10 @@ Add the following snippet to your gift card purchase page:
 The gift card is automatically delivered to the recipient in a branded email. The email includes a button to apply the gift card to the recipient's account.
 
 ### Step 2: Redeeming Gift Cards
+
 The Gift Card Redemption Widget enables your customers to redeem gift cards to their account.
 
+------
 ![Gift card redemption widget](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/redemption-widget.png)
 
 When the recipient clicks the "apply to account" button in the email, they are taken to the redemption page indicated in your [Drop-in template](https://www.lightrail.com/app/#/cards/template).
