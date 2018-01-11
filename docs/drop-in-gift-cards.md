@@ -47,6 +47,7 @@ The gift card is automatically delivered to the recipient in a branded email. Th
 The Gift Card Redemption Widget enables your customers to redeem gift cards to their account.
 
 <br/>
+
 ![Gift card redemption widget](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/redemption-widget.png)
 
 When the recipient clicks the "apply to account" button in the email, they are taken to the redemption page indicated in your [Drop-in template](https://www.lightrail.com/app/#/cards/template).
