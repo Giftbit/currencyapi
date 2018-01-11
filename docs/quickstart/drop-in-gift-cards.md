@@ -1,4 +1,7 @@
 # Drop-in Gift Cards
+
+**Document deprecation notice:** This document has moved! Please see our new [Drop-in Gift Card quickstart](https://www.lightrail.com/docs/#drop-in-gift-cards/quickstart) or check out our full documentation [here](https://www.lightrail.com/docs/).
+
 Lightrail's Drop-in Gift Card solution makes it easy to offer gift cards to your customers. 
 Integrating into Lightrail is an easy process that can be completed in no more than a few days.
 
