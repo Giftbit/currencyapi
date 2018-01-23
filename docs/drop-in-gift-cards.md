@@ -190,7 +190,6 @@ For example, using the Lightrail Javascript client the Shopper Token can be crea
 ```javascript
 lightrail.configure({
     apiKey: process.env.LIGHTRAIL_API_KEY,
-    restRoot: "https://api.lightrail.com/v1/",
     sharedSecret: process.env.LIGHTRAIL_SHARED_SECRET
 });
 const shopperToken = lightrail.generateShopperToken({shopperId: "customer-id-from-your-system"});
