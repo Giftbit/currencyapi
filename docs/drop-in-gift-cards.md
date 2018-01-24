@@ -210,7 +210,7 @@ $shopperToken = LightrailShopperTokenFactory::generate(array("shopperId" => "cus
 // For shopper token creation, pass in the shopperId from your system and the validity of the token in seconds
 Lightrail.apiKey = System.getenv("LIGHTRAIL_API_KEY");
 Lightrail.clientSecret = System.getenv("LIGHTRAIL_SHARED_SECRET");
-String shopperToken = LightrailClientTokenFactory.generate("customer-id-from-your-system", 60);
+String shopperToken = LightrailClientTokenFactory.generate("customer-id-from-your-system", 600);
 ```
 
 ```ruby
