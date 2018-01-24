@@ -33,7 +33,7 @@ Add the following snippet to your gift card purchase page:
 ```html
 <div>
     <script 
-        src="https://embed.lightrail.com/dropIn/cardPurchase.js"
+        src="https://embed.lightrail.com/dropin/cardPurchase.js"
         data-shoppertoken="{shopperToken}"> 
     </script>
     <!-- The Shopper Token acts as a public api token that is used for issuing the gift card. -->
@@ -60,7 +60,7 @@ Add the following snippet to your redemption page:
 ```html
 <div class="redemption-widget">
     <script
-        src="https://embed.lightrail.com/dropIn/codeRedemption.js"
+        src="https://embed.lightrail.com/dropin/codeRedemption.js"
         data-shoppertoken="{shopperToken}"
         data-fullcode="{giftCode}">
     </script>
@@ -80,7 +80,7 @@ To start, use the following snippet to display a customer's account balance:
 ```html
 <span>
     <script
-        src="https://embed.lightrail.com/dropIn/accountBalance.js"
+        src="https://embed.lightrail.com/dropin/accountBalance.js"
         data-shoppertoken="{shopperToken}">    
     </script>
 </span>
