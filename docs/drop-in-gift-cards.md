@@ -40,6 +40,9 @@ Add the following snippet to your gift card purchase page:
     <!-- See below for details.  -->
 </div>
 ```
+
+Note you will need to pass a server-generated Shopper Token into the above snippet - details [below](#drop-in-gift-cards/shopper-tokens). 
+
 The gift card is automatically delivered to the recipient in a branded email. The email includes a button to apply the gift card to the recipient's account.
 
 ### Step 2: Redeeming Gift Cards
@@ -187,14 +190,35 @@ You must generate them server side using one of our [client libraries](https://w
 
 You'll need an API key along with your shared secret key from the Integrations section of your account (see above).
 For example, using the Lightrail Javascript client the Shopper Token can be created as follows:
+
 ```javascript
 lightrail.configure({
     apiKey: process.env.LIGHTRAIL_API_KEY,
-    restRoot: "https://api.lightrail.com/v1/",
     sharedSecret: process.env.LIGHTRAIL_SHARED_SECRET
 });
 const shopperToken = lightrail.generateShopperToken({shopperId: "customer-id-from-your-system"});
 ```
+
+```php
+\Lightrail\Lightrail::$apiKey = getenv("LIGHTRAIL_API_KEY");
+\Lightrail\Lightrail::$sharedSecret = getenv("LIGHTRAIL_SHARED_SECRET");
+$shopperToken = LightrailShopperTokenFactory::generate(array("shopperId" => "customer-id-from-your-system"));
+```
+
+```java
+// NOTE the Java client is currently inconsistent with other client libraries, it will be updated soon. 
+// For shopper token creation, pass in the shopperId from your system and the validity of the token in seconds
+Lightrail.apiKey = System.getenv("LIGHTRAIL_API_KEY");
+Lightrail.clientSecret = System.getenv("LIGHTRAIL_SHARED_SECRET");
+String shopperToken = LightrailClientTokenFactory.generate("customer-id-from-your-system", 600);
+```
+
+```ruby
+Lightrail.api_key = ENV["LIGHTRAIL_API_KEY"]
+Lightrail.shared_secret = ENV["LIGHTRAIL_SHARED_SECRET"]
+shopper_token = Lightrail::ShopperTokenFactory.generate({shopper_id: "customer-id-from-your-system"})
+```
+
 Note, the redemption and account balance widgets must be on authenticated pages as they require a `shopperId`.
 You may decide whether you'd like your customers to be signed in to purchase gift cards. 
 If you'd like to allow gift card purchase from an unauthenticated page simply generate a Shopper Token with `shopperId: ""`.
