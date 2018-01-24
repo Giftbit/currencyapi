@@ -40,6 +40,9 @@ Add the following snippet to your gift card purchase page:
     <!-- See below for details.  -->
 </div>
 ```
+
+Note that you will need to pass a server-generated Shopper Token into the above snippet: details [below](#drop-in-gift-cards/shopper-tokens). 
+
 The gift card is automatically delivered to the recipient in a branded email. The email includes a button to apply the gift card to the recipient's account.
 
 ### Step 2: Redeeming Gift Cards
