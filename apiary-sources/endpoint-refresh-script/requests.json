@@ -1,0 +1,86 @@
+{
+  "calls": [
+    {
+      "callId": "gift-card-program-1",
+      "method": "POST",
+      "endpoint": "/programs",
+      "body": {
+        "name": "USD Gift Cards",
+        "currency": "USD",
+        "codeValueMin": 0,
+        "codeValueMax": 20000,
+        "userSuppliedId": "gift-card-program-1"
+      }
+    },
+    {
+      "callId": "create-contact-1",
+      "method": "POST",
+      "endpoint": "/contacts",
+      "body": {
+        "userSuppliedId": "create-contact-1",
+        "email": "alice@example.com"
+      }
+    },
+    {
+      "callId": "create-contact-2",
+      "method": "POST",
+      "endpoint": "/contacts",
+      "body": {
+        "userSuppliedId": "create-contact-2",
+        "email": "bill@example.com"
+      }
+    },
+    {
+      "callId": "list-contacts-1",
+      "method": "GET",
+      "endpoint": "/contacts"
+    },
+    {
+      "callId": "create-card-1",
+      "method": "POST",
+      "endpoint": "/cards",
+      "body": {
+        "userSuppliedId": "giftcard-3asfd34a",
+        "programId": "{RESPONSE_REPLACEMENT:gift-card-program-1.response.body.program.programId}",
+        "initialValue" : 5000,
+        "cardType" : "GIFT_CARD"
+      }
+    },
+    {
+      "callId": "create-transaction-1-card-1",
+      "method": "POST",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:create-card-1.response.body.card.cardId}/transactions",
+      "body": {
+        "userSuppliedId":"transaction-234342",
+        "value":-250,
+        "currency":"USD",
+        "metadata":{
+          "cart":{
+            "total":250,
+            "items":[
+              {
+                "id":"B000F34ZKS",
+                "quantity":1,
+                "unit_price":150,
+                "tags":[
+                  "gear",
+                  "outdoor",
+                  "clearance"
+                ]
+              },
+              {
+                "id":"B009L1MF7A",
+                "quantity":2,
+                "unit_price":100,
+                "tags":[
+                  "apparel",
+                  "outdoor"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

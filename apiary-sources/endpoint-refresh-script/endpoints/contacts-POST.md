@@ -15,7 +15,7 @@ Creates a new Contact.
         
             
     + Body
-            {"email":"alice@example.com","userSuppliedId":"create-contact-1"}
+            {RESPONSE_REPLACEMENT:create-contact-1.body}
 
     
 + Response 200
@@ -23,4 +23,4 @@ Creates a new Contact.
         + contact (Contact)
 
     + Body
-            {"contact":{"contactId":"contact-1f75ce37b57c4717b47aea9d8f79b79a","dateCreated":"2018-01-25T00:31:30.000Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"create-contact-1"}}
+            {RESPONSE_REPLACEMENT:create-contact-1.response.body}
