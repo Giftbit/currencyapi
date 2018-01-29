@@ -18,14 +18,7 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
     
     + Body 
         
-            {
-              "userSuppliedId":"transaction-90xxf6-capture",
-              "metadata": {
-                  "cart": {
-                    "total": 25335
-                  }
-              }
-            }
+            {REQUEST_REPLACEMENT:capturePendingTransactionAccountCard.body}
 
 + Response 200
     + Attributes
@@ -33,25 +26,5 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
 
     + Body
 
-            {
-              "transaction":{
-                "transactionId":"transaction-38xx52",
-                "value":-50,
-                "userSuppliedId":"transaction-90xxf6-capture",
-                "dateCreated":"2017-07-31T18:50:25.357Z",
-                "transactionType":"DRAWDOWN",
-                "transactionAccessMethod":"CARDID",
-                "valueAvailableAfterTransaction":1349,
-                "giftbitUserId":"user-1dxx32",
-                "cardId":"card-76xxab",
-                "currency":"USD",
-                "parentTransactionId":"transaction-90xxf6",
-                "metadata":{
-                    "cart": {
-                        "total": 25335
-                    },
-                    "giftbit_initial_transaction_id":"transaction-90xxf6"
-                }
-              }
-            }
+            {REQUEST_REPLACEMENT:capturePendingTransactionAccountCard.response.body}
 

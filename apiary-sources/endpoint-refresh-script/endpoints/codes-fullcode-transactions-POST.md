@@ -30,7 +30,7 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
         
     + Body 
     
-            {RESPONSE_REPLACEMENT:createTransaction2Card1Fullcode.body}
+            {REQUEST_REPLACEMENT:createTransaction2Card1Fullcode.body}
     
 + Response 200
     + Attributes
@@ -38,4 +38,4 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
 
     + Body
 
-            {RESPONSE_REPLACEMENT:createTransaction2Card1Fullcode.response.body}
+            {REQUEST_REPLACEMENT:createTransaction2Card1Fullcode.response.body}

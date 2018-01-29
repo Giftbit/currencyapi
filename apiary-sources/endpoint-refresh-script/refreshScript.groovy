@@ -2,12 +2,12 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import sun.net.www.protocol.https.HttpsURLConnectionImpl
 
-
 File requests = new File("requests.json")
 List<File> filesToProcess = new File("endpoints").listFiles()
 
 def json = fetchTestDataFromFile(requests)
-String userJwt = "eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsImdtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsInRtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MTY4MjI0MzIuOTU2LCJqdGkiOiJiYWRnZS01NGYyNjVlZTMyYzI0Mjg3YTk3ZDhmNDlmOWYyOGY5MSIsInBhcmVudEp0aSI6ImJhZGdlLWQ5OTY5YzZmZGZjYjRmODM5M2EwMTA5MjllMmYwOGVmIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.CRFk2CzzgKTRJFX_QOuOFzyDGmscLEoB9OLwy1jKuHw"
+// Use a new LIVE mode API key from lightraildev.
+String userJwt = "eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItNDY0NjE5NzA4NmFmNDcxZmE5MjY1ZmQzZDE1NDZmZmEiLCJnbWkiOiJ1c2VyLTQ2NDYxOTcwODZhZjQ3MWZhOTI2NWZkM2QxNTQ2ZmZhIiwidG1pIjoidXNlci00NjQ2MTk3MDg2YWY0NzFmYTkyNjVmZDNkMTU0NmZmYSJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MTcyNTc1NjUuNjcyLCJqdGkiOiJiYWRnZS0xYzQ5N2MxMTYzNmE0OWEzOGRlNTIxMmMxMzU5MmYzZSIsInBhcmVudEp0aSI6ImJhZGdlLWJkODQ0NzM5ZGI2NzQwMmI5MGExMGI4NTI4NzJkYTVmIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.l-QyxsdmwG3977mo4cBmaJiF-6YHaSq5LqqiAj1JjCw"
 
 Map calls = [:]
 for (Map call in json.calls) {
@@ -46,7 +46,7 @@ while (callsToDo) {
         }
 
         if (call.finishedReplacement) {
-            call.response = makeRequestAgainstLightrail(call)
+            call.response = makeRequestAgainstLightrail(call, userJwt)
         } else {
             call.response = [status: 424]
         }
@@ -55,12 +55,10 @@ while (callsToDo) {
     callsToDo = callsToDo.findAll { it.value.response.status != 200 }
 }
 
-
 for (file in filesToProcess) {
-    // todo - make sure all replacements work
     String fileText = file.text
     fileText = checkForReplacements(fileText, calls, true) as String
-    if (fileText.contains("RESPONSE_REPLACEMENT")) {
+    if (fileText.contains("REQUEST_REPLACEMENT")) {
         throw new Exception("File withname ${file.name} contains unreplaced text!!!")
     }
     def outputFile = new File("../endpoints/${file.name}")
@@ -74,15 +72,14 @@ static def checkForReplacements(def input, Map responses, boolean replaceAsJson 
         }
         return input
     } else if (input instanceof String) {
-        List<String> responseReplacements = input.findAll(/\{RESPONSE_REPLACEMENT\:(.*?)\}/)
+        List<String> responseReplacements = input.findAll(/\{REQUEST_REPLACEMENT\:(.*?)\}/)
         for (replacement in responseReplacements) {
             println "found something to replace! " + replacement
             String responseKeyString = replacement
-            responseKeyString = responseKeyString.replace("{RESPONSE_REPLACEMENT:", "").replace("}", "")
+            responseKeyString = responseKeyString.replace("{REQUEST_REPLACEMENT:", "").replace("}", "")
             List<String> responseKeys = responseKeyString.split("\\.")
             def value = responses
             for (key in responseKeys) {
-//                println "Narrowing in on replacementValue ${value}"
                 value = value.get(key)
                 if (value == null) {
                     throw new TestDataCallDependencyException("Dependency does not exist yet. replacement: ${replacement}. key ${key}")
@@ -106,12 +103,12 @@ static def fetchTestDataFromFile(File file) {
     return slurper.parse(file)
 }
 
-def makeRequestAgainstLightrail(Map request) {
+def makeRequestAgainstLightrail(Map request, String userJwt) {
     println "Making request: ${request}"
     URLConnection connection = new URL("https://www.lightraildev.net/v1" + request.endpoint).openConnection();
     connection.setDoOutput(true)
     connection.setRequestProperty("Content-Type", "application/json")
-    connection.setRequestProperty("Authorization", "Bearer eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsImdtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsInRtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MTY4MjI0MzIuOTU2LCJqdGkiOiJiYWRnZS01NGYyNjVlZTMyYzI0Mjg3YTk3ZDhmNDlmOWYyOGY5MSIsInBhcmVudEp0aSI6ImJhZGdlLWQ5OTY5YzZmZGZjYjRmODM5M2EwMTA5MjllMmYwOGVmIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.CRFk2CzzgKTRJFX_QOuOFzyDGmscLEoB9OLwy1jKuHw")
+    connection.setRequestProperty("Authorization", "Bearer ${userJwt}")
     if (request.method == "PATCH") {
         connection.setRequestProperty("X-HTTP-Method-Override", "PATCH");
         connection.setRequestMethod("POST");

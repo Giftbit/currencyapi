@@ -20,12 +20,7 @@ Adds a ValueStore from a Promotion Program to a Card.
         
     + Body 
     
-            {
-                "userSuppliedId":"promo1",
-                "currency": "XXX",
-                "programId":"program-d0xx04",
-                "initialValue":150
-            }
+            {"currency":"USD","initialValue":150,"programId":"program-17aae714584b4355a2232fdd6a719398","userSuppliedId":"card-d99142eac3bd4abfbe657db000b614f6-promotion1"}
     
 + Response 200
     + Attributes
@@ -33,15 +28,5 @@ Adds a ValueStore from a Promotion Program to a Card.
 
     + Body
 
-            {
-                "valueStore":{
-                    "cardId": "card-99xx65",
-                    "valueStoreId": "value-80xx82",
-                    "valueStoreType": "ATTACHED",
-                    "currency": "XXX",
-                    "dateCreated": "2017-06-05T16:14:58.314Z",
-                    "programId": "program-d0xx04",
-                    "expires": "2017-06-13T06:59:59.000Z"
-                }   
-            }
+            {"valueStore":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","currency":"USD","dateCreated":"2018-01-29T20:26:20.921Z","programId":"program-17aae714584b4355a2232fdd6a719398","valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa","valueStoreType":"ATTACHED"}}
 

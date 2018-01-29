@@ -20,5 +20,5 @@ Retrieve the `fullcode` (also referred to as Gift Code) associated with a Gift C
 
     + Body
     
-            {"fullcode":{"code":"KYHL3-LFBR2-U7PSZ-W6Q3W-XVJNC"}}
+            {"fullcode":{"code":"2LW3X-GTVAL-T75MV-2ELWH-H2RZD"}}
 

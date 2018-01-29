@@ -17,4 +17,4 @@ Retrieve the list of all Categories associated with a given Card.
 
     + Body
 
-            {RESPONSE_REPLACEMENT:getCard1Categories.response.body}
+            {REQUEST_REPLACEMENT:getCard1Categories.response.body}

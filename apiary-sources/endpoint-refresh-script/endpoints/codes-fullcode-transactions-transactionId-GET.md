@@ -19,5 +19,5 @@ Retrieves a particular Transaction by its ID based on the `fullcode`.
         
     + Body 
     
-            {RESPONSE_REPLACEMENT:createTransaction2Card1Fullcode.response.body}
+            {REQUEST_REPLACEMENT:createTransaction2Card1Fullcode.response.body}
 

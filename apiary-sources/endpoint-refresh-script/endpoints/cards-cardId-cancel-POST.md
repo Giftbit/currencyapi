@@ -16,10 +16,10 @@ Cancel a Card permanently.
     + Body
             
             
-            {RESPONSE_REPLACEMENT:createCardStateChange1Cancel.body}
+            {REQUEST_REPLACEMENT:createCardStateChange1Cancel.body}
     
 + Response 200
 
     + Body
     
-            {RESPONSE_REPLACEMENT:createCardStateChange1Cancel.response.body}
+            {REQUEST_REPLACEMENT:createCardStateChange1Cancel.response.body}

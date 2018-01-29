@@ -10,5 +10,5 @@
 
     + Body
 
-            {RESPONSE_REPLACEMENT:listCategories1.response.body}
+            {REQUEST_REPLACEMENT:listCategories1.response.body}
 

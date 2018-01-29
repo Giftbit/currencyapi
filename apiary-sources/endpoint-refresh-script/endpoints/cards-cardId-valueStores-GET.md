@@ -20,5 +20,5 @@ Retrieve a paginated list of a Card's ValueStores.
 
     + Body
 
-            {RESPONSE_REPLACEMENT:getCard1ValueStores.response.body}
+            {REQUEST_REPLACEMENT:getCard1ValueStores.response.body}
 

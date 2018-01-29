@@ -15,7 +15,7 @@ Update the Contact associated with a Card, effectively transferring the Card to 
             
     + Body
     
-            {RESPONSE_REPLACEMENT:patchCard1.body}
+            {REQUEST_REPLACEMENT:patchCard1.body}
 
 + Response 200
 
@@ -24,4 +24,4 @@ Update the Contact associated with a Card, effectively transferring the Card to 
 
     + Body
         
-            {RESPONSE_REPLACEMENT:patchCard1.response.body}
+            {REQUEST_REPLACEMENT:patchCard1.response.body}

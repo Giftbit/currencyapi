@@ -16,9 +16,7 @@ Unfreeze a Card's frozen ValueStore, re-enabling the creation of transactions ag
         
     + Body 
     
-            {
-                "userSuppliedId":"case-320-resolved"
-            }
+            {REQUEST_REPLACEMENT:unfreezePromotionOnAccount.body}
     
 + Response 200
     + Attributes
@@ -26,19 +24,5 @@ Unfreeze a Card's frozen ValueStore, re-enabling the creation of transactions ag
 
     + Body
 
-            {
-                "transaction":{
-                    "transactionId": "transaction-f7xx82",
-                    "value": 50,
-                    "userSuppliedId": "ccase-320-resolved",
-                    "dateCreated": "2017-06-05T16:37:57.218Z",
-                    "transactionType": "UNFREEZE",
-                    "transactionAccessMethod": "CARDID",
-                    "valueAvailableAfterTransaction": 50,
-                    "giftbitUserId": "user-50xx93",
-                    "codeLastFour": "NKNA",
-                    "cardId": "card-fbxxda",
-                    "currency": "XXX"
-                }
-            }
+            {REQUEST_REPLACEMENT:unfreezePromotionOnAccount.response.body}
 

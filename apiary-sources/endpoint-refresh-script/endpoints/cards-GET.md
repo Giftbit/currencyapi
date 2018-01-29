@@ -24,4 +24,4 @@ Retrieve a paginated list of Cards. The search can be narrowed down based on var
 
     + Body
     
-            {RESPONSE_REPLACEMENT:listCards1.response.body}
+            {REQUEST_REPLACEMENT:listCards1.response.body}

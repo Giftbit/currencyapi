@@ -14,7 +14,7 @@ Freeze a Card, preventing all transactions until unfrozen.
         + userSuppliedId (string, required) - {{userSuppliedId}}
     + Body 
     
-            {RESPONSE_REPLACEMENT:createCardStateChange1Freeze.body}
+            {REQUEST_REPLACEMENT:createCardStateChange1Freeze.body}
     
 + Response 200
     + Attributes
@@ -22,5 +22,5 @@ Freeze a Card, preventing all transactions until unfrozen.
 
     + Body
 
-            {RESPONSE_REPLACEMENT:createCardStateChange1Freeze.response.body}  
+            {REQUEST_REPLACEMENT:createCardStateChange1Freeze.response.body}  
 

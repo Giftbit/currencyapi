@@ -18,5 +18,5 @@ Retrieve a particular Transaction by its ID based on the `cardId`.
 
     + Body
 
-            {RESPONSE_REPLACEMENT:createTransaction1Card1.response.body}
+            {REQUEST_REPLACEMENT:createTransaction1Card1.response.body}
 

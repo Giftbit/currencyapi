@@ -20,12 +20,7 @@ Adds a ValueStore from a Promotion Program to a Card.
         
     + Body 
     
-            {
-                "userSuppliedId":"promo1",
-                "currency": "XXX",
-                "programId":"program-d0xx04",
-                "initialValue":150
-            }
+            {REQUEST_REPLACEMENT:addPromotionToAccount.body}
     
 + Response 200
     + Attributes
@@ -33,15 +28,5 @@ Adds a ValueStore from a Promotion Program to a Card.
 
     + Body
 
-            {
-                "valueStore":{
-                    "cardId": "card-99xx65",
-                    "valueStoreId": "value-80xx82",
-                    "valueStoreType": "ATTACHED",
-                    "currency": "XXX",
-                    "dateCreated": "2017-06-05T16:14:58.314Z",
-                    "programId": "program-d0xx04",
-                    "expires": "2017-06-13T06:59:59.000Z"
-                }   
-            }
+            {REQUEST_REPLACEMENT:addPromotionToAccount.response.body}
 

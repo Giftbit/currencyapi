@@ -21,4 +21,4 @@ Retrieve a paginated list of a Card's Transactions based on the Card ID.
 
     + Body
             
-            {RESPONSE_REPLACEMENT:getCard1Transactions.response.body}
+            {REQUEST_REPLACEMENT:getCard1Transactions.response.body}

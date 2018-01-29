@@ -18,14 +18,7 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
     
     + Body 
         
-            {
-              "userSuppliedId":"transaction-90xxf6-capture",
-              "metadata": {
-                  "cart": {
-                    "total": 25335
-                  }
-              }
-            }
+            {"userSuppliedId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a-capture"}
 
 + Response 200
     + Attributes
@@ -33,25 +26,5 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
 
     + Body
 
-            {
-              "transaction":{
-                "transactionId":"transaction-38xx52",
-                "value":-50,
-                "userSuppliedId":"transaction-90xxf6-capture",
-                "dateCreated":"2017-07-31T18:50:25.357Z",
-                "transactionType":"DRAWDOWN",
-                "transactionAccessMethod":"CARDID",
-                "valueAvailableAfterTransaction":1349,
-                "giftbitUserId":"user-1dxx32",
-                "cardId":"card-76xxab",
-                "currency":"USD",
-                "parentTransactionId":"transaction-90xxf6",
-                "metadata":{
-                    "cart": {
-                        "total": 25335
-                    },
-                    "giftbit_initial_transaction_id":"transaction-90xxf6"
-                }
-              }
-            }
+            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.517Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a"},"parentTransactionId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":400,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-aaff893f88164f94a47a4af1c3411900","transactionType":"DRAWDOWN","userSuppliedId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a-capture","value":-100,"valueAvailableAfterTransaction":400}}
 

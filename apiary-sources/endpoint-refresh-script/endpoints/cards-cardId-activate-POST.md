@@ -15,7 +15,7 @@ If a card has been created as inactive, you can use this endpoint to activate.
         
     + Body 
     
-            {RESPONSE_REPLACEMENT:createCardStateChange1Activate.body}
+            {REQUEST_REPLACEMENT:createCardStateChange1Activate.body}
     
 + Response 200
     + Attributes
@@ -23,4 +23,4 @@ If a card has been created as inactive, you can use this endpoint to activate.
 
     + Body
     
-            {RESPONSE_REPLACEMENT:createCardStateChange1Activate.response.body}
+            {REQUEST_REPLACEMENT:createCardStateChange1Activate.response.body}

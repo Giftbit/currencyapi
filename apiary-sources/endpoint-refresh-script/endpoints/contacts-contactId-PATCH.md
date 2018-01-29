@@ -17,7 +17,7 @@ Updates a Contact.
             
     + Body
     
-            {RESPONSE_REPLACEMENT:patchContact2.body}
+            {REQUEST_REPLACEMENT:patchContact2.body}
     
 + Response 200
     + Attributes 
@@ -25,5 +25,5 @@ Updates a Contact.
 
     + Body
     
-            {RESPONSE_REPLACEMENT:patchContact2.response.body}
+            {REQUEST_REPLACEMENT:patchContact2.response.body}
 

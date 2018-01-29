@@ -28,7 +28,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body 
     
-            {RESPONSE_REPLACEMENT:createTransaction1Card1Dryrun.body}
+            {REQUEST_REPLACEMENT:createTransaction1Card1Dryrun.body}
     
 + Response 200
     + Attributes
@@ -36,5 +36,5 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body
 
-            {RESPONSE_REPLACEMENT:createTransaction1Card1Dryrun.response.body}
+            {REQUEST_REPLACEMENT:createTransaction1Card1Dryrun.response.body}
 

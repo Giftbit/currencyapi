@@ -15,7 +15,7 @@ Unfreeze a frozen Card, re-enabling the creation of transactions.
    
     + Body 
     
-            {RESPONSE_REPLACEMENT:createCardStateChange1Unfreeze.body}
+            {REQUEST_REPLACEMENT:createCardStateChange1Unfreeze.body}
     
 + Response 200
     + Attributes
@@ -23,4 +23,4 @@ Unfreeze a frozen Card, re-enabling the creation of transactions.
 
     + Body
 
-           {RESPONSE_REPLACEMENT:createCardStateChange1Unfreeze.response.body}
+           {REQUEST_REPLACEMENT:createCardStateChange1Unfreeze.response.body}

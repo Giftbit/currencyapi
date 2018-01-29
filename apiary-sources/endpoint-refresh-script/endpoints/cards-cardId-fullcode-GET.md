@@ -20,5 +20,5 @@ Retrieve the `fullcode` (also referred to as Gift Code) associated with a Gift C
 
     + Body
     
-            {RESPONSE_REPLACEMENT:getCard1Fullcode.response.body}
+            {REQUEST_REPLACEMENT:getCard1Fullcode.response.body}
 

@@ -19,4 +19,4 @@ Retrieve a paginated list of a Contact's Cards.
 
     + Body
     
-            {RESPONSE_REPLACEMENT:getCardsForContact2.response.body}
+            {REQUEST_REPLACEMENT:getCardsForContact2.response.body}

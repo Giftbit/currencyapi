@@ -14,7 +14,7 @@
         
     + Body
     
-            {RESPONSE_REPLACEMENT:ping1.response.body}
+            {REQUEST_REPLACEMENT:ping1.response.body}
         
 + Response 401
 

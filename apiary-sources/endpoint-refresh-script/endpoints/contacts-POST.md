@@ -15,7 +15,7 @@ Creates a new Contact.
         
             
     + Body
-            {RESPONSE_REPLACEMENT:createContact1.body}
+            {REQUEST_REPLACEMENT:createContact1.body}
 
     
 + Response 200
@@ -23,4 +23,4 @@ Creates a new Contact.
         + contact (Contact)
 
     + Body
-            {RESPONSE_REPLACEMENT:createContact1.response.body}
+            {REQUEST_REPLACEMENT:createContact1.response.body}

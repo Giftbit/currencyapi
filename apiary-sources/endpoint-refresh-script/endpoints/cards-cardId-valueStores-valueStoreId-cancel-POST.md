@@ -16,9 +16,7 @@ Permanently cancels a Card's ValueStore.
         
     + Body 
     
-            {
-                "userSuppliedId":"case-122"
-            }
+            {REQUEST_REPLACEMENT:cancelPromotionOnAccount.body}
     
 + Response 200
     + Attributes
@@ -26,18 +24,4 @@ Permanently cancels a Card's ValueStore.
 
     + Body
 
-            {
-                "transaction":{
-                    "transactionId": "transaction-7fxx89",
-                    "value": -50,
-                    "userSuppliedId": "case-122",
-                    "dateCreated": "2017-06-05T16:39:06.679Z",
-                    "transactionType": "CANCELLATION",
-                    "transactionAccessMethod": "CARDID",
-                    "valueAvailableAfterTransaction": 0,
-                    "giftbitUserId": "user-50xx93",
-                    "codeLastFour": "NKNA",
-                    "cardId": "card-fbxxda",
-                    "currency": "XXX"
-                }
-            }
+            {REQUEST_REPLACEMENT:cancelPromotionOnAccount.response.body}

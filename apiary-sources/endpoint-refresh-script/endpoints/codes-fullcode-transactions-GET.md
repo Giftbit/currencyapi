@@ -22,4 +22,4 @@ Retrieve a paginated list of a Card's Transactions based on the Gift Card's `ful
 
     + Body
 
-            {RESPONSE_REPLACEMENT:getCard1TransactionsByFullcode.response.body}
+            {REQUEST_REPLACEMENT:getCard1TransactionsByFullcode.response.body}

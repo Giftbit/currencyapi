@@ -16,4 +16,4 @@ The response includes the Value Stores (principal or attached promotions) as wel
 
     + Body
 
-            {"details":{"asAtDate":"2018-01-29T19:23:00.369Z","cardId":"card-402aec6b8e8d41a49e453c3ed4ac11ee","cardType":"GIFT_CARD","codeLastFour":"VJNC","currency":"USD","valueStores":[{"expires":null,"programId":"program-090711761f094f4baa11666e3432c44c","restrictions":[],"startDate":null,"state":"ACTIVE","value":4650,"valueStoreId":"value-6e80d7ca755d42fc846cf17aa06ae41c","valueStoreType":"PRINCIPAL"}]}}
+            {"details":{"asAtDate":"2018-01-29T20:26:17.441Z","cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","valueStores":[{"expires":null,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","restrictions":[],"startDate":null,"state":"ACTIVE","value":5000,"valueStoreId":"value-eefd98f834174294af3945d251f8441f","valueStoreType":"PRINCIPAL"}]}}

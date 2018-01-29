@@ -16,4 +16,4 @@ The response includes the Value Stores (principal or attached promotions) as wel
 
     + Body
 
-            {RESPONSE_REPLACEMENT:getCard1Details.response.body}
+            {REQUEST_REPLACEMENT:getCard1Details.response.body}

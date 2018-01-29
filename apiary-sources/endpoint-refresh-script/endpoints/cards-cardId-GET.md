@@ -17,4 +17,4 @@ Retrieve the Card object by its `cardId`.
 
     + Body
         
-            {RESPONSE_REPLACEMENT:getCard1Card.response.body}
+            {REQUEST_REPLACEMENT:getCard1Card.response.body}

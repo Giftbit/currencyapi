@@ -23,4 +23,4 @@ Creates a new Contact.
         + contact (Contact)
 
     + Body
-            {"contact":{"contactId":"contact-ea97f5460b4849c8a3098e5b424b6b6f","dateCreated":"2018-01-25T22:12:21.000Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"createContact1"}}
+            {"contact":{"contactId":"contact-067572a652874be6aec2664896965dae","dateCreated":"2018-01-29T20:26:16.438Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"createContact1"}}

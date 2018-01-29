@@ -14,14 +14,5 @@
 
     + Body
 
-            {
-                "valueStore":{
-                    "cardId": "card-99xx65",
-                    "valueStoreId": "value-0fxx04",
-                    "valueStoreType": "PRINCIPAL",
-                    "currency": "XXX",
-                    "dateCreated": "2017-06-05T15:39:25.392Z",
-                    "programId": "program-dexx72"
-                }
-            }
+            {REQUEST_REPLACEMENT:addPromotionToAccount.response.body}
 

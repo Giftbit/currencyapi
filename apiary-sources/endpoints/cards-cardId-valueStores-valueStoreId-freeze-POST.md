@@ -16,9 +16,7 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
         
     + Body 
     
-            {
-                "userSuppliedId":"case-320"
-            }
+            {"userSuppliedId":"value-8be6b00b5ed148ba98d824a0d30434aa-freeze"}
     
 + Response 200
     + Attributes
@@ -26,19 +24,5 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
 
     + Body
 
-            {
-                "transaction":{
-                    "transactionId": "transaction-3fxxe1",
-                    "value": -50,
-                    "userSuppliedId": "case-320",
-                    "dateCreated": "2017-06-05T16:36:56.321Z",
-                    "transactionType": "FREEZE",
-                    "transactionAccessMethod": "CARDID",
-                    "valueAvailableAfterTransaction": 0,
-                    "giftbitUserId": "user-50xx93",
-                    "codeLastFour": "NKNA",
-                    "cardId": "card-fbxxda",
-                    "currency": "XXX"
-                }
-            }
+            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.011Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-6f8e652d545541c6adcc09312b506ebf","transactionType":"FREEZE","userSuppliedId":"value-8be6b00b5ed148ba98d824a0d30434aa-freeze","value":-150,"valueAvailableAfterTransaction":0}}
 

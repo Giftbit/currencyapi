@@ -16,9 +16,7 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
         
     + Body 
     
-            {
-                "userSuppliedId":"case-320"
-            }
+            {REQUEST_REPLACEMENT:freezePromotionOnAccount.body}
     
 + Response 200
     + Attributes
@@ -26,19 +24,5 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
 
     + Body
 
-            {
-                "transaction":{
-                    "transactionId": "transaction-3fxxe1",
-                    "value": -50,
-                    "userSuppliedId": "case-320",
-                    "dateCreated": "2017-06-05T16:36:56.321Z",
-                    "transactionType": "FREEZE",
-                    "transactionAccessMethod": "CARDID",
-                    "valueAvailableAfterTransaction": 0,
-                    "giftbitUserId": "user-50xx93",
-                    "codeLastFour": "NKNA",
-                    "cardId": "card-fbxxda",
-                    "currency": "XXX"
-                }
-            }
+            {REQUEST_REPLACEMENT:freezePromotionOnAccount.response.body}
 

@@ -16,4 +16,4 @@ Retrieves a paginated list of all Lightrail Programs belonging to the user.
 
     + Body
 
-            {RESPONSE_REPLACEMENT:listPrograms1.response.body}
+            {REQUEST_REPLACEMENT:listPrograms1.response.body}

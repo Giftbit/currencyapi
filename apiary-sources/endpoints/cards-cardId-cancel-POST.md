@@ -16,10 +16,10 @@ Cancel a Card permanently.
     + Body
             
             
-            {"userSuppliedId":"cancel-transaction-8b80db5edcc24bd2afe3272b70e08d24"}
+            {"userSuppliedId":"cancel-transaction-0f2ece01348747cd8e670adc9c1a8351"}
     
 + Response 200
 
     + Body
     
-            {"card":{"cardId":"card-7ae4aec62e2845d1b9eb8c7d77e7936e","cardType":"GIFT_CARD","categories":[{"categoryId":"category-bc005e9ec7674d7989a1ca9cbf08c4ab","key":"giftbit_program","value":"program-1649285334224c05bf7a8c2644d54949"},{"categoryId":"category-d7edb68537314bffac56ce3615b2d7d7","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-ac01a564749d4fd3b95e501ce5559f4c","key":"giftbit_status","value":"CANCELLED"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T18:33:05.236Z","userSuppliedId":"giftcard-a45etsraw"}}
+            {"card":{"cardId":"card-996570b110d045cfaaa971a6a0b55409","cardType":"GIFT_CARD","categories":[{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"},{"categoryId":"category-52621c4c2a604b36a340e527c3f22aa0","key":"giftbit_status","value":"CANCELLED"},{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T20:26:19.427Z","userSuppliedId":"giftcard-a45etsraw"}}

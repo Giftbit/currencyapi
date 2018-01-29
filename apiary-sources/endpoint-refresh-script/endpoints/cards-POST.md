@@ -21,16 +21,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
     
-            {
-              "userSuppliedId":"alice-account-usd",
-              "cardType":"ACCOUNT_CARD",
-              "contactId":"contact-83deaef84b804fb38ef92aea81ed134a",
-              "currency":"USD",
-              "initialValue":500,
-              "categories": {
-                "city":"seattle"
-              }
-            }
+            {REQUEST_REPLACEMENT:createAccountCard.body}
         
 + Response 200
     + Attributes
@@ -38,33 +29,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
 
-            {
-              "card":{
-                "cardId": "card-6bd0dee5efe047de9c2e3b11d11be97e",
-                "userSuppliedId": "alice-account-usd",
-                "contactId": "contact-83deaef84b804fb38ef92aea81ed134a",
-                "dateCreated": "2018-01-15T22:52:18.749Z",
-                "categories":[
-                  {
-                    "categoryId": "category-1b483e9c4e864a9fa9fe32b350ec85f9",
-                    "key": "city",
-                    "value": "seattle"
-                  },
-                  {
-                    "categoryId": "category-e595f03510f14c389866c3f7ed12cfd7",
-                    "key": "giftbit_order",
-                    "value": "2018-01-15"
-                  },
-                  {
-                    "categoryId": "category-fbbb512ccf564b198c15af55f83ba1ac",
-                    "key": "giftbit_program",
-                    "value": "program-account-USD-user-b3dc5abb7a754911a68bc0e96cb8f028"
-                  }
-                ],
-                "cardType": "ACCOUNT_CARD",
-                "currency": "USD"
-              }
-            }
+            {REQUEST_REPLACEMENT:createAccountCard.response.body}
             
 
 ### Create Gift Card [POST /cards]
@@ -92,7 +57,7 @@ Create a Card of type `GIFT_CARD`.
 
     + Body
     
-            {RESPONSE_REPLACEMENT:createCard1.body}
+            {REQUEST_REPLACEMENT:createCard1.body}
         
 + Response 200
     + Attributes
@@ -100,5 +65,5 @@ Create a Card of type `GIFT_CARD`.
         
     + Body
 
-            {RESPONSE_REPLACEMENT:createCard1.response.body}
+            {REQUEST_REPLACEMENT:createCard1.response.body}
 
