@@ -22,7 +22,7 @@ Transactions can be created as pending which locks the value required for the Tr
         
     + Body 
         
-        {RESPONSE_REPLACEMENT:create-transaction-1-card-1.body}
+        {RESPONSE_REPLACEMENT:createTransaction1Card1.body}
     
             
     
@@ -32,5 +32,5 @@ Transactions can be created as pending which locks the value required for the Tr
 
     + Body
 
-            {RESPONSE_REPLACEMENT:create-transaction-1-card-1.response.body}
+            {RESPONSE_REPLACEMENT:createTransaction1Card1.response.body}
 

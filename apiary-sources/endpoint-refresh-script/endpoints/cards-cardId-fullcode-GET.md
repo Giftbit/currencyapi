@@ -20,9 +20,5 @@ Retrieve the `fullcode` (also referred to as Gift Code) associated with a Gift C
 
     + Body
     
-            {
-                "fullcode":{
-                    "code" : "5JBUR-9V922-5EDL8-RP5R5-YYEVY"
-                }
-            }
+            {RESPONSE_REPLACEMENT:getCard1Fullcode.response.body}
 

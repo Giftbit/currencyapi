@@ -14,34 +14,7 @@
         
     + Body
     
-            {
-              "user":{
-                "username":"tim+apidocresfresh@giftbit.com",
-                "mode":"TEST",
-                "scopes":[
-                ],
-                "roles":[
-                  "accountManager",
-                  "contactManager"
-                ],
-                "effectiveScopes":[
-                  {
-                    "deny":false,
-                    "scopePath":[
-                      "lightrailV1",
-                      "account"
-                    ]
-                  },
-                  {
-                    "deny":false,
-                    "scopePath":[
-                      "lightrailV1",
-                      "payments"
-                    ]
-                  }
-                ]
-              }
-            }
+            {RESPONSE_REPLACEMENT:ping1.response.body}
         
 + Response 401
 

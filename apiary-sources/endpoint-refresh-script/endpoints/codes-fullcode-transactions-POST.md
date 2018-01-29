@@ -30,16 +30,7 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
         
     + Body 
     
-            {
-              "userSuppliedId":"example2",
-              "value":-500,
-              "currency":"USD",
-                "metadata": {
-                  "cart": {
-                    "total": 25335
-                  }
-                }
-            }
+            {RESPONSE_REPLACEMENT:createTransaction2Card1Fullcode.body}
     
 + Response 200
     + Attributes
@@ -47,22 +38,4 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
 
     + Body
 
-            {
-              "transaction":{
-                "transactionId":"transaction-62xx70",
-                "value":-500,
-                "userSuppliedId":"exmaple2",
-                "dateCreated":"2017-07-31T18:38:02.449Z",
-                "transactionType":"DRAWDOWN",
-                "transactionAccessMethod":"RAWCODE",
-                "valueAvailableAfterTransaction":1500,
-                "giftbitUserId":"user-1dxx32",
-                "cardId":"card-76xxab",
-                "currency":"USD",
-                "metadata": {
-                  "cart": {
-                    "total": 25335
-                  }
-                }
-              }
-            }
+            {RESPONSE_REPLACEMENT:createTransaction2Card1Fullcode.response.body}

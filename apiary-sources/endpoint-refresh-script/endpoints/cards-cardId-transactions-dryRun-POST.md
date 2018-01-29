@@ -28,31 +28,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body 
     
-            {
-              "userSuppliedId":"order-s3xx30",
-              "value":-5500,
-              "currency":"USD",
-              "nsf": false,
-              "metadata": {
-                 "cart": {
-                    "total": 25335,
-                    "items": [
-                      {
-                        "id": "B000F34ZKS", 
-                        "quantity": 1,
-                        "unit_price": 20695,
-                        "tags": ["gear", "outdoor", "clearance"]
-                      },
-                      {
-                        "id": "B009L1MF7A", 
-                        "quantity": 2,
-                        "unit_price": 2320,
-                        "tags": ["apparel", "outdoor"]
-                      }
-                    ]
-                 }
-              }
-            }
+            {RESPONSE_REPLACEMENT:createTransaction1Card1Dryrun.body}
     
 + Response 200
     + Attributes
@@ -60,52 +36,5 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body
 
-            {
-              "transaction":{
-                "value":-250,
-                "userSuppliedId":"order-s3xx30",
-                "dateCreated":null,
-                "transactionType":"DRAWDOWN",
-                "transactionAccessMethod":"CARDID",
-                "valueAvailableAfterTransaction":250,
-                "giftbitUserId":"user-b3dc5abb7a754911a68bc0e96cb8f028",
-                "cardId":"card-6bd0dee5efe047de9c2e3b11d11be97e",
-                "currency":"USD",
-                "cardType":"ACCOUNT_CARD",
-                "transactionBreakdown":[
-                  {
-                    "value":-250,
-                    "valueAvailableAfterTransaction":250,
-                    "valueStoreId":"value-a9cc0df45bd04fb692f9f0bcba4c1bd3"
-                  }
-                ],
-                "transactionId":null,
-                "metadata":{
-                  "cart":{
-                    "total":25335,
-                    "items":[
-                      {
-                        "quantity":1,
-                        "id":"B000F34ZKS",
-                        "unit_price":150,
-                        "tags":[
-                          "gear",
-                          "outdoor",
-                          "clearance"
-                        ]
-                      },
-                      {
-                        "quantity":2,
-                        "id":"B009L1MF7A",
-                        "unit_price":100,
-                        "tags":[
-                          "apparel",
-                          "outdoor"
-                        ]
-                      }
-                    ]
-                  }
-                }
-              }
-            }
+            {RESPONSE_REPLACEMENT:createTransaction1Card1Dryrun.response.body}
 

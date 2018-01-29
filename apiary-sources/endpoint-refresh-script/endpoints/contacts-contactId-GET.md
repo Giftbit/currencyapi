@@ -14,5 +14,5 @@
 
     + Body
     
-            {RESPONSE_REPLACEMENT:create-contact-1.response.body}
+            {RESPONSE_REPLACEMENT:createContact1.response.body}
 

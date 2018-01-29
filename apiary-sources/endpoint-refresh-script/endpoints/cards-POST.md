@@ -92,7 +92,7 @@ Create a Card of type `GIFT_CARD`.
 
     + Body
     
-            {RESPONSE_REPLACEMENT:create-card-1.body}
+            {RESPONSE_REPLACEMENT:createCard1.body}
         
 + Response 200
     + Attributes
@@ -100,5 +100,5 @@ Create a Card of type `GIFT_CARD`.
         
     + Body
 
-            {RESPONSE_REPLACEMENT:create-card-1.response.body}
+            {RESPONSE_REPLACEMENT:createCard1.response.body}
 

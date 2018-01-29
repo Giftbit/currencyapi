@@ -15,9 +15,7 @@ Update the Contact associated with a Card, effectively transferring the Card to 
             
     + Body
     
-            {
-              "contactId":"contact-83deaef84b804fb38ef92aea81ed134a"
-            }
+            {"contactId":"contact-6e8a485db7cd45ce84d8b7915c2637a3"}
 
 + Response 200
 
@@ -26,25 +24,4 @@ Update the Contact associated with a Card, effectively transferring the Card to 
 
     + Body
         
-            {
-              "card":{
-                "cardId": "card-6aa566c9e25f45f889b475a079675a89",
-                "userSuppliedId": "giftcard-d37e",
-                "contactId": "contact-83deaef84b804fb38ef92aea81ed134a",
-                "dateCreated": "2018-01-15T23:09:15.682Z",
-                "categories":[
-                  {
-                    "categoryId": "category-621196a93a1e4ee3a55949ca6fa34291",
-                    "key": "giftbit_program",
-                    "value": "program-4adf6d039dba4232876011232560f2cd"
-                  },
-                  {
-                    "categoryId": "category-e595f03510f14c389866c3f7ed12cfd7",
-                    "key": "giftbit_order",
-                    "value": "2018-01-15"
-                  }
-                ],
-                "cardType": "GIFT_CARD",
-                "currency": "USD"
-              }
-            }
+            {"card":{"cardId":"card-402aec6b8e8d41a49e453c3ed4ac11ee","cardType":"GIFT_CARD","categories":[{"categoryId":"category-1b2460a709cb4ce48ef2f2d3db93a86c","key":"giftbit_order","value":"2018-01-25"},{"categoryId":"category-2a5b01c657854ed6a35a3ef070d8f35a","key":"giftbit_program","value":"program-090711761f094f4baa11666e3432c44c"}],"contactId":"contact-6e8a485db7cd45ce84d8b7915c2637a3","currency":"USD","dateCreated":"2018-01-25T01:08:28.546Z","userSuppliedId":"giftcard-3asfd34a"}}

@@ -19,39 +19,4 @@ Retrieve a paginated list of a Contact's Cards.
 
     + Body
     
-            {
-              "cards":[
-                {
-                    "cardId": "card-6bd0dee5efe047de9c2e3b11d11be97e",
-                    "userSuppliedId": "alice-account-usd",
-                    "contactId": "contact-83deaef84b804fb38ef92aea81ed134a",
-                    "dateCreated": "2018-01-15T22:52:18.749Z",
-                    "categories":[
-                      {
-                        "categoryId": "category-1b483e9c4e864a9fa9fe32b350ec85f9",
-                        "key": "city",
-                        "value": "seattle"
-                      },
-                      {
-                        "categoryId": "category-e595f03510f14c389866c3f7ed12cfd7",
-                        "key": "giftbit_order",
-                        "value": "2018-01-15"
-                      },
-                      {
-                        "categoryId": "category-fbbb512ccf564b198c15af55f83ba1ac",
-                        "key": "giftbit_program",
-                        "value": "program-account-USD-user-b3dc5abb7a754911a68bc0e96cb8f028"
-                      }
-                    ],
-                    "cardType": "ACCOUNT_CARD",
-                    "currency": "USD"
-                }
-              ],
-              "pagination":{
-                "count":1,
-                "limit":100,
-                "maxLimit":1000,
-                "offset":0,
-                "totalCount":1
-              }
-            }
+            {"cards":[{"cardId":"card-402aec6b8e8d41a49e453c3ed4ac11ee","cardType":"GIFT_CARD","categories":[{"categoryId":"category-2a5b01c657854ed6a35a3ef070d8f35a","key":"giftbit_program","value":"program-090711761f094f4baa11666e3432c44c"},{"categoryId":"category-1b2460a709cb4ce48ef2f2d3db93a86c","key":"giftbit_order","value":"2018-01-25"}],"contactId":"contact-6e8a485db7cd45ce84d8b7915c2637a3","currency":"USD","dateCreated":"2018-01-25T01:08:28.546Z","userSuppliedId":"giftcard-3asfd34a"}],"pagination":{"count":1,"limit":100,"maxLimit":1000,"offset":0,"totalCount":1}}

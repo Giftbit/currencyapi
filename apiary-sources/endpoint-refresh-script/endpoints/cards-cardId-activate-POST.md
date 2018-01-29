@@ -15,9 +15,7 @@ If a card has been created as inactive, you can use this endpoint to activate.
         
     + Body 
     
-            {
-              "userSuppliedId":"activate-1"
-            }
+            {RESPONSE_REPLACEMENT:createCardStateChange1Activate.body}
     
 + Response 200
     + Attributes
@@ -25,18 +23,4 @@ If a card has been created as inactive, you can use this endpoint to activate.
 
     + Body
     
-            {
-              "transaction":{
-                "transactionId":"transaction-7axx2f",
-                "value":500,
-                "userSuppliedId":"activate-1",
-                "dateCreated":"2017-07-28T22:12:19.924Z",
-                "transactionType":"ACTIVATE",
-                "transactionAccessMethod":"CARDID",
-                "valueAvailableAfterTransaction":500,
-                "giftbitUserId":"user-1dfxx32",
-                "cardId":"card-8bxxa9",
-                "currency":"USD",
-                "codeLastFour":"99SY"
-              }
-            }
+            {RESPONSE_REPLACEMENT:createCardStateChange1Activate.response.body}

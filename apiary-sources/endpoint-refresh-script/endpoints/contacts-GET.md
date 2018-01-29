@@ -23,5 +23,5 @@ Retrieve a paginated list of Contacts.
        + pagination (Pagination)
 
     + Body
-            {RESPONSE_REPLACEMENT:list-contacts-1.response.body}
+            {RESPONSE_REPLACEMENT:listContacts1.response.body}
 

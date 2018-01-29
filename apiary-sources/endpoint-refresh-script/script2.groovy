@@ -17,6 +17,9 @@ for (Map call in json.calls) {
     if (call.get(call.callId)) {
         throw new Exception("Invalid inout. Duplicate callId ${call.callId}")
     }
+    if (!call.endpoint) {
+        throw new Exception("Invalid inpout. Call ${call}.")
+    }
     calls.put(call.callId, call)
 }
 
@@ -33,20 +36,11 @@ while (callsToDo) {
             println "Error: ${call.toString()} exceeded 10 retry attempts."
             throw new Exception("${call.toString()} exceeded number of attempts.")
         }
-
-        Map body = call.body
         if (!call.finishedReplacement) {
             try {
-                call.endpoint = checkForReplacements(call.endpoint, calls)
-                if (!call.endpoint) {
-                    throw new Exception("Invalid inpout. Call ${call}.")
-                }
-                for (bodyEntry in body?.entrySet()) {
-                    bodyEntry.value = checkForReplacements(bodyEntry.value, calls)
-                }
+                call = checkForReplacements(call, calls) as Map
                 call.finishedReplacement = true
             } catch (TestDataCallDependencyException e) {
-//                println "TestDataCallDependencyException on call: ${call}"
                 call.finishedReplacement = false
             }
         }
@@ -58,24 +52,17 @@ while (callsToDo) {
         }
         calls.put(key, call)
     }
-//    def callsThatFinished = callsToDo.findAll { it.value.response.status == 200}
-//    for (call in callsThatFinished) {
-//        if (call.apiaryResponseReplacements) {
-//            def replacements = call.apiaryResponseReplacements
-//            for (replacement in replacements) {
-//                String fileText = apiaryReplacementFiles.get(call.fileName)
-//                fileText = fileText.replace(replacement.repacementString as String, checkForReplacements(file.text, calls) as String)
-//                apiaryReplacementFiles.put(call.fileName, fileText)
-//            }
-//        }
-//    }
     callsToDo = callsToDo.findAll { it.value.response.status != 200 }
 }
 
 
 for (file in filesToProcess) {
+    // todo - make sure all replacements work
     String fileText = file.text
     fileText = checkForReplacements(fileText, calls, true) as String
+    if (fileText.contains("RESPONSE_REPLACEMENT")) {
+        throw new Exception("File withname ${file.name} contains unreplaced text!!!")
+    }
     def outputFile = new File("../endpoints/${file.name}")
     outputFile.write(fileText)
 }
@@ -121,17 +108,23 @@ static def fetchTestDataFromFile(File file) {
 
 def makeRequestAgainstLightrail(Map request) {
     println "Making request: ${request}"
-    URLConnection httpRequest = new URL("https://www.lightraildev.net/v1" + request.endpoint).openConnection();
-    httpRequest.setDoOutput(true)
-    httpRequest.setRequestProperty("Content-Type", "application/json")
-    httpRequest.setRequestProperty("Authorization", "Bearer eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsImdtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsInRtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MTY4MjI0MzIuOTU2LCJqdGkiOiJiYWRnZS01NGYyNjVlZTMyYzI0Mjg3YTk3ZDhmNDlmOWYyOGY5MSIsInBhcmVudEp0aSI6ImJhZGdlLWQ5OTY5YzZmZGZjYjRmODM5M2EwMTA5MjllMmYwOGVmIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.CRFk2CzzgKTRJFX_QOuOFzyDGmscLEoB9OLwy1jKuHw")
-    httpRequest.setRequestMethod(request.method)
+    URLConnection connection = new URL("https://www.lightraildev.net/v1" + request.endpoint).openConnection();
+    connection.setDoOutput(true)
+    connection.setRequestProperty("Content-Type", "application/json")
+    connection.setRequestProperty("Authorization", "Bearer eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsImdtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCIsInRtaSI6InVzZXItNTAyMmZjY2Y4Mjc2NDdlZTljZmI2M2I3NzlkNjIxOTMtVEVTVCJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MTY4MjI0MzIuOTU2LCJqdGkiOiJiYWRnZS01NGYyNjVlZTMyYzI0Mjg3YTk3ZDhmNDlmOWYyOGY5MSIsInBhcmVudEp0aSI6ImJhZGdlLWQ5OTY5YzZmZGZjYjRmODM5M2EwMTA5MjllMmYwOGVmIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.CRFk2CzzgKTRJFX_QOuOFzyDGmscLEoB9OLwy1jKuHw")
+    if (request.method == "PATCH") {
+        connection.setRequestProperty("X-HTTP-Method-Override", "PATCH");
+        connection.setRequestMethod("POST");
+    } else {
+        connection.setRequestMethod(request.method)
+    }
+
     if (request.method == "POST" || request.method == "PATCH") {
         String message = JsonOutput.toJson(request.body)
         println "requestBody" + message
-        httpRequest.getOutputStream().write(message.getBytes("UTF-8"));
+        connection.getOutputStream().write(message.getBytes("UTF-8"));
     }
-    return getResponse(httpRequest)
+    return getResponse(connection)
 }
 
 Map getResponse(HttpsURLConnectionImpl result) {

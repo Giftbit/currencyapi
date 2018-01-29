@@ -17,16 +17,4 @@ Retrieve the list of all Categories associated with a given Card.
 
     + Body
 
-            {
-                "categories":[
-                    {
-                        "categoryId": "category-46xx15",
-                        "key": "giftbit_program",
-                        "value": "program-dexx72"
-                    },
-                    {
-                        "categoryId": "category-daxxd9",
-                        "key": "giftbit_order",
-                        "value": "2017-06-05"
-                    }
-            }
+            {"categories":[{"categoryId":"category-1b2460a709cb4ce48ef2f2d3db93a86c","key":"giftbit_order","value":"2018-01-25"},{"categoryId":"category-2a5b01c657854ed6a35a3ef070d8f35a","key":"giftbit_program","value":"program-090711761f094f4baa11666e3432c44c"}]}

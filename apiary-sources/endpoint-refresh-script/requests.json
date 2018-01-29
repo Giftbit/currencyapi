@@ -1,7 +1,12 @@
 {
   "calls": [
     {
-      "callId": "gift-card-program-1",
+      "callId": "ping1",
+      "method": "GET",
+      "endpoint": "/ping",
+    },
+    {
+      "callId": "giftCardProgram1",
       "method": "POST",
       "endpoint": "/programs",
       "body": {
@@ -9,47 +14,139 @@
         "currency": "USD",
         "codeValueMin": 0,
         "codeValueMax": 20000,
-        "userSuppliedId": "gift-card-program-1"
+        "userSuppliedId": "giftCardProgram1",
+        "valueStoreType": "PRINCIPAL"
       }
     },
     {
-      "callId": "create-contact-1",
+      "callId": "listPrograms1",
+      "method": "GET",
+      "endpoint": "/programs"
+    },
+    {
+      "callId": "createContact1",
       "method": "POST",
       "endpoint": "/contacts",
       "body": {
-        "userSuppliedId": "create-contact-1",
+        "userSuppliedId": "createContact1",
         "email": "alice@example.com"
       }
     },
     {
-      "callId": "create-contact-2",
+      "callId": "createContact2",
       "method": "POST",
       "endpoint": "/contacts",
       "body": {
-        "userSuppliedId": "create-contact-2",
+        "userSuppliedId": "createContact2",
         "email": "bill@example.com"
       }
     },
     {
-      "callId": "list-contacts-1",
+      "callId": "patchContact2",
+      "method": "PATCH",
+      "endpoint": "/contacts/{RESPONSE_REPLACEMENT:createContact2.response.body.contact.contactId}",
+      "body": {
+        "firstName": "bill",
+        "lastName": "lumbergh"
+      }
+    },
+    {
+      "callId": "listContacts1",
       "method": "GET",
       "endpoint": "/contacts"
     },
     {
-      "callId": "create-card-1",
+      "callId": "createCard1",
       "method": "POST",
       "endpoint": "/cards",
       "body": {
         "userSuppliedId": "giftcard-3asfd34a",
-        "programId": "{RESPONSE_REPLACEMENT:gift-card-program-1.response.body.program.programId}",
+        "programId": "{RESPONSE_REPLACEMENT:giftCardProgram1.response.body.program.programId}",
         "initialValue" : 5000,
         "cardType" : "GIFT_CARD"
       }
     },
     {
-      "callId": "create-transaction-1-card-1",
+      "callId": "getCard1Card",
+      "method": "GET",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}"
+    },
+    {
+      "callId": "getCard1Fullcode",
+      "method": "GET",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}/fullcode"
+    },
+    {
+      "callId": "getCard1FullcodeDetails",
+      "method": "GET",
+      "endpoint": "/codes/{RESPONSE_REPLACEMENT:getCard1Fullcode.response.body.fullcode.code}/details"
+    },
+    {
+      "callId": "getCard1Details",
+      "method": "GET",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}/details"
+    },
+    {
+      "callId": "getCard1Categories",
+      "method": "GET",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}/categories"
+    },
+    {
+      "callId": "getCard1ValueStores",
+      "method": "GET",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}/valueStores"
+    },
+    {
+      "callId": "listCards1",
+      "method": "GET",
+      "endpoint": "/cards"
+    },
+    {
+      "callId": "listCategories1",
+      "method": "GET",
+      "endpoint": "/categories"
+    },
+    {
+      "callId": "createTransaction1Card1Dryrun",
       "method": "POST",
-      "endpoint": "/cards/{RESPONSE_REPLACEMENT:create-card-1.response.body.card.cardId}/transactions",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}/transactions/dryRun",
+      "body": {
+        "userSuppliedId":"transaction-234342",
+        "value":-250,
+        "currency":"USD",
+        "nsf": false,
+        "metadata":{
+          "cart":{
+            "total":250,
+            "items":[
+              {
+                "id":"B000F34ZKS",
+                "quantity":1,
+                "unit_price":150,
+                "tags":[
+                  "gear",
+                  "outdoor",
+                  "clearance"
+                ]
+              },
+              {
+                "id":"B009L1MF7A",
+                "quantity":2,
+                "unit_price":100,
+                "tags":[
+                  "apparel",
+                  "outdoor"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "callId": "createTransaction1Card1",
+      "method": "POST",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}/transactions",
       "body": {
         "userSuppliedId":"transaction-234342",
         "value":-250,
@@ -80,6 +177,93 @@
             ]
           }
         }
+      }
+    },
+    {
+      "callId": "createTransaction2Card1FullcodeDryrun",
+      "method": "POST",
+      "endpoint": "/codes/{RESPONSE_REPLACEMENT:getCard1Fullcode.response.body.fullcode.code}/transactions/dryRun",
+      "body": {
+        "userSuppliedId":"transaction-234aweras4",
+        "value":-100,
+        "currency":"USD"
+      }
+    },
+    {
+      "callId": "createTransaction2Card1Fullcode",
+      "method": "POST",
+      "endpoint": "/codes/{RESPONSE_REPLACEMENT:getCard1Fullcode.response.body.fullcode.code}/transactions",
+      "body": {
+        "userSuppliedId":"transaction-234aweras4",
+        "value":-100,
+        "currency":"USD"
+      }
+    },
+    {
+      "callId": "getCard1Transactions",
+      "method": "GET",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}/transactions"
+    },
+    {
+      "callId": "getCard1TransactionsByFullcode",
+      "method": "GET",
+      "endpoint": "/codes/{RESPONSE_REPLACEMENT:getCard1Fullcode.response.body.fullcode.code}/transactions"
+    },
+    {
+      "callId": "patchCard1",
+      "method": "PATCH",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCard1.response.body.card.cardId}",
+      "body": {
+        "contactId": "{RESPONSE_REPLACEMENT:createContact2.response.body.contact.contactId}"
+      }
+    },
+    {
+      "callId": "getCardsForContact2",
+      "method": "GET",
+      "endpoint": "/cards?contactId={RESPONSE_REPLACEMENT:createContact2.response.body.contact.contactId}"
+    },
+    {
+      "callId": "createCardStateChange1",
+      "method": "POST",
+      "endpoint": "/cards",
+      "body": {
+        "userSuppliedId": "giftcard-a45etsraw",
+        "programId": "{RESPONSE_REPLACEMENT:giftCardProgram1.response.body.program.programId}",
+        "initialValue": 5000,
+        "cardType": "GIFT_CARD",
+        "inactive": true
+      }
+    },
+    {
+      "callId": "createCardStateChange1Activate",
+      "method": "POST",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCardStateChange1.response.body.card.cardId}/activate",
+      "body": {
+        "userSuppliedId": "activate-giftcard-a45etsraw"
+      }
+    },
+    {
+      "callId": "createCardStateChange1Freeze",
+      "method": "POST",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCardStateChange1.response.body.card.cardId}/freeze",
+      "body": {
+        "userSuppliedId": "freeze-{RESPONSE_REPLACEMENT:createCardStateChange1Activate.response.body.transaction.transactionId}"
+      }
+    },
+    {
+      "callId": "createCardStateChange1Unfreeze",
+      "method": "POST",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCardStateChange1.response.body.card.cardId}/unfreeze",
+      "body": {
+        "userSuppliedId": "unfreeze-{RESPONSE_REPLACEMENT:createCardStateChange1Freeze.response.body.transaction.transactionId}"
+      }
+    },
+    {
+      "callId": "createCardStateChange1Cancel",
+      "method": "POST",
+      "endpoint": "/cards/{RESPONSE_REPLACEMENT:createCardStateChange1.response.body.card.cardId}/cancel",
+      "body": {
+        "userSuppliedId": "cancel-{RESPONSE_REPLACEMENT:createCardStateChange1Unfreeze.response.body.transaction.transactionId}"
       }
     }
   ]

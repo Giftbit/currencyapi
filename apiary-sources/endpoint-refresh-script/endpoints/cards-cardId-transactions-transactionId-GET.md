@@ -18,23 +18,5 @@ Retrieve a particular Transaction by its ID based on the `cardId`.
 
     + Body
 
-            { 
-                "transaction": {
-                    "transactionId":"transaction-62xx70",
-                    "value":-500,
-                    "userSuppliedId":"example2",
-                    "dateCreated":"2017-07-31T18:38:02.449Z",
-                    "transactionType":"DRAWDOWN",
-                    "transactionAccessMethod":"CARDID",
-                    "valueAvailableAfterTransaction":1500,
-                    "giftbitUserId":"user-1dxx32",
-                    "cardId":"card-76xxab",
-                    "currency":"USD",
-                    "metadata": {
-                      "cart": {
-                        "total": 25335
-                      }
-                    }
-                }
-            }
+            {RESPONSE_REPLACEMENT:createTransaction1Card1.response.body}
 

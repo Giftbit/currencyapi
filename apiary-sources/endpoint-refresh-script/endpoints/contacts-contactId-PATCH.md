@@ -17,10 +17,7 @@ Updates a Contact.
             
     + Body
     
-            {
-                "firstName": "Alice",
-                "lastName": "Liddel"
-            }
+            {RESPONSE_REPLACEMENT:patchContact2.body}
     
 + Response 200
     + Attributes 
@@ -28,14 +25,5 @@ Updates a Contact.
 
     + Body
     
-            {
-                "contact":{
-                    "contactId": "contact-83deaef84b804fb38ef92aea81ed134a",
-                    "userSuppliedId": "314159265359",
-                    "email": "alice@example.com",
-                    "firstName": "Alice",
-                    "lastName": "Liddel",
-                    "dateCreated": "2018-01-15T21:51:24.000Z"
-                }
-            }
+            {RESPONSE_REPLACEMENT:patchContact2.response.body}
 

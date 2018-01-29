@@ -22,42 +22,4 @@ Retrieve a paginated list of a Card's Transactions based on the Gift Card's `ful
 
     + Body
 
-            {
-              "transactions":[
-                {
-                  "transactionId":"transaction-e0xxf5",
-                  "value":-599,
-                  "userSuppliedId":"tx10",
-                  "dateCreated":"2017-07-28T21:21:10.009Z",
-                  "transactionType":"DRAWDOWN",
-                  "transactionAccessMethod":"CARDID",
-                  "valueAvailableAfterTransaction":1401,
-                  "giftbitUserId":"user-1dxx32",
-                  "cardId":"card-76xxab",
-                  "currency":"USD",
-                  "metadata":{
-                    "giftbit_override_dateCreated":"2017-07-28T21:21:10.009Z"
-                  }
-                },
-                {
-                  "transactionId":"transaction-00xxa5",
-                  "value":2000,
-                  "userSuppliedId":"anonymous-giftcard10",
-                  "dateCreated":"2017-07-13T21:21:00.601Z",
-                  "transactionType":"INITIAL_VALUE",
-                  "transactionAccessMethod":"CARDID",
-                  "valueAvailableAfterTransaction":2000,
-                  "giftbitUserId":"user-1dxx32",
-                  "cardId":"card-76xxab",
-                  "currency":"USD",                  
-                }
-              ],
-              "pagination":{
-                "count":2,
-                "limit":100,
-                "maxLimit":1000,
-                "offset":0,
-                "totalCount":2
-              }
-            }
-
+            {RESPONSE_REPLACEMENT:getCard1TransactionsByFullcode.response.body}

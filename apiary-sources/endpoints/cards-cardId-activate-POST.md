@@ -15,9 +15,7 @@ If a card has been created as inactive, you can use this endpoint to activate.
         
     + Body 
     
-            {
-              "userSuppliedId":"activate-1"
-            }
+            {"userSuppliedId":"activate-giftcard-a45etsraw"}
     
 + Response 200
     + Attributes
@@ -25,18 +23,4 @@ If a card has been created as inactive, you can use this endpoint to activate.
 
     + Body
     
-            {
-              "transaction":{
-                "transactionId":"transaction-7axx2f",
-                "value":500,
-                "userSuppliedId":"activate-1",
-                "dateCreated":"2017-07-28T22:12:19.924Z",
-                "transactionType":"ACTIVATE",
-                "transactionAccessMethod":"CARDID",
-                "valueAvailableAfterTransaction":500,
-                "giftbitUserId":"user-1dfxx32",
-                "cardId":"card-8bxxa9",
-                "currency":"USD",
-                "codeLastFour":"99SY"
-              }
-            }
+            {"transaction":{"cardId":"card-7ae4aec62e2845d1b9eb8c7d77e7936e","cardType":"GIFT_CARD","codeLastFour":"268N","currency":"USD","dateCreated":"2018-01-29T18:33:05.525Z","giftbitUserId":"user-5022fccf827647ee9cfb63b779d62193-TEST","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-067154396488410aa9bc976ad6e5c78c"}],"transactionId":"transaction-d0d52d3f596a4141b39580209deb423f","transactionType":"ACTIVATE","userSuppliedId":"activate-giftcard-a45etsraw","value":5000,"valueAvailableAfterTransaction":5000}}
