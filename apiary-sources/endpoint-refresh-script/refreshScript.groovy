@@ -7,7 +7,7 @@ List<File> filesToProcess = new File("endpoints").listFiles()
 
 def json = fetchTestDataFromFile(requests)
 // Use a new LIVE mode API key from lightraildev.
-String userJwt = "eyJ2ZXIiOjMsInZhdiI6MSwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJnIjp7Imd1aSI6InVzZXItNDY0NjE5NzA4NmFmNDcxZmE5MjY1ZmQzZDE1NDZmZmEiLCJnbWkiOiJ1c2VyLTQ2NDYxOTcwODZhZjQ3MWZhOTI2NWZkM2QxNTQ2ZmZhIiwidG1pIjoidXNlci00NjQ2MTk3MDg2YWY0NzFmYTkyNjVmZDNkMTU0NmZmYSJ9LCJhdWQiOiJBUElfS0VZIiwiaXNzIjoiU0VSVklDRVNfVjEiLCJpYXQiOjE1MTcyNTc1NjUuNjcyLCJqdGkiOiJiYWRnZS0xYzQ5N2MxMTYzNmE0OWEzOGRlNTIxMmMxMzU5MmYzZSIsInBhcmVudEp0aSI6ImJhZGdlLWJkODQ0NzM5ZGI2NzQwMmI5MGExMGI4NTI4NzJkYTVmIiwic2NvcGVzIjpbXSwicm9sZXMiOlsiYWNjb3VudE1hbmFnZXIiLCJjb250YWN0TWFuYWdlciIsImN1c3RvbWVyU2VydmljZU1hbmFnZXIiLCJjdXN0b21lclNlcnZpY2VSZXByZXNlbnRhdGl2ZSIsInBvaW50T2ZTYWxlIiwicHJvZ3JhbU1hbmFnZXIiLCJwcm9tb3RlciIsInJlcG9ydGVyIiwic2VjdXJpdHlNYW5hZ2VyIiwidGVhbUFkbWluIiwid2ViUG9ydGFsIl19.l-QyxsdmwG3977mo4cBmaJiF-6YHaSq5LqqiAj1JjCw"
+String userJwt = ""
 
 Map calls = [:]
 for (Map call in json.calls) {
@@ -15,10 +15,10 @@ for (Map call in json.calls) {
         throw new Exception("No callId. Invalid input ${call}.")
     }
     if (call.get(call.callId)) {
-        throw new Exception("Invalid inout. Duplicate callId ${call.callId}")
+        throw new Exception("Invalid input. Duplicate callId ${call.callId}")
     }
     if (!call.endpoint) {
-        throw new Exception("Invalid inpout. Call ${call}.")
+        throw new Exception("Invalid input. Call ${call}.")
     }
     calls.put(call.callId, call)
 }
@@ -74,7 +74,7 @@ static def checkForReplacements(def input, Map responses, boolean replaceAsJson 
     } else if (input instanceof String) {
         List<String> responseReplacements = input.findAll(/\{REQUEST_REPLACEMENT\:(.*?)\}/)
         for (replacement in responseReplacements) {
-            println "found something to replace! " + replacement
+            println "found something to replace: " + replacement
             String responseKeyString = replacement
             responseKeyString = responseKeyString.replace("{REQUEST_REPLACEMENT:", "").replace("}", "")
             List<String> responseKeys = responseKeyString.split("\\.")
@@ -93,7 +93,6 @@ static def checkForReplacements(def input, Map responses, boolean replaceAsJson 
         }
         return input
     } else {
-        println "this is happening"
         return input
     }
 }
