@@ -3,12 +3,11 @@ The point of this script is to be able to programatically update the response bo
 
 ## Steps to run the script
 1. Create a new account on lightraildev.net.
-2. Switch to LIVE mode and generate an API key.
-3. Paste the API key into the top of refreshScript.groovy.
-4. Run the script. If in intelliJ simply right click on it. From command line: `groovy refreshScript`
-5. Go to the ping output file and change the email to user@example.com. Specifically this file is `/Lightrail-API-Docs/endpoints/ping-GET.md`.
-6. Remove the API key since if it's committed it could be used to retrieve your email.
-7. Commit changes.  
+1. Switch to LIVE mode and generate an API key.
+1. Paste the API key into the top of refreshScript.groovy.
+1. Run the script. If in intelliJ simply right click on it. You'll need to add the API key to program arguments. You can do this in intelliJ by editing the run configuration. From command line: `groovy refreshScript <API_KEY>`
+1. Go to the ping output file and change the email to user@example.com. Specifically this file is `/Lightrail-API-Docs/endpoints/ping-GET.md`.
+1. Commit changes.  
 
 ## How it works
 The script refreshScript.groovy processes the requests in requests.json. It uses a variable replacement strategy to replace variables in requests.json which allows it to make requests that use the output of other requests. 

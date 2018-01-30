@@ -6,8 +6,14 @@ File requests = new File("requests.json")
 List<File> filesToProcess = new File("endpoints").listFiles()
 
 def json = fetchTestDataFromFile(requests)
-// Use a new LIVE mode API key from lightraildev.
-String userJwt = ""
+
+if (args.size() == 0) {
+    println "You must provide an api key as an argument. Use a new LIVE mode API key from lightraildev."
+    System.exit(0)
+}
+
+String userJwt = args[0]
+println "Recieved API key: ${args[0]}"
 
 Map calls = [:]
 for (Map call in json.calls) {
