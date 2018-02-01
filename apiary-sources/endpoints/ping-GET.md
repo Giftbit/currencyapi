@@ -14,34 +14,7 @@
         
     + Body
     
-            {
-              "user":{
-                "username":"tim+apidocresfresh@giftbit.com",
-                "mode":"TEST",
-                "scopes":[
-                ],
-                "roles":[
-                  "accountManager",
-                  "contactManager"
-                ],
-                "effectiveScopes":[
-                  {
-                    "deny":false,
-                    "scopePath":[
-                      "lightrailV1",
-                      "account"
-                    ]
-                  },
-                  {
-                    "deny":false,
-                    "scopePath":[
-                      "lightrailV1",
-                      "payments"
-                    ]
-                  }
-                ]
-              }
-            }
+            {"user":{"effectiveScopes":["lightrailV1:account","lightrailV1:payments","lightrailV1:sharedSecret","lightrailV1:stripeConnect","lightrailV1:token","lightrailV1:userImage:create","lightrailV1:contact","lightrailV1:card","lightrailV1:valueStore","lightrailV1:transaction","lightrailV1:valueStore","lightrailV1:transaction","lightrailV1:code:balance","lightrailV1:transaction:create:drawdown","lightrailV1:transaction:create:capture","lightrailV1:transaction:create:void","lightrailV1:program","lightrailV1:programKey","lightrailV1:valueStore","lightrailV1:stats","lightrailV1:transaction:create:cancel","lightrailV1:transaction:create:freeze","lightrailV1:transaction:create:unfreeze","lightrailV1:transaction:create:activate","lightrailV1:team","lightrailV1:portal","lightrailV1:token:list","lightrailV1:token:create","lightrailV1:team:show"],"mode":"LIVE","roles":["accountManager","contactManager","customerServiceManager","customerServiceRepresentative","pointOfSale","programManager","promoter","reporter","securityManager","teamAdmin","webPortal"],"scopes":[],"username":"roger@example.com"}}
         
 + Response 401
 

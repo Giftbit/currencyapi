@@ -16,35 +16,4 @@ The response includes the Value Stores (principal or attached promotions) as wel
 
     + Body
 
-            {  
-              "details":{  
-                "valueStores":[  
-                  {  
-                    "valueStoreType":"PRINCIPAL",
-                    "value":33301,
-                    "state":"ACTIVE",
-                    "expires":null,
-                    "startDate":null,
-                    "programId":"program-1dxxa9",
-                    "valueStoreId":"value-2fxxf2",
-                    "restrictions":[]
-                  },
-                  {  
-                    "valueStoreType":"ATTACHED",
-                    "value":500,
-                    "state":"ACTIVE",
-                    "expires":null,
-                    "startDate":null,
-                    "programId":"program-c7xxe6",
-                    "valueStoreId":"value-79xxee",
-                    "restrictions":[  
-                      "If your cart total is at least $100."
-                    ]
-                  }
-                ],
-                "currency":"USD",
-                "cardType":"GIFT_CARD",
-                "asAtDate":"2017-09-14T18:09:09.520Z",
-                "cardId":"card-6dxx89"
-              }
-            }
+            {"details":{"asAtDate":"2018-01-29T20:26:17.441Z","cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","valueStores":[{"expires":null,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","restrictions":[],"startDate":null,"state":"ACTIVE","value":5000,"valueStoreId":"value-eefd98f834174294af3945d251f8441f","valueStoreType":"PRINCIPAL"}]}}

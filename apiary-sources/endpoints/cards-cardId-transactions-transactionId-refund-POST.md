@@ -18,12 +18,7 @@ Refund a Transaction by reversing its effect.
     
     + Body 
             
-            {
-              "userSuppliedId":"transaction-90xxf6-refund",
-              "metadata": {
-                  "reason": "canceled order."
-              }              
-            }
+            {"userSuppliedId":"transaction-aaff893f88164f94a47a4af1c3411900-refund"}
     
 + Response 200
     + Attributes
@@ -31,22 +26,5 @@ Refund a Transaction by reversing its effect.
         
     + Body
 
-            {
-              "transaction":{
-                "transactionId":"transaction-77xx34",
-                "value":50,
-                "userSuppliedId":"transaction-9exxa3-reverse",
-                "dateCreated":"2017-07-31T18:57:44.844Z",
-                "transactionType":"DRAWDOWN_REFUND",
-                "transactionAccessMethod":"CARDID",
-                "valueAvailableAfterTransaction":1299,
-                "giftbitUserId":"user-1dxx32",
-                "cardId":"card-76xxab",
-                "currency":"USD",
-                "parentTransactionId":"transaction-9exxa3",
-                "metadata":{
-                  "giftbit_initial_transaction_id":"transaction-9exxa3"
-                }
-              }
-            }
+            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.624Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-aaff893f88164f94a47a4af1c3411900"},"parentTransactionId":"transaction-aaff893f88164f94a47a4af1c3411900","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-a65baed608974889856e51e28d6cd5e6","transactionType":"DRAWDOWN_REFUND","userSuppliedId":"transaction-aaff893f88164f94a47a4af1c3411900-refund","value":100,"valueAvailableAfterTransaction":500}}
             

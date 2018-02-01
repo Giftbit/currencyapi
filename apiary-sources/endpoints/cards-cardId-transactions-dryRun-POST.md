@@ -28,31 +28,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body 
     
-            {
-              "userSuppliedId":"order-s3xx30",
-              "value":-5500,
-              "currency":"USD",
-              "nsf": false,
-              "metadata": {
-                 "cart": {
-                    "total": 25335,
-                    "items": [
-                      {
-                        "id": "B000F34ZKS", 
-                        "quantity": 1,
-                        "unit_price": 20695,
-                        "tags": ["gear", "outdoor", "clearance"]
-                      },
-                      {
-                        "id": "B009L1MF7A", 
-                        "quantity": 2,
-                        "unit_price": 2320,
-                        "tags": ["apparel", "outdoor"]
-                      }
-                    ]
-                 }
-              }
-            }
+            {"currency":"USD","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"nsf":false,"userSuppliedId":"transaction-234342","value":-250}
     
 + Response 200
     + Attributes
@@ -60,45 +36,5 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body
 
-            {
-              "transaction":{
-                  "value": -5000,
-                  "userSuppliedId": "order-s3xx30",
-                  "dateCreated": null,
-                  "transactionType": "DRAWDOWN",
-                  "transactionAccessMethod": "CARDID",
-                  "valueAvailableAfterTransaction": 0,
-                  "giftbitUserId": "user-7cxx2c",
-                  "cardId": "card-dcxx37",
-                  "currency": "USD",
-                  "transactionBreakdown":[
-                    {
-                      "value": -5000,
-                      "valueAvailableAfterTransaction": 0,
-                      "valueStoreId": "value-66xxf2"
-                    }
-                  ],
-                  "transactionId": null,
-                  "metadata":{
-                    "cart":{
-                        "total": 25335,
-                        "items": [
-                          {
-                              "quantity": 1,
-                              "id": "B000F34ZKS",
-                              "unit_price": 20695,
-                              "tags":["gear", "outdoor", "clearance"]
-                          },
-                          {
-                              "quantity": 2,
-                              "id": "B009L1MF7A",
-                              "unit_price": 2320,
-                              "tags":["apparel", "outdoor"]
-                          }
-                        ]
-                    }
-                  },
-                  "codeLastFour": "YNJC"
-              }
-            }
+            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":null,"giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":null,"transactionType":"DRAWDOWN","userSuppliedId":"transaction-234342","value":-250,"valueAvailableAfterTransaction":4750}}
 

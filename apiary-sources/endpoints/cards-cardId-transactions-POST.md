@@ -21,17 +21,10 @@ Transactions can be created as pending which locks the value required for the Tr
         + userSuppliedId (string, required) - {{userSuppliedId}}        
         
     + Body 
+        
+        {"currency":"USD","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"userSuppliedId":"transaction-234342","value":-250}
     
-            {
-              "userSuppliedId":"example2",
-              "value":-500,
-              "currency":"USD",
-              "metadata": {
-                "cart": {
-                  "total": 25335
-                }
-              }
-            }
+            
     
 + Response 200
     + Attributes
@@ -39,23 +32,5 @@ Transactions can be created as pending which locks the value required for the Tr
 
     + Body
 
-            {
-              "transaction":{
-                "transactionId":"transaction-62xx70",
-                "value":-500,
-                "userSuppliedId":"exmaple2",
-                "dateCreated":"2017-07-31T18:38:02.449Z",
-                "transactionType":"DRAWDOWN",
-                "transactionAccessMethod":"CARDID",
-                "valueAvailableAfterTransaction":1500,
-                "giftbitUserId":"user-1dxx32",
-                "cardId":"card-76xxab",
-                "currency":"USD",
-                "metadata": {
-                  "cart": {
-                    "total": 25335
-                  }
-                }
-              }
-            }
+            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.820Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-77e9457194134421ac6a26ceffd2f4c4","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234342","value":-250,"valueAvailableAfterTransaction":4750}}
 

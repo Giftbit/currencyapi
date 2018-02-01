@@ -30,16 +30,7 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
         
     + Body 
     
-            {
-              "userSuppliedId":"example2",
-              "value":-500,
-              "currency":"USD",
-                "metadata": {
-                  "cart": {
-                    "total": 25335
-                  }
-                }
-            }
+            {"currency":"USD","userSuppliedId":"transaction-234aweras4","value":-100}
     
 + Response 200
     + Attributes
@@ -47,22 +38,4 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
 
     + Body
 
-            {
-              "transaction":{
-                "transactionId":"transaction-62xx70",
-                "value":-500,
-                "userSuppliedId":"exmaple2",
-                "dateCreated":"2017-07-31T18:38:02.449Z",
-                "transactionType":"DRAWDOWN",
-                "transactionAccessMethod":"RAWCODE",
-                "valueAvailableAfterTransaction":1500,
-                "giftbitUserId":"user-1dxx32",
-                "cardId":"card-76xxab",
-                "currency":"USD",
-                "metadata": {
-                  "cart": {
-                    "total": 25335
-                  }
-                }
-              }
-            }
+            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.992Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-4e8d9d0ecbf54288a0151b2347989489","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650}}

@@ -21,16 +21,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
     
-            {
-                "userSuppliedId":"accountCard1",
-                "cardType":"ACCOUNT_CARD",
-                "contactId":"contact-0cxx86",
-                "currency":"USD",
-                "initialValue":500,
-                "categories": {
-                    "city":"seattle"
-                }
-            }
+            {"cardType":"ACCOUNT_CARD","contactId":"contact-067572a652874be6aec2664896965dae","currency":"USD","initialValue":500,"userSuppliedId":"contact-067572a652874be6aec2664896965dae-account"}
         
 + Response 200
     + Attributes
@@ -38,28 +29,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
 
-            {
-              "card":{
-                "cardId":"card-d4xxbf",
-                "userSuppliedId":"giftcard1",
-                "contactId":"contact-0cxx86",
-                "dateCreated":"2017-07-28T21:59:15.325Z",
-                "categories":[
-                  {
-                    "categoryId":"category-59xx67",
-                    "key":"city",
-                    "value":"seattle"
-                  },
-                  {
-                    "categoryId":"category-3dxxc3",
-                    "key":"giftbit_order",
-                    "value":"2017-07-28"
-                  }
-                ],
-                "cardType":"ACCOUNT_CARD",
-                "currency":"USD"
-              }
-            }
+            {"card":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-f398fa67056f4116b23c599185800e33","key":"giftbit_program","value":"program-account-USD-user-4646197086af471fa9265fd3d1546ffa"}],"contactId":"contact-067572a652874be6aec2664896965dae","currency":"USD","dateCreated":"2018-01-29T20:26:20.092Z","userSuppliedId":"contact-067572a652874be6aec2664896965dae-account"}}
             
 
 ### Create Gift Card [POST /cards]
@@ -87,21 +57,7 @@ Create a Card of type `GIFT_CARD`.
 
     + Body
     
-            {
-                "userSuppliedId": "account-d37e",
-                "programId": "program-06d0",
-                "initialValue" : 5000,
-                "cardType" : "GIFT_CARD",
-                "startDate" : "2017-08-01T00:27:02.910Z",
-                "expires" : "2017-10-01T00:27:02.910Z", 
-                "metadata": {
-                    "orderId": "x72a3sx5e",
-                    "transactionId": "tr2re3t0y2r3u0w6r",
-                    "recipientEmail" : "test@test.ca",
-                    "purchaserName" : "Alice Liddell",
-                    "purchaserEmail" : "alice@wonderland.ca"
-                 }
-            }
+            {"cardType":"GIFT_CARD","initialValue":5000,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","userSuppliedId":"giftcard-3asfd34a"}
         
 + Response 200
     + Attributes
@@ -109,26 +65,5 @@ Create a Card of type `GIFT_CARD`.
         
     + Body
 
-            {
-                "card":{
-                    "cardId": "card-6207",
-                    "userSuppliedId": "account-d37",
-                    "contactId": null,
-                    "dateCreated": "2017-08-01T22:15:42.123Z",
-                    "categories":[
-                        {
-                            "categoryId": "category-94d0",
-                            "key": "giftbit_order",
-                            "value": "2017-08-02"
-                        },
-                        {
-                            "categoryId": "category-67fe",
-                            "key": "giftbit_program",
-                            "value": "program-06d0"
-                        }
-                    ],
-                    "cardType": "GIFT_CARD",
-                    "currency": "USD"
-                }
-            }
+            {"card":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T20:26:16.841Z","userSuppliedId":"giftcard-3asfd34a"}}
 

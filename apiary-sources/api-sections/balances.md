@@ -13,7 +13,3 @@ Note that only Gift Cards have a `fullcode`.
 {% include 'endpoints/cards-cardId-details-GET.md' %}
 
 {% include 'endpoints/codes-fullcode-details-GET.md' %}
-
-{% include 'endpoints/cards-cardId-balance-GET.md' %}
-
-{% include 'endpoints/codes-fullcode-card-balance-GET.md' %}

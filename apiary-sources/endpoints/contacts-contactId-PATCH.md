@@ -17,10 +17,7 @@ Updates a Contact.
             
     + Body
     
-            {
-                "firstName": "Jane",
-                "lastName": "Smith"
-            }
+            {"firstName":"bill","lastName":"lumbergh"}
     
 + Response 200
     + Attributes 
@@ -28,15 +25,5 @@ Updates a Contact.
 
     + Body
     
-            {
-                "contact":
-                {
-                    "contactId": "contact-0fxxcf",
-                    "userSuppliedId": "12345678",
-                    "email": "noreply@giftbit.com",
-                    "firstName": "Jane",
-                    "lastName": "Smith",
-                    "dateCreated": "2016-12-09T00:06:00.000Z"
-                }
-            }
+            {"contact":{"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8","dateCreated":"2018-01-29T20:26:17.000Z","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","userSuppliedId":"createContact2"}}
 

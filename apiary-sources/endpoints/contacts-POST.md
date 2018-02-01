@@ -15,12 +15,7 @@ Creates a new Contact.
         
             
     + Body
-    
-            {
-                "userSuppliedId": "12345678",
-                "email": "noreply@giftbit.com"
-            }
-        
+            {"email":"alice@example.com","userSuppliedId":"createContact1"}
 
     
 + Response 200
@@ -28,16 +23,4 @@ Creates a new Contact.
         + contact (Contact)
 
     + Body
-    
-            {
-                "contact":
-                {
-                    "contactId": "contact-0fxxcf",
-                    "userSuppliedId": "12345678",
-                    "email": "noreply@giftbit.com",
-                    "firstName": null,
-                    "lastName": null,
-                    "dateCreated": "2016-12-09T00:06:00.000Z"
-                }
-            }
-
+            {"contact":{"contactId":"contact-067572a652874be6aec2664896965dae","dateCreated":"2018-01-29T20:26:16.438Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"createContact1"}}

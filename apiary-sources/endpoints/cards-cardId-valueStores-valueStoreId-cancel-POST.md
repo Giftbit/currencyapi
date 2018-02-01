@@ -16,9 +16,7 @@ Permanently cancels a Card's ValueStore.
         
     + Body 
     
-            {
-                "userSuppliedId":"case-122"
-            }
+            {"userSuppliedId":"transaction-6c8afefe4a63420bae6573cce57bcf9b-cancel"}
     
 + Response 200
     + Attributes
@@ -26,18 +24,4 @@ Permanently cancels a Card's ValueStore.
 
     + Body
 
-            {
-                "transaction":{
-                    "transactionId": "transaction-7fxx89",
-                    "value": -50,
-                    "userSuppliedId": "case-122",
-                    "dateCreated": "2017-06-05T16:39:06.679Z",
-                    "transactionType": "CANCELLATION",
-                    "transactionAccessMethod": "CARDID",
-                    "valueAvailableAfterTransaction": 0,
-                    "giftbitUserId": "user-50xx93",
-                    "codeLastFour": "NKNA",
-                    "cardId": "card-fbxxda",
-                    "currency": "XXX"
-                }
-            }
+            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.231Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-7319e692ec4840c396bb3195e3574dfd","transactionType":"CANCELLATION","userSuppliedId":"transaction-6c8afefe4a63420bae6573cce57bcf9b-cancel","value":-150,"valueAvailableAfterTransaction":0}}

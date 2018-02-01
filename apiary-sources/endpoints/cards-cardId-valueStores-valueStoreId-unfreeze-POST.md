@@ -16,9 +16,7 @@ Unfreeze a Card's frozen ValueStore, re-enabling the creation of transactions ag
         
     + Body 
     
-            {
-                "userSuppliedId":"case-320-resolved"
-            }
+            {"userSuppliedId":"transaction-6f8e652d545541c6adcc09312b506ebf-Unfreeze"}
     
 + Response 200
     + Attributes
@@ -26,19 +24,5 @@ Unfreeze a Card's frozen ValueStore, re-enabling the creation of transactions ag
 
     + Body
 
-            {
-                "transaction":{
-                    "transactionId": "transaction-f7xx82",
-                    "value": 50,
-                    "userSuppliedId": "ccase-320-resolved",
-                    "dateCreated": "2017-06-05T16:37:57.218Z",
-                    "transactionType": "UNFREEZE",
-                    "transactionAccessMethod": "CARDID",
-                    "valueAvailableAfterTransaction": 50,
-                    "giftbitUserId": "user-50xx93",
-                    "codeLastFour": "NKNA",
-                    "cardId": "card-fbxxda",
-                    "currency": "XXX"
-                }
-            }
+            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.104Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":150,"valueAvailableAfterTransaction":150,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-6c8afefe4a63420bae6573cce57bcf9b","transactionType":"UNFREEZE","userSuppliedId":"transaction-6f8e652d545541c6adcc09312b506ebf-Unfreeze","value":150,"valueAvailableAfterTransaction":150}}
 

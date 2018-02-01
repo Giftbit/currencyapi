@@ -14,14 +14,5 @@
 
     + Body
 
-            {
-                "valueStore":{
-                    "cardId": "card-99xx65",
-                    "valueStoreId": "value-0fxx04",
-                    "valueStoreType": "PRINCIPAL",
-                    "currency": "XXX",
-                    "dateCreated": "2017-06-05T15:39:25.392Z",
-                    "programId": "program-dexx72"
-                }
-            }
+            {"valueStore":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","currency":"USD","dateCreated":"2018-01-29T20:26:20.921Z","programId":"program-17aae714584b4355a2232fdd6a719398","valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa","valueStoreType":"ATTACHED"}}
 

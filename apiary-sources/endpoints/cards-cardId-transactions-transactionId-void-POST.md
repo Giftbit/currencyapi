@@ -17,12 +17,7 @@ Voids a pending Transaction by unlocking the value withheld by the pending Trans
     
     + Body 
             
-            {
-              "userSuppliedId":"transaction-fbxx5a-void",
-              "metadata": {
-                 "reason": "timeout."
-              }                            
-            }
+            {"userSuppliedId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a-void"}
     
 + Response 200
     + Attributes
@@ -30,22 +25,5 @@ Voids a pending Transaction by unlocking the value withheld by the pending Trans
         
     + Body
 
-            {
-                "transaction":{
-                    "transactionId":"transaction-7dxx3b",
-                    "value":50,
-                    "userSuppliedId":"transaction-fbxx5a-void",
-                    "dateCreated":"2017-07-31T18:54:58.141Z",
-                    "transactionType":"PENDING_VOID",
-                    "transactionAccessMethod":"CARDID",
-                    "valueAvailableAfterTransaction":1299,
-                    "giftbitUserId":"user-1dxx32",
-                    "cardId":"card-76xxab",
-                    "currency":"USD",
-                    "parentTransactionId":"transaction-fbxx5a",
-                    "metadata":{
-                      "giftbit_initial_transaction_id":"transaction-fbxx5a"
-                    }
-                }
-            }
+            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.810Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a"},"parentTransactionId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-736d945905604f0990be592efdfed6d2","transactionType":"PENDING_VOID","userSuppliedId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a-void","value":100,"valueAvailableAfterTransaction":500}}
 
