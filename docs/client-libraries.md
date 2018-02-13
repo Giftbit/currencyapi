@@ -20,6 +20,10 @@ Here is the list of Lightrail client libraries for different languages and techn
 - [Lightrail Typescript Client](https://github.com/Giftbit/lightrail-client-javascript)
 - [Lightrail Stripe Integration for Javascript/Typescript](https://github.com/Giftbit/lightrail-stripe-javascript)
 
+#### C#
+- [Lightrail .NET Client](https://github.com/Giftbit/lightrail-client-dotnet)
+- [Lightrail Stripe Integration for .NET](https://github.com/Giftbit/lightrail-stripe-dotnet)
+
 ### Third-Party Integrations
 
 #### Stripe
@@ -27,6 +31,7 @@ Here is the list of Lightrail client libraries for different languages and techn
 - [Lightrail Stripe Integration for PHP](https://github.com/Giftbit/lightrail-stripe-php)
 - [Lightrail Stripe Integration for Ruby](https://github.com/Giftbit/lightrail-stripe-ruby)
 - [Lightrail Stripe Integration for Javascript/Typescript](https://github.com/Giftbit/lightrail-stripe-javascript)
+- [Lightrail Stripe Integration for .NET](https://github.com/Giftbit/lightrail-stripe-dotnet)
 
 For a working example of the Stripe Integration libraries, check out our [Lightrail Stripe Sample App](https://github.com/Giftbit/stripe-integration-sample-webapp).
 
