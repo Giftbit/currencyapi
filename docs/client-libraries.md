@@ -16,9 +16,9 @@ Here is the list of Lightrail client libraries for different languages and techn
 - [Lightrail Ruby Client](https://github.com/Giftbit/lightrail-client-ruby)
 - [Lightrail Stripe Integration for Ruby](https://github.com/Giftbit/lightrail-stripe-ruby)
 
-#### JavaScript/TypeScript
-- [Lightrail Typescript Client](https://github.com/Giftbit/lightrail-client-javascript)
-- [Lightrail Stripe Integration for Javascript/Typescript](https://github.com/Giftbit/lightrail-stripe-javascript)
+#### Node (JavaScript & TypeScript)
+- [Lightrail JavaScript Client](https://github.com/Giftbit/lightrail-client-javascript)
+- [Lightrail Stripe Integration for JavaScript/TypeScript](https://github.com/Giftbit/lightrail-stripe-javascript)
 
 #### .NET
 - [Lightrail .NET Client](https://github.com/Giftbit/lightrail-client-dotnet)
