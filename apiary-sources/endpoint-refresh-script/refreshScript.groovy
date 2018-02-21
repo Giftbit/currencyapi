@@ -42,9 +42,6 @@ while (callsToDo) {
             println "Error: ${call.toString()} exceeded 10 retry attempts."
             throw new Exception("${call.toString()} exceeded number of attempts.")
         }
-        if (call.callId == "deliverGiftCard") {
-            println "hi hi"
-        }
         if (!call.finishedReplacement) {
             try {
                 call = checkForReplacements(call, calls) as Map
