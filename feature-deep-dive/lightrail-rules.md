@@ -82,7 +82,7 @@ round(sum([1.23, 4.56, 7.89]))
 [1.23, 4.56, 7.89].sum().round()
 ```
 
-Some functions operate on collections and take a lambda parameter.  These are the most powerful functions.  Lambdas are written using fat arrow `=>` notation and are single statements that return a value, just like redemption rules.  The parameter names can be any combination of letters.  If the lambda only has one argument the parentheses can be skipped.
+Some functions operate on collections and take a lambda parameter.  These are the most powerful functions.  Lambdas are written using fat arrow `=>` notation and are single statements that return a value, just like rules.  The parameter names can be any combination of letters.  If the lambda only has one argument the parentheses can be skipped.
 
 ```javascript
 [1, 2, 3, 4, 5].filter(x => x % 2 == 0) → [2, 4]
