@@ -18,7 +18,7 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
     
     + Body 
         
-            {"userSuppliedId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a-capture"}
+            {"userSuppliedId":"transaction-64eb3b0cab034e00b1b90a6d72aa7616-capture"}
 
 + Response 200
     + Attributes
@@ -26,5 +26,5 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
 
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.517Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a"},"parentTransactionId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":400,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-aaff893f88164f94a47a4af1c3411900","transactionType":"DRAWDOWN","userSuppliedId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a-capture","value":-100,"valueAvailableAfterTransaction":400}}
+            {"transaction":{"value":-100,"userSuppliedId":"transaction-64eb3b0cab034e00b1b90a6d72aa7616-capture","dateCreated":"2018-02-21T00:23:21.652Z","transactionType":"DRAWDOWN","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":400,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":400,"valueStoreId":"value-0de33ac5ca5243e7aab1b19cc2e90776"}],"transactionId":"transaction-48bf5e731f624e7d9b4325353377d9a2","parentTransactionId":"transaction-64eb3b0cab034e00b1b90a6d72aa7616","metadata":{"giftbit_initial_transaction_id":"transaction-64eb3b0cab034e00b1b90a6d72aa7616"}}}
 

@@ -21,7 +21,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
     
-            {"cardType":"ACCOUNT_CARD","contactId":"contact-067572a652874be6aec2664896965dae","currency":"USD","initialValue":500,"userSuppliedId":"contact-067572a652874be6aec2664896965dae-account"}
+            {"userSuppliedId":"contact-126abb61e0fa4e3c86fd6da50b741465-account","cardType":"ACCOUNT_CARD","contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","currency":"USD","initialValue":500}
         
 + Response 200
     + Attributes
@@ -29,7 +29,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
 
-            {"card":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-f398fa67056f4116b23c599185800e33","key":"giftbit_program","value":"program-account-USD-user-4646197086af471fa9265fd3d1546ffa"}],"contactId":"contact-067572a652874be6aec2664896965dae","currency":"USD","dateCreated":"2018-01-29T20:26:20.092Z","userSuppliedId":"contact-067572a652874be6aec2664896965dae-account"}}
+            {"card":{"cardId":"card-4085e168a3924df7a6097010674a77ff","userSuppliedId":"contact-126abb61e0fa4e3c86fd6da50b741465-account","contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","dateCreated":"2018-02-21T00:23:21.360Z","categories":[{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"},{"categoryId":"category-f0ce164180674c20aeacfe494cd8c4d2","key":"giftbit_program","value":"program-account-USD-user-717a97087fcf4ff4a603e3d7afa08951-TEST"}],"cardType":"ACCOUNT_CARD","currency":"USD"}}
             
 
 ### Create Gift Card [POST /cards]
@@ -57,7 +57,7 @@ Create a Card of type `GIFT_CARD`.
 
     + Body
     
-            {"cardType":"GIFT_CARD","initialValue":5000,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","userSuppliedId":"giftcard-3asfd34a"}
+            {"userSuppliedId":"giftcard-3asfd34a","programId":"program-db6ae8091edd4bdd97522f575e753c9a","initialValue":5000,"cardType":"GIFT_CARD"}
         
 + Response 200
     + Attributes
@@ -65,5 +65,5 @@ Create a Card of type `GIFT_CARD`.
         
     + Body
 
-            {"card":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T20:26:16.841Z","userSuppliedId":"giftcard-3asfd34a"}}
+            {"card":{"cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","userSuppliedId":"giftcard-3asfd34a","contactId":null,"dateCreated":"2018-02-21T00:23:18.250Z","categories":[{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"},{"categoryId":"category-33461095d3e2462a8305769daea084a2","key":"giftbit_program","value":"program-db6ae8091edd4bdd97522f575e753c9a"}],"cardType":"GIFT_CARD","currency":"USD"}}
 

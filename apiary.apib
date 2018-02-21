@@ -259,7 +259,7 @@ Use this endpoint for health-checking the API and for testing whether your API k
         
     + Body
     
-            {"user":{"effectiveScopes":["lightrailV1:account","lightrailV1:payments","lightrailV1:sharedSecret","lightrailV1:stripeConnect","lightrailV1:token","lightrailV1:userImage:create","lightrailV1:contact","lightrailV1:card","lightrailV1:valueStore","lightrailV1:transaction","lightrailV1:valueStore","lightrailV1:transaction","lightrailV1:code:balance","lightrailV1:transaction:create:drawdown","lightrailV1:transaction:create:capture","lightrailV1:transaction:create:void","lightrailV1:program","lightrailV1:programKey","lightrailV1:valueStore","lightrailV1:stats","lightrailV1:transaction:create:cancel","lightrailV1:transaction:create:freeze","lightrailV1:transaction:create:unfreeze","lightrailV1:transaction:create:activate","lightrailV1:team","lightrailV1:portal","lightrailV1:token:list","lightrailV1:token:create","lightrailV1:team:show"],"mode":"LIVE","roles":["accountManager","contactManager","customerServiceManager","customerServiceRepresentative","pointOfSale","programManager","promoter","reporter","securityManager","teamAdmin","webPortal"],"scopes":[],"username":"roger@example.com"}}
+            {"user":{"username":"user@example.com","mode":"TEST","scopes":[],"roles":["accountManager","contactManager","customerServiceManager","customerServiceRepresentative","pointOfSale","programManager","promoter","reporter","securityManager","teamAdmin","webPortal"],"effectiveScopes":["lightrailV1:account","lightrailV1:payments","lightrailV1:sharedSecret","lightrailV1:stripeConnect","lightrailV1:token","lightrailV1:userImage:create","lightrailV1:contact","lightrailV1:card","lightrailV1:valueStore","lightrailV1:transaction","lightrailV1:valueStore","lightrailV1:transaction","lightrailV1:card:deliver","lightrailV1:code:balance","lightrailV1:transaction:create:drawdown","lightrailV1:transaction:create:capture","lightrailV1:transaction:create:void","lightrailV1:program","lightrailV1:programKey","lightrailV1:valueStore","lightrailV1:stats","lightrailV1:transaction:create:cancel","lightrailV1:transaction:create:freeze","lightrailV1:transaction:create:unfreeze","lightrailV1:transaction:create:activate","lightrailV1:team","lightrailV1:portal","lightrailV1:token:list","lightrailV1:token:create","lightrailV1:team:show"]}}
         
 + Response 401
 
@@ -300,7 +300,7 @@ Retrieve a paginated list of Cards. The search can be narrowed down based on var
 
     + Body
     
-            {"cards":[{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","categories":[{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"},{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T20:26:16.841Z","userSuppliedId":"giftcard-3asfd34a"}],"pagination":{"count":1,"limit":100,"maxLimit":1000,"offset":0,"totalCount":1}}
+            {"cards":[{"cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","userSuppliedId":"giftcard-3asfd34a","contactId":null,"dateCreated":"2018-02-21T00:23:18.250Z","categories":[{"categoryId":"category-33461095d3e2462a8305769daea084a2","key":"giftbit_program","value":"program-db6ae8091edd4bdd97522f575e753c9a"},{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"}],"cardType":"GIFT_CARD","currency":"USD"},{"cardId":"card-0f28eec8b7b6467fadb8f30e80f0c4c1","userSuppliedId":"733cafb0-6078abc6-65cfb216","contactId":"contact-2e571e7064ab4d9f8b5039fd791baea1","dateCreated":"2018-02-21T00:21:59.006Z","categories":[{"categoryId":"category-f0ce164180674c20aeacfe494cd8c4d2","key":"giftbit_program","value":"program-account-USD-user-717a97087fcf4ff4a603e3d7afa08951-TEST"},{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"}],"cardType":"ACCOUNT_CARD","currency":"USD"}],"pagination":{"count":2,"limit":100,"maxLimit":1000,"offset":0,"totalCount":2}}
 
 ### Retrieve Card [GET /cards/{cardId}]
 Retrieve the Card object by its `cardId`. 
@@ -321,7 +321,7 @@ Retrieve the Card object by its `cardId`.
 
     + Body
         
-            {"card":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","categories":[{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"},{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T20:26:16.841Z","userSuppliedId":"giftcard-3asfd34a"}}
+            {"card":{"cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","userSuppliedId":"giftcard-3asfd34a","contactId":null,"dateCreated":"2018-02-21T00:23:18.250Z","categories":[{"categoryId":"category-33461095d3e2462a8305769daea084a2","key":"giftbit_program","value":"program-db6ae8091edd4bdd97522f575e753c9a"},{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"}],"cardType":"GIFT_CARD","currency":"USD"}}
 
 ### Create Account Card [POST /cards]
 Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contact.
@@ -346,7 +346,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
     
-            {"cardType":"ACCOUNT_CARD","contactId":"contact-067572a652874be6aec2664896965dae","currency":"USD","initialValue":500,"userSuppliedId":"contact-067572a652874be6aec2664896965dae-account"}
+            {"userSuppliedId":"contact-126abb61e0fa4e3c86fd6da50b741465-account","cardType":"ACCOUNT_CARD","contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","currency":"USD","initialValue":500}
         
 + Response 200
     + Attributes
@@ -354,7 +354,7 @@ Create a Card of type `ACCOUNT_CARD` which is associated with an existing Contac
         
     + Body
 
-            {"card":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-f398fa67056f4116b23c599185800e33","key":"giftbit_program","value":"program-account-USD-user-4646197086af471fa9265fd3d1546ffa"}],"contactId":"contact-067572a652874be6aec2664896965dae","currency":"USD","dateCreated":"2018-01-29T20:26:20.092Z","userSuppliedId":"contact-067572a652874be6aec2664896965dae-account"}}
+            {"card":{"cardId":"card-4085e168a3924df7a6097010674a77ff","userSuppliedId":"contact-126abb61e0fa4e3c86fd6da50b741465-account","contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","dateCreated":"2018-02-21T00:23:21.360Z","categories":[{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"},{"categoryId":"category-f0ce164180674c20aeacfe494cd8c4d2","key":"giftbit_program","value":"program-account-USD-user-717a97087fcf4ff4a603e3d7afa08951-TEST"}],"cardType":"ACCOUNT_CARD","currency":"USD"}}
             
 
 ### Create Gift Card [POST /cards]
@@ -382,7 +382,7 @@ Create a Card of type `GIFT_CARD`.
 
     + Body
     
-            {"cardType":"GIFT_CARD","initialValue":5000,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","userSuppliedId":"giftcard-3asfd34a"}
+            {"userSuppliedId":"giftcard-3asfd34a","programId":"program-db6ae8091edd4bdd97522f575e753c9a","initialValue":5000,"cardType":"GIFT_CARD"}
         
 + Response 200
     + Attributes
@@ -390,7 +390,7 @@ Create a Card of type `GIFT_CARD`.
         
     + Body
 
-            {"card":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T20:26:16.841Z","userSuppliedId":"giftcard-3asfd34a"}}
+            {"card":{"cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","userSuppliedId":"giftcard-3asfd34a","contactId":null,"dateCreated":"2018-02-21T00:23:18.250Z","categories":[{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"},{"categoryId":"category-33461095d3e2462a8305769daea084a2","key":"giftbit_program","value":"program-db6ae8091edd4bdd97522f575e753c9a"}],"cardType":"GIFT_CARD","currency":"USD"}}
 
 
 
@@ -415,7 +415,7 @@ Retrieve the `fullcode` (also referred to as Gift Code) associated with a Gift C
 
     + Body
     
-            {"fullcode":{"code":"2LW3X-GTVAL-T75MV-2ELWH-H2RZD"}}
+            {"fullcode":{"code":"Z5H9H-VA8PS-HENKH-2SGH5-DNC3D"}}
 
 
 ### Update Contact on Card [PATCH /cards/{cardId}]
@@ -435,7 +435,7 @@ Update the Contact associated with a Card, effectively transferring the Card to 
             
     + Body
     
-            {"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8"}
+            {"contactId":"contact-083fd74839c84a26974c93a6cbd98dca"}
 
 + Response 200
 
@@ -444,7 +444,7 @@ Update the Contact associated with a Card, effectively transferring the Card to 
 
     + Body
         
-            {"card":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"}],"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8","currency":"USD","dateCreated":"2018-01-29T20:26:16.841Z","userSuppliedId":"giftcard-3asfd34a"}}
+            {"card":{"cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","userSuppliedId":"giftcard-3asfd34a","contactId":"contact-083fd74839c84a26974c93a6cbd98dca","dateCreated":"2018-02-21T00:23:18.250Z","categories":[{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"},{"categoryId":"category-33461095d3e2462a8305769daea084a2","key":"giftbit_program","value":"program-db6ae8091edd4bdd97522f575e753c9a"}],"cardType":"GIFT_CARD","currency":"USD"}}
 
 ### Activate Card [POST /cards/{cardId}/activate]
 If a card has been created as inactive, you can use this endpoint to activate.
@@ -471,7 +471,7 @@ If a card has been created as inactive, you can use this endpoint to activate.
 
     + Body
     
-            {"transaction":{"cardId":"card-996570b110d045cfaaa971a6a0b55409","cardType":"GIFT_CARD","codeLastFour":"ZVRK","currency":"USD","dateCreated":"2018-01-29T20:26:19.619Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-82d9f25fd4fc46a785c299e130b5d142"}],"transactionId":"transaction-9067b10939f341cd8bf6ce146bd66279","transactionType":"ACTIVATE","userSuppliedId":"activate-giftcard-a45etsraw","value":5000,"valueAvailableAfterTransaction":5000}}
+            {"transaction":{"value":5000,"userSuppliedId":"activate-giftcard-a45etsraw","dateCreated":"2018-02-21T00:23:20.890Z","transactionType":"ACTIVATE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":5000,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-33182b81a2984116be6cbf655837b2e0","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-ea455f10ff314b09b5d2a24ceee7cbc5"}],"transactionId":"transaction-71e6471e1eb04a44ac1912db0ac95085","codeLastFour":"3GPH"}}
 
 ### Freeze Card [POST /cards/{cardId}/freeze]
 Freeze a Card, preventing all transactions until unfrozen. 
@@ -489,7 +489,7 @@ Freeze a Card, preventing all transactions until unfrozen.
         + userSuppliedId (string, required) - Endpoint-unique idempotency ID provided by the client.
     + Body 
     
-            {"userSuppliedId":"freeze-transaction-9067b10939f341cd8bf6ce146bd66279"}
+            {"userSuppliedId":"freeze-transaction-71e6471e1eb04a44ac1912db0ac95085"}
     
 + Response 200
     + Attributes
@@ -497,7 +497,7 @@ Freeze a Card, preventing all transactions until unfrozen.
 
     + Body
 
-            {"transaction":{"cardId":"card-996570b110d045cfaaa971a6a0b55409","cardType":"GIFT_CARD","codeLastFour":"ZVRK","currency":"USD","dateCreated":"2018-01-29T20:26:19.711Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-5000,"valueAvailableAfterTransaction":0,"valueStoreId":"value-82d9f25fd4fc46a785c299e130b5d142"}],"transactionId":"transaction-4462590ec3d246ea8a3562e93584afae","transactionType":"FREEZE","userSuppliedId":"freeze-transaction-9067b10939f341cd8bf6ce146bd66279","value":-5000,"valueAvailableAfterTransaction":0}}  
+            {"transaction":{"value":-5000,"userSuppliedId":"freeze-transaction-71e6471e1eb04a44ac1912db0ac95085","dateCreated":"2018-02-21T00:23:20.973Z","transactionType":"FREEZE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":0,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-33182b81a2984116be6cbf655837b2e0","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-5000,"valueAvailableAfterTransaction":0,"valueStoreId":"value-ea455f10ff314b09b5d2a24ceee7cbc5"}],"transactionId":"transaction-e5980d8555524023a83cedbf545e6a5d","codeLastFour":"3GPH"}}  
 
 
 ### Unfreeze Card [POST /cards/{cardId}/unfreeze]
@@ -517,7 +517,7 @@ Unfreeze a frozen Card, re-enabling the creation of transactions.
    
     + Body 
     
-            {"userSuppliedId":"unfreeze-transaction-4462590ec3d246ea8a3562e93584afae"}
+            {"userSuppliedId":"unfreeze-transaction-e5980d8555524023a83cedbf545e6a5d"}
     
 + Response 200
     + Attributes
@@ -525,7 +525,7 @@ Unfreeze a frozen Card, re-enabling the creation of transactions.
 
     + Body
 
-           {"transaction":{"cardId":"card-996570b110d045cfaaa971a6a0b55409","cardType":"GIFT_CARD","codeLastFour":"ZVRK","currency":"USD","dateCreated":"2018-01-29T20:26:19.798Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-82d9f25fd4fc46a785c299e130b5d142"}],"transactionId":"transaction-0f2ece01348747cd8e670adc9c1a8351","transactionType":"UNFREEZE","userSuppliedId":"unfreeze-transaction-4462590ec3d246ea8a3562e93584afae","value":5000,"valueAvailableAfterTransaction":5000}}
+           {"transaction":{"value":5000,"userSuppliedId":"unfreeze-transaction-e5980d8555524023a83cedbf545e6a5d","dateCreated":"2018-02-21T00:23:21.060Z","transactionType":"UNFREEZE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":5000,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-33182b81a2984116be6cbf655837b2e0","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-ea455f10ff314b09b5d2a24ceee7cbc5"}],"transactionId":"transaction-f74640609d38482dac0c77f05c1bc932","codeLastFour":"3GPH"}}
 
 ### Cancel Card [POST /cards/{cardId}/cancel]
 Cancel a Card permanently.
@@ -545,13 +545,13 @@ Cancel a Card permanently.
     + Body
             
             
-            {"userSuppliedId":"cancel-transaction-0f2ece01348747cd8e670adc9c1a8351"}
+            {"userSuppliedId":"cancel-transaction-f74640609d38482dac0c77f05c1bc932"}
     
 + Response 200
 
     + Body
     
-            {"card":{"cardId":"card-996570b110d045cfaaa971a6a0b55409","cardType":"GIFT_CARD","categories":[{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"},{"categoryId":"category-52621c4c2a604b36a340e527c3f22aa0","key":"giftbit_status","value":"CANCELLED"},{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"}],"contactId":null,"currency":"USD","dateCreated":"2018-01-29T20:26:19.427Z","userSuppliedId":"giftcard-a45etsraw"}}
+            {"card":{"cardId":"card-33182b81a2984116be6cbf655837b2e0","userSuppliedId":"giftcard-a45etsraw","contactId":null,"dateCreated":"2018-02-21T00:23:20.703Z","categories":[{"categoryId":"category-327fd33532a249e98952e40f8cf8b2c7","key":"giftbit_status","value":"CANCELLED"},{"categoryId":"category-33461095d3e2462a8305769daea084a2","key":"giftbit_program","value":"program-db6ae8091edd4bdd97522f575e753c9a"},{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"}],"cardType":"GIFT_CARD","currency":"USD"}}
 
 ## Contacts [/contacts]
 Use these endpoints to create, retrieve, and update your Lightrail Contacts. 
@@ -584,7 +584,7 @@ Retrieve a paginated list of Contacts.
        + pagination (Pagination)
 
     + Body
-            {"contacts":[{"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8","dateCreated":"2018-01-29T20:26:17.000Z","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","userSuppliedId":"createContact2"},{"contactId":"contact-067572a652874be6aec2664896965dae","dateCreated":"2018-01-29T20:26:16.000Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"createContact1"}],"pagination":{"count":2,"limit":100,"maxLimit":1000,"offset":0,"totalCount":2}}
+            {"contacts":[{"contactId":"contact-083fd74839c84a26974c93a6cbd98dca","userSuppliedId":"createContact2","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","dateCreated":"2018-02-21T00:23:18.000Z"},{"contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","userSuppliedId":"createContact1","email":"alice@example.com","firstName":null,"lastName":null,"dateCreated":"2018-02-21T00:23:18.000Z"},{"contactId":"contact-2e571e7064ab4d9f8b5039fd791baea1","userSuppliedId":"dropinPreviewContact","email":"tim+23ar4esdf32awsx@giftbit.com","firstName":null,"lastName":null,"dateCreated":"2018-02-21T00:21:59.000Z"}],"pagination":{"count":3,"limit":100,"maxLimit":1000,"offset":0,"totalCount":3}}
 
 
 ### Show Contact [GET /contacts/{contactId}]
@@ -603,7 +603,7 @@ Retrieve a paginated list of Contacts.
 
     + Body
     
-            {"contact":{"contactId":"contact-067572a652874be6aec2664896965dae","dateCreated":"2018-01-29T20:26:16.438Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"createContact1"}}
+            {"contact":{"contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","userSuppliedId":"createContact1","email":"alice@example.com","firstName":null,"lastName":null,"dateCreated":"2018-02-21T00:23:17.871Z"}}
 
 
 ### Create Contact [POST /contacts]
@@ -623,7 +623,7 @@ Creates a new Contact.
         
             
     + Body
-            {"email":"alice@example.com","userSuppliedId":"createContact1"}
+            {"userSuppliedId":"createContact1","email":"alice@example.com"}
 
     
 + Response 200
@@ -631,7 +631,7 @@ Creates a new Contact.
         + contact (Contact)
 
     + Body
-            {"contact":{"contactId":"contact-067572a652874be6aec2664896965dae","dateCreated":"2018-01-29T20:26:16.438Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"createContact1"}}
+            {"contact":{"contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","userSuppliedId":"createContact1","email":"alice@example.com","firstName":null,"lastName":null,"dateCreated":"2018-02-21T00:23:17.871Z"}}
 
 ### Update Contact [PATCH /contacts/{contactId}]
 Updates a Contact.
@@ -660,7 +660,7 @@ Updates a Contact.
 
     + Body
     
-            {"contact":{"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8","dateCreated":"2018-01-29T20:26:17.000Z","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","userSuppliedId":"createContact2"}}
+            {"contact":{"contactId":"contact-083fd74839c84a26974c93a6cbd98dca","userSuppliedId":"createContact2","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","dateCreated":"2018-02-21T00:23:18.000Z"}}
 
 
 ### Retrieve Account Cards or Gift Cards for Contact [GET /cards{?contactId}{?cardType}{?currency}]
@@ -684,7 +684,7 @@ Retrieve a paginated list of a Contact's Cards.
 
     + Body
     
-            {"cards":[{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","categories":[{"categoryId":"category-1a167e8f87a24edaa930b37c6c8ff628","key":"giftbit_order","value":"2018-01-29"},{"categoryId":"category-a5d681cddb4b4a6bbd5f44aa2e89b4a6","key":"giftbit_program","value":"program-37f8dc6bada64ace830affb1b7100b7f"}],"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8","currency":"USD","dateCreated":"2018-01-29T20:26:16.841Z","userSuppliedId":"giftcard-3asfd34a"}],"pagination":{"count":1,"limit":100,"maxLimit":1000,"offset":0,"totalCount":1}}
+            {"cards":[{"cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","userSuppliedId":"giftcard-3asfd34a","contactId":"contact-083fd74839c84a26974c93a6cbd98dca","dateCreated":"2018-02-21T00:23:18.250Z","categories":[{"categoryId":"category-33461095d3e2462a8305769daea084a2","key":"giftbit_program","value":"program-db6ae8091edd4bdd97522f575e753c9a"},{"categoryId":"category-86ce6f1d0c2947cbbfdc10b6d8d5402a","key":"giftbit_order","value":"2018-02-21"}],"cardType":"GIFT_CARD","currency":"USD"}],"pagination":{"count":1,"limit":100,"maxLimit":1000,"offset":0,"totalCount":1}}
 
 
 ## Simulate and Balance-Check [/cards/{cardId}/balance/]
@@ -725,7 +725,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body 
     
-            {"currency":"USD","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"nsf":false,"userSuppliedId":"transaction-234342","value":-250}
+            {"userSuppliedId":"transaction-234342","value":-250,"currency":"USD","nsf":false,"metadata":{"cart":{"total":250,"items":[{"id":"B000F34ZKS","quantity":1,"unit_price":150,"tags":["gear","outdoor","clearance"]},{"id":"B009L1MF7A","quantity":2,"unit_price":100,"tags":["apparel","outdoor"]}]}}}
     
 + Response 200
     + Attributes
@@ -733,7 +733,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body
 
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":null,"giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":null,"transactionType":"DRAWDOWN","userSuppliedId":"transaction-234342","value":-250,"valueAvailableAfterTransaction":4750}}
+            {"transaction":{"value":-250,"userSuppliedId":"transaction-234342","dateCreated":null,"transactionType":"DRAWDOWN","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":4750,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":null,"metadata":{"cart":{"total":250,"items":[{"quantity":1,"id":"B000F34ZKS","unit_price":150,"tags":["gear","outdoor","clearance"]},{"quantity":2,"id":"B009L1MF7A","unit_price":100,"tags":["apparel","outdoor"]}]}},"codeLastFour":"NC3D"}}
 
 
 ### Simulate a Transaction and Balance-Check Based on Gift Code [POST /cards/{fullcode}/transactions/dryRun{?pin}]
@@ -766,7 +766,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body 
     
-            {"currency":"USD","userSuppliedId":"transaction-234aweras4","value":-100}
+            {"userSuppliedId":"transaction-234aweras4","value":-100,"currency":"USD"}
     
 + Response 200
     + Attributes
@@ -774,7 +774,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body
 
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":null,"giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":null,"transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650}}
+            {"transaction":{"value":-100,"userSuppliedId":"transaction-234aweras4","dateCreated":null,"transactionType":"DRAWDOWN","transactionAccessMethod":"RAWCODE","valueAvailableAfterTransaction":4650,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":null,"codeLastFour":"NC3D"}}
 
 ### Get Card Details by Card ID [GET /cards/{cardId}/details{?asAtDate}]
 Retrieve a Card's details based on its `cardId`. 
@@ -794,7 +794,7 @@ The response includes the Value Stores (principal or attached promotions) as wel
 
     + Body
 
-            {"details":{"asAtDate":"2018-01-29T20:26:17.441Z","cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","valueStores":[{"expires":null,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","restrictions":[],"startDate":null,"state":"ACTIVE","value":5000,"valueStoreId":"value-eefd98f834174294af3945d251f8441f","valueStoreType":"PRINCIPAL"}]}}
+            {"details":{"valueStores":[{"valueStoreType":"PRINCIPAL","value":5000,"state":"ACTIVE","expires":null,"startDate":null,"programId":"program-db6ae8091edd4bdd97522f575e753c9a","valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1","restrictions":[]}],"currency":"USD","cardType":"GIFT_CARD","asAtDate":"2018-02-21T00:23:18.701Z","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","codeLastFour":"NC3D"}}
 
 ### Get Card Details by Gift Code [GET /codes/{fullcode}/details{?asAtDate}{?pin}]
 Retrieve a Gift Card's details based on its `fullcode`. 
@@ -816,7 +816,7 @@ The response includes the Value Stores (principal or attached promotions) as wel
 
     + Body
 
-            {"details":{"asAtDate":"2018-01-29T20:26:17.347Z","cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","valueStores":[{"expires":null,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","restrictions":[],"startDate":null,"state":"ACTIVE","value":5000,"valueStoreId":"value-eefd98f834174294af3945d251f8441f","valueStoreType":"PRINCIPAL"}]}}
+            {"details":{"valueStores":[{"valueStoreType":"PRINCIPAL","value":5000,"state":"ACTIVE","expires":null,"startDate":null,"programId":"program-db6ae8091edd4bdd97522f575e753c9a","valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1","restrictions":[]}],"currency":"USD","cardType":"GIFT_CARD","asAtDate":"2018-02-21T00:23:18.586Z","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","codeLastFour":"NC3D"}}
 
 ## Transactions [/cards/{cardId}/transactions]
 Use these endpoints to create and retrieve Transactions on Cards, based on their `cardId` or `fullcode`. 
@@ -848,7 +848,7 @@ Transactions can be created as pending which locks the value required for the Tr
         
     + Body 
         
-        {"currency":"USD","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"userSuppliedId":"transaction-234342","value":-250}
+        {"userSuppliedId":"transaction-234342","value":-250,"currency":"USD","metadata":{"cart":{"total":250,"items":[{"id":"B000F34ZKS","quantity":1,"unit_price":150,"tags":["gear","outdoor","clearance"]},{"id":"B009L1MF7A","quantity":2,"unit_price":100,"tags":["apparel","outdoor"]}]}}}
     
             
     
@@ -858,7 +858,7 @@ Transactions can be created as pending which locks the value required for the Tr
 
     + Body
 
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.820Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-77e9457194134421ac6a26ceffd2f4c4","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234342","value":-250,"valueAvailableAfterTransaction":4750}}
+            {"transaction":{"value":-250,"userSuppliedId":"transaction-234342","dateCreated":"2018-02-21T00:23:20.148Z","transactionType":"DRAWDOWN","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":4750,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-4b938172cc9142e2b7c2474efb6de811","metadata":{"cart":{"total":250,"items":[{"quantity":1,"id":"B000F34ZKS","unit_price":150,"tags":["gear","outdoor","clearance"]},{"quantity":2,"id":"B009L1MF7A","unit_price":100,"tags":["apparel","outdoor"]}]}},"codeLastFour":"NC3D"}}
 
 
 
@@ -893,7 +893,7 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
         
     + Body 
     
-            {"currency":"USD","userSuppliedId":"transaction-234aweras4","value":-100}
+            {"userSuppliedId":"transaction-234aweras4","value":-100,"currency":"USD"}
     
 + Response 200
     + Attributes
@@ -901,7 +901,7 @@ so, when creating a pending Transaction you need to save the `cardId` from the r
 
     + Body
 
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.992Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-4e8d9d0ecbf54288a0151b2347989489","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650}}
+            {"transaction":{"value":-100,"userSuppliedId":"transaction-234aweras4","dateCreated":"2018-02-21T00:23:20.303Z","transactionType":"DRAWDOWN","transactionAccessMethod":"RAWCODE","valueAvailableAfterTransaction":4650,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-51b9e07d4ca04867b7fef4f12ab47c7c","codeLastFour":"NC3D"}}
 
 ### Capture Pending Transaction [POST /cards/{cardId}/transactions/{transactionId}/capture]
 Capture a pending Transaction, thereby collecting the value withheld by the pending Transaction.
@@ -923,7 +923,7 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
     
     + Body 
         
-            {"userSuppliedId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a-capture"}
+            {"userSuppliedId":"transaction-64eb3b0cab034e00b1b90a6d72aa7616-capture"}
 
 + Response 200
     + Attributes
@@ -931,7 +931,7 @@ Capture a pending Transaction, thereby collecting the value withheld by the pend
 
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.517Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a"},"parentTransactionId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":400,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-aaff893f88164f94a47a4af1c3411900","transactionType":"DRAWDOWN","userSuppliedId":"transaction-5fb7376a8c4a47dc95f05c340fa5f87a-capture","value":-100,"valueAvailableAfterTransaction":400}}
+            {"transaction":{"value":-100,"userSuppliedId":"transaction-64eb3b0cab034e00b1b90a6d72aa7616-capture","dateCreated":"2018-02-21T00:23:21.652Z","transactionType":"DRAWDOWN","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":400,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":400,"valueStoreId":"value-0de33ac5ca5243e7aab1b19cc2e90776"}],"transactionId":"transaction-48bf5e731f624e7d9b4325353377d9a2","parentTransactionId":"transaction-64eb3b0cab034e00b1b90a6d72aa7616","metadata":{"giftbit_initial_transaction_id":"transaction-64eb3b0cab034e00b1b90a6d72aa7616"}}}
 
 
 ### Void Pending Transaction [POST /cards/{cardId}/transactions/{transactionId}/void]
@@ -953,7 +953,7 @@ Voids a pending Transaction by unlocking the value withheld by the pending Trans
     
     + Body 
             
-            {"userSuppliedId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a-void"}
+            {"userSuppliedId":"transaction-2a47a9a1f8b1483b82f8692709963025-void"}
     
 + Response 200
     + Attributes
@@ -961,7 +961,7 @@ Voids a pending Transaction by unlocking the value withheld by the pending Trans
         
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.810Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a"},"parentTransactionId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-736d945905604f0990be592efdfed6d2","transactionType":"PENDING_VOID","userSuppliedId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a-void","value":100,"valueAvailableAfterTransaction":500}}
+            {"transaction":{"value":100,"userSuppliedId":"transaction-2a47a9a1f8b1483b82f8692709963025-void","dateCreated":"2018-02-21T00:23:21.943Z","transactionType":"PENDING_VOID","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":500,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-0de33ac5ca5243e7aab1b19cc2e90776"}],"transactionId":"transaction-1262387353e048ed9b215da932fe930a","parentTransactionId":"transaction-2a47a9a1f8b1483b82f8692709963025","metadata":{"giftbit_initial_transaction_id":"transaction-2a47a9a1f8b1483b82f8692709963025"}}}
 
 
 ### Refund Transaction [POST /cards/{cardId}/transactions/{transactionId}/refund]
@@ -984,7 +984,7 @@ Refund a Transaction by reversing its effect.
     
     + Body 
             
-            {"userSuppliedId":"transaction-aaff893f88164f94a47a4af1c3411900-refund"}
+            {"userSuppliedId":"transaction-48bf5e731f624e7d9b4325353377d9a2-refund"}
     
 + Response 200
     + Attributes
@@ -992,7 +992,7 @@ Refund a Transaction by reversing its effect.
         
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.624Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-aaff893f88164f94a47a4af1c3411900"},"parentTransactionId":"transaction-aaff893f88164f94a47a4af1c3411900","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-a65baed608974889856e51e28d6cd5e6","transactionType":"DRAWDOWN_REFUND","userSuppliedId":"transaction-aaff893f88164f94a47a4af1c3411900-refund","value":100,"valueAvailableAfterTransaction":500}}
+            {"transaction":{"value":100,"userSuppliedId":"transaction-48bf5e731f624e7d9b4325353377d9a2-refund","dateCreated":"2018-02-21T00:23:21.746Z","transactionType":"DRAWDOWN_REFUND","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":500,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-0de33ac5ca5243e7aab1b19cc2e90776"}],"transactionId":"transaction-cb255015b29e47d4902166df87eba9c1","parentTransactionId":"transaction-48bf5e731f624e7d9b4325353377d9a2","metadata":{"giftbit_initial_transaction_id":"transaction-48bf5e731f624e7d9b4325353377d9a2"}}}
             
 
 
@@ -1021,7 +1021,7 @@ Retrieve a paginated list of a Card's Transactions based on the Card ID.
 
     + Body
             
-            {"pagination":{"count":3,"limit":100,"maxLimit":1000,"offset":0,"totalCount":3},"transactions":[{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.992Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-4e8d9d0ecbf54288a0151b2347989489","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650},{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.820Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-77e9457194134421ac6a26ceffd2f4c4","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234342","value":-250,"valueAvailableAfterTransaction":4750},{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:16.937Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-7255dad2812f447b80f66c0fb95232d0","transactionType":"INITIAL_VALUE","userSuppliedId":"giftcard-3asfd34a","value":5000,"valueAvailableAfterTransaction":5000}]}
+            {"transactions":[{"value":-100,"userSuppliedId":"transaction-234aweras4","dateCreated":"2018-02-21T00:23:20.303Z","transactionType":"DRAWDOWN","transactionAccessMethod":"RAWCODE","valueAvailableAfterTransaction":4650,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-51b9e07d4ca04867b7fef4f12ab47c7c","codeLastFour":"NC3D"},{"value":-250,"userSuppliedId":"transaction-234342","dateCreated":"2018-02-21T00:23:20.148Z","transactionType":"DRAWDOWN","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":4750,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-4b938172cc9142e2b7c2474efb6de811","metadata":{"cart":{"total":250,"items":[{"quantity":1,"id":"B000F34ZKS","unit_price":150,"tags":["gear","outdoor","clearance"]},{"quantity":2,"id":"B009L1MF7A","unit_price":100,"tags":["apparel","outdoor"]}]}},"codeLastFour":"NC3D"},{"value":5000,"userSuppliedId":"giftcard-3asfd34a","dateCreated":"2018-02-21T00:23:18.350Z","transactionType":"INITIAL_VALUE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":5000,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-4503204807d443a094fb753d2e2d151d","codeLastFour":"NC3D"}],"pagination":{"count":3,"limit":100,"maxLimit":1000,"offset":0,"totalCount":3}}
 
 ### List Card Transactions Based on Gift Code [GET /codes/{fullcode}/transactions{?pin}{?userSuppliedId}{?transactionType}{?limit}{?offset}]
 Retrieve a paginated list of a Card's Transactions based on the Gift Card's `fullcode`.
@@ -1049,7 +1049,7 @@ Retrieve a paginated list of a Card's Transactions based on the Gift Card's `ful
 
     + Body
 
-            {"pagination":{"count":3,"limit":100,"maxLimit":1000,"offset":0,"totalCount":3},"transactions":[{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.992Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-4e8d9d0ecbf54288a0151b2347989489","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650},{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.820Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-77e9457194134421ac6a26ceffd2f4c4","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234342","value":-250,"valueAvailableAfterTransaction":4750},{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:16.937Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-7255dad2812f447b80f66c0fb95232d0","transactionType":"INITIAL_VALUE","userSuppliedId":"giftcard-3asfd34a","value":5000,"valueAvailableAfterTransaction":5000}]}
+            {"transactions":[{"value":-100,"userSuppliedId":"transaction-234aweras4","dateCreated":"2018-02-21T00:23:20.303Z","transactionType":"DRAWDOWN","transactionAccessMethod":"RAWCODE","valueAvailableAfterTransaction":4650,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-51b9e07d4ca04867b7fef4f12ab47c7c","codeLastFour":"NC3D"},{"value":-250,"userSuppliedId":"transaction-234342","dateCreated":"2018-02-21T00:23:20.148Z","transactionType":"DRAWDOWN","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":4750,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-4b938172cc9142e2b7c2474efb6de811","metadata":{"cart":{"total":250,"items":[{"quantity":1,"id":"B000F34ZKS","unit_price":150,"tags":["gear","outdoor","clearance"]},{"quantity":2,"id":"B009L1MF7A","unit_price":100,"tags":["apparel","outdoor"]}]}},"codeLastFour":"NC3D"},{"value":5000,"userSuppliedId":"giftcard-3asfd34a","dateCreated":"2018-02-21T00:23:18.350Z","transactionType":"INITIAL_VALUE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":5000,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":5000,"valueAvailableAfterTransaction":5000,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-4503204807d443a094fb753d2e2d151d","codeLastFour":"NC3D"}],"pagination":{"count":3,"limit":100,"maxLimit":1000,"offset":0,"totalCount":3}}
 
 
 ### Show Transaction Based on Card ID [GET /cards/{cardId}/transactions/{transactionId}]
@@ -1072,7 +1072,7 @@ Retrieve a particular Transaction by its ID based on the `cardId`.
 
     + Body
 
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.820Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"cart":{"items":[{"id":"B000F34ZKS","quantity":1,"tags":["gear","outdoor","clearance"],"unit_price":150},{"id":"B009L1MF7A","quantity":2,"tags":["apparel","outdoor"],"unit_price":100}],"total":250}},"transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-77e9457194134421ac6a26ceffd2f4c4","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234342","value":-250,"valueAvailableAfterTransaction":4750}}
+            {"transaction":{"value":-250,"userSuppliedId":"transaction-234342","dateCreated":"2018-02-21T00:23:20.148Z","transactionType":"DRAWDOWN","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":4750,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-250,"valueAvailableAfterTransaction":4750,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-4b938172cc9142e2b7c2474efb6de811","metadata":{"cart":{"total":250,"items":[{"quantity":1,"id":"B000F34ZKS","unit_price":150,"tags":["gear","outdoor","clearance"]},{"quantity":2,"id":"B009L1MF7A","unit_price":100,"tags":["apparel","outdoor"]}]}},"codeLastFour":"NC3D"}}
 
 
 
@@ -1098,7 +1098,7 @@ Retrieves a particular Transaction by its ID based on the `fullcode`.
         
     + Body 
     
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.992Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-4e8d9d0ecbf54288a0151b2347989489","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650}}
+            {"transaction":{"value":-100,"userSuppliedId":"transaction-234aweras4","dateCreated":"2018-02-21T00:23:20.303Z","transactionType":"DRAWDOWN","transactionAccessMethod":"RAWCODE","valueAvailableAfterTransaction":4650,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-51b9e07d4ca04867b7fef4f12ab47c7c","codeLastFour":"NC3D"}}
 
 
 
@@ -1131,7 +1131,7 @@ Retrieve a paginated list of a Card's ValueStores.
 
     + Body
 
-            {"pagination":{"count":1,"limit":100,"maxLimit":1000,"offset":0,"totalCount":1},"valueStores":[{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","currency":"USD","dateCreated":"2018-01-29T20:26:16.935Z","programId":"program-37f8dc6bada64ace830affb1b7100b7f","valueStoreId":"value-eefd98f834174294af3945d251f8441f","valueStoreType":"PRINCIPAL"}]}
+            {"valueStores":[{"cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1","valueStoreType":"PRINCIPAL","currency":"USD","dateCreated":"2018-02-21T00:23:18.348Z","programId":"program-db6ae8091edd4bdd97522f575e753c9a"}],"pagination":{"count":1,"limit":100,"maxLimit":1000,"offset":0,"totalCount":1}}
 
 
 ### Show ValueStore [GET /cards/{cardId}/valueStores/{valueStoreId}]
@@ -1150,7 +1150,7 @@ Retrieve a paginated list of a Card's ValueStores.
 
     + Body
 
-            {"valueStore":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","currency":"USD","dateCreated":"2018-01-29T20:26:20.921Z","programId":"program-17aae714584b4355a2232fdd6a719398","valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa","valueStoreType":"ATTACHED"}}
+            {"valueStore":{"cardId":"card-4085e168a3924df7a6097010674a77ff","valueStoreId":"value-a446413ee82d456c88cb478ed44e5279","valueStoreType":"ATTACHED","currency":"USD","dateCreated":"2018-02-21T00:23:22.066Z","programId":"program-a5a204c52df641deaa0511efad7a9578"}}
 
 
 ### Add ValueStore [POST /cards/{cardId}/valueStores]
@@ -1175,7 +1175,7 @@ Adds a ValueStore from a Promotion Program to a Card.
         
     + Body 
     
-            {"currency":"USD","initialValue":150,"programId":"program-17aae714584b4355a2232fdd6a719398","userSuppliedId":"card-d99142eac3bd4abfbe657db000b614f6-promotion1"}
+            {"userSuppliedId":"card-4085e168a3924df7a6097010674a77ff-promotion1","currency":"USD","programId":"program-a5a204c52df641deaa0511efad7a9578","initialValue":150}
     
 + Response 200
     + Attributes
@@ -1183,7 +1183,7 @@ Adds a ValueStore from a Promotion Program to a Card.
 
     + Body
 
-            {"valueStore":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","currency":"USD","dateCreated":"2018-01-29T20:26:20.921Z","programId":"program-17aae714584b4355a2232fdd6a719398","valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa","valueStoreType":"ATTACHED"}}
+            {"valueStore":{"cardId":"card-4085e168a3924df7a6097010674a77ff","valueStoreId":"value-a446413ee82d456c88cb478ed44e5279","valueStoreType":"ATTACHED","currency":"USD","dateCreated":"2018-02-21T00:23:22.066Z","programId":"program-a5a204c52df641deaa0511efad7a9578"}}
 
 
 ### Freeze ValueStore [POST /cards/{cardId}/valueStores/{valueStoreId}/freeze]
@@ -1204,7 +1204,7 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
         
     + Body 
     
-            {"userSuppliedId":"value-8be6b00b5ed148ba98d824a0d30434aa-freeze"}
+            {"userSuppliedId":"value-a446413ee82d456c88cb478ed44e5279-freeze"}
     
 + Response 200
     + Attributes
@@ -1212,7 +1212,7 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
 
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.011Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-6f8e652d545541c6adcc09312b506ebf","transactionType":"FREEZE","userSuppliedId":"value-8be6b00b5ed148ba98d824a0d30434aa-freeze","value":-150,"valueAvailableAfterTransaction":0}}
+            {"transaction":{"value":-150,"userSuppliedId":"value-a446413ee82d456c88cb478ed44e5279-freeze","dateCreated":"2018-02-21T00:23:22.150Z","transactionType":"FREEZE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":0,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-a446413ee82d456c88cb478ed44e5279"}],"transactionId":"transaction-eecb2de3fcfd4dd88c701fc09999f13c"}}
 
 
 ### Unfreeze ValueStore [POST /cards/{cardId}/valueStores/{valueStoreId}/unfreeze]
@@ -1233,7 +1233,7 @@ Unfreeze a Card's frozen ValueStore, re-enabling the creation of transactions ag
         
     + Body 
     
-            {"userSuppliedId":"transaction-6f8e652d545541c6adcc09312b506ebf-Unfreeze"}
+            {"userSuppliedId":"transaction-eecb2de3fcfd4dd88c701fc09999f13c-Unfreeze"}
     
 + Response 200
     + Attributes
@@ -1241,7 +1241,7 @@ Unfreeze a Card's frozen ValueStore, re-enabling the creation of transactions ag
 
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.104Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":150,"valueAvailableAfterTransaction":150,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-6c8afefe4a63420bae6573cce57bcf9b","transactionType":"UNFREEZE","userSuppliedId":"transaction-6f8e652d545541c6adcc09312b506ebf-Unfreeze","value":150,"valueAvailableAfterTransaction":150}}
+            {"transaction":{"value":150,"userSuppliedId":"transaction-eecb2de3fcfd4dd88c701fc09999f13c-Unfreeze","dateCreated":"2018-02-21T00:23:22.230Z","transactionType":"UNFREEZE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":150,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":150,"valueAvailableAfterTransaction":150,"valueStoreId":"value-a446413ee82d456c88cb478ed44e5279"}],"transactionId":"transaction-c0a3ec8162cb4e498da6f918035f1e9f"}}
 
 
 ### Cancel ValueStore [POST /cards/{cardId}/valueStores/{valueStoreId}/cancel]
@@ -1262,7 +1262,7 @@ Permanently cancels a Card's ValueStore.
         
     + Body 
     
-            {"userSuppliedId":"transaction-6c8afefe4a63420bae6573cce57bcf9b-cancel"}
+            {"userSuppliedId":"transaction-c0a3ec8162cb4e498da6f918035f1e9f-cancel"}
     
 + Response 200
     + Attributes
@@ -1270,7 +1270,7 @@ Permanently cancels a Card's ValueStore.
 
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.231Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-7319e692ec4840c396bb3195e3574dfd","transactionType":"CANCELLATION","userSuppliedId":"transaction-6c8afefe4a63420bae6573cce57bcf9b-cancel","value":-150,"valueAvailableAfterTransaction":0}}
+            {"transaction":{"value":-150,"userSuppliedId":"transaction-c0a3ec8162cb4e498da6f918035f1e9f-cancel","dateCreated":"2018-02-21T00:23:22.316Z","transactionType":"CANCELLATION","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":0,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-a446413ee82d456c88cb478ed44e5279"}],"transactionId":"transaction-8f769c59281846c3bd090e08ae1760e5"}}
 
 
 
@@ -1299,7 +1299,7 @@ Retrieves a paginated list of all Lightrail Programs belonging to the user.
 
     + Body
 
-            {"pagination":{"count":2,"limit":100,"maxLimit":1000,"offset":0,"totalCount":2},"programs":[{"active":true,"cardType":null,"codeActivePeriodInDays":null,"codeConfig":"DEFAULT","codeEngine":"SIMPLE_STORED_VALUE","codeValueMax":20000,"codeValueMin":0,"currency":"USD","dateCreated":"2018-01-29T20:26:16.000Z","fixedCodeValues":null,"metadata":null,"name":"Simple Promotion","programExpiresDate":null,"programId":"program-17aae714584b4355a2232fdd6a719398","programStartDate":"2018-01-29T20:26:16.000Z","timeZone":"PST","userSuppliedId":"promotion1","valueStoreType":"ATTACHED"},{"active":true,"cardType":null,"codeActivePeriodInDays":null,"codeConfig":"DEFAULT","codeEngine":"SIMPLE_STORED_VALUE","codeValueMax":20000,"codeValueMin":0,"currency":"USD","dateCreated":"2018-01-29T20:26:16.000Z","fixedCodeValues":null,"metadata":null,"name":"USD Gift Cards","programExpiresDate":null,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","programStartDate":"2018-01-29T20:26:16.000Z","timeZone":"PST","userSuppliedId":"giftCardProgram1","valueStoreType":"PRINCIPAL"}]}
+            {"programs":[{"programId":"program-a5a204c52df641deaa0511efad7a9578","userSuppliedId":"promotion1","name":"Simple Promotion","active":false,"currency":"USD","dateCreated":"2018-02-21T00:23:18.000Z","programExpiresDate":null,"programStartDate":"2018-02-21T00:23:18.000Z","codeActivePeriodInDays":null,"codeValueMin":0,"codeValueMax":20000,"fixedCodeValues":null,"codeEngine":"SIMPLE_STORED_VALUE","codeConfig":"DEFAULT","valueStoreType":"ATTACHED","metadata":null,"timeZone":"PST","cardType":null},{"programId":"program-db6ae8091edd4bdd97522f575e753c9a","userSuppliedId":"giftCardProgram1","name":"USD Gift Cards","active":false,"currency":"USD","dateCreated":"2018-02-21T00:23:18.000Z","programExpiresDate":null,"programStartDate":"2018-02-21T00:23:18.000Z","codeActivePeriodInDays":null,"codeValueMin":0,"codeValueMax":20000,"fixedCodeValues":null,"codeEngine":"SIMPLE_STORED_VALUE","codeConfig":"DEFAULT","valueStoreType":"PRINCIPAL","metadata":null,"timeZone":"PST","cardType":null},{"programId":"program-account-USD-user-717a97087fcf4ff4a603e3d7afa08951-TEST","userSuppliedId":"program-account-USD-user-717a97087fcf4ff4a603e3d7afa08951-TEST","name":"USD Account Program","active":true,"currency":"USD","dateCreated":"2018-02-21T00:21:59.000Z","programExpiresDate":null,"programStartDate":"1970-01-01T00:00:00.000Z","codeActivePeriodInDays":null,"codeValueMin":0,"codeValueMax":null,"fixedCodeValues":null,"codeEngine":"SIMPLE_STORED_VALUE","codeConfig":"DEFAULT","valueStoreType":"PRINCIPAL","metadata":null,"timeZone":"PST","cardType":"ACCOUNT_CARD"},{"programId":"program-7949d6c364244912942b27e22116ff4e","userSuppliedId":"createDropInGiftCardProgram","name":"Demo Gift Card Program","active":true,"currency":"USD","dateCreated":"2018-02-21T00:21:50.000Z","programExpiresDate":null,"programStartDate":"2018-02-21T00:21:50.000Z","codeActivePeriodInDays":null,"codeValueMin":100,"codeValueMax":100000,"fixedCodeValues":null,"codeEngine":"SIMPLE_STORED_VALUE","codeConfig":"DEFAULT","valueStoreType":"PRINCIPAL","metadata":null,"timeZone":"PST","cardType":null}],"pagination":{"count":4,"limit":100,"maxLimit":1000,"offset":0,"totalCount":4}}
 
 
 # Data Structures

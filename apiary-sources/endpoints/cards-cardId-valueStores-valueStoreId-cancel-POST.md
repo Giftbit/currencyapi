@@ -16,7 +16,7 @@ Permanently cancels a Card's ValueStore.
         
     + Body 
     
-            {"userSuppliedId":"transaction-6c8afefe4a63420bae6573cce57bcf9b-cancel"}
+            {"userSuppliedId":"transaction-c0a3ec8162cb4e498da6f918035f1e9f-cancel"}
     
 + Response 200
     + Attributes
@@ -24,4 +24,4 @@ Permanently cancels a Card's ValueStore.
 
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.231Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-7319e692ec4840c396bb3195e3574dfd","transactionType":"CANCELLATION","userSuppliedId":"transaction-6c8afefe4a63420bae6573cce57bcf9b-cancel","value":-150,"valueAvailableAfterTransaction":0}}
+            {"transaction":{"value":-150,"userSuppliedId":"transaction-c0a3ec8162cb4e498da6f918035f1e9f-cancel","dateCreated":"2018-02-21T00:23:22.316Z","transactionType":"CANCELLATION","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":0,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-a446413ee82d456c88cb478ed44e5279"}],"transactionId":"transaction-8f769c59281846c3bd090e08ae1760e5"}}

@@ -28,7 +28,7 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body 
     
-            {"currency":"USD","userSuppliedId":"transaction-234aweras4","value":-100}
+            {"userSuppliedId":"transaction-234aweras4","value":-100,"currency":"USD"}
     
 + Response 200
     + Attributes
@@ -36,4 +36,4 @@ effective balance of a Card varies depending on the metadata of the Transaction.
 
     + Body
 
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":null,"giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":null,"transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650}}
+            {"transaction":{"value":-100,"userSuppliedId":"transaction-234aweras4","dateCreated":null,"transactionType":"DRAWDOWN","transactionAccessMethod":"RAWCODE","valueAvailableAfterTransaction":4650,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":null,"codeLastFour":"NC3D"}}

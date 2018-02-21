@@ -14,5 +14,5 @@
 
     + Body
 
-            {"valueStore":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","currency":"USD","dateCreated":"2018-01-29T20:26:20.921Z","programId":"program-17aae714584b4355a2232fdd6a719398","valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa","valueStoreType":"ATTACHED"}}
+            {"valueStore":{"cardId":"card-4085e168a3924df7a6097010674a77ff","valueStoreId":"value-a446413ee82d456c88cb478ed44e5279","valueStoreType":"ATTACHED","currency":"USD","dateCreated":"2018-02-21T00:23:22.066Z","programId":"program-a5a204c52df641deaa0511efad7a9578"}}
 
