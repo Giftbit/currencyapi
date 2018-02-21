@@ -34,8 +34,6 @@ The three variables of a transaction that can be used for a rule are:
 
 These variables are exactly as they are passed into the REST endpoint that created the transaction.  `metadata` is by far the most useful, and gets its own section. To learn about the basic metadata structure recommended by Lightrail, check out the [Lightrail Redemption Rules Implementation Guide](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/redemption-rules.md).
 
-## Metadata
-
 Best practice is for `metadata` to be consistent in structure and data types.  The more predictable the better.  The rest of this section describes what happens when `metadata` doesn't match what you expected.
 
 When attempting to access variables that don't exist, `null` will be returned.  This is true even when attempting to access children of `null` (this is known as null propagation).  Functions will return a default value when their inputs can't be used.
