@@ -5,7 +5,7 @@
 This document is a step-by-step guide to setting up Lightrail Redemption Rules. 
 
 - For further details on how to process redemption, read our Implementation Guide for [Redeeming Lightrail Value at Checkout](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/giftcode-checkout.md).
-- For further details on how to write Redemption Rules, check out the [Redemption Rules Reference Documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/feature-deep-dive/RedemptionRules.md).
+- For further details on how to write Redemption Rules, check out the [Redemption Rules Reference Documentation](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/feature-deep-dive/redemption-rules.md).
 - To learn how to add promotions to Lightrail Cards, check out the use-case guide for [Creating Lightrail Promotions](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/use-cases/promotions.md).
 - To learn more about Lightrail concepts, check out the section on the Lightrail Object Model in the [Lightrail API Docs](https://www.lightrail.com/docs/). 
 
