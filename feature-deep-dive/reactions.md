@@ -261,3 +261,5 @@ Following on our referral Reaction from earlier here's a logm where we processed
     }
 }
 ```
+
+Note that we have two entries in `reactionLogs`: one for each Reaction What.
