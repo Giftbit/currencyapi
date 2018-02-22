@@ -388,7 +388,7 @@ values(null) → []
 values(metadata.foo) → ['33bbb2bf-c270-41d9-ab42-9eeba99fa69c', 'medium', 6]
 ```
 
-### Operator precedence
+## Operator precedence
 
 Operators are evaluated in the following order, with higher operators being evaluated first.
 
