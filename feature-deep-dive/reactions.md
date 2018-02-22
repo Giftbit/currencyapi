@@ -29,6 +29,89 @@ You can send messages to Reactions using your own REST library or use an analyti
 
 ## Reaction structure
 
+Now that we're sending events we can react to those events.  A Reaction defines how that happens.  It's made up of a `userSuppliedId`, a `name`, a `when` and an array of `what`s.
+
+`when` defines when the Reaction will apply.  It's a [Lightrail Rule](lightrail-rules.md) string that is evaluated with the event.  If the Reaction When evaluates to `true` then the `what` will happen.  If the Reaction When evaluates to `false` then the `what` won't happen.  An example Reaction When is `"{{event.type == 'referral'}}"`.
+
+`what` defines what the Reaction does.  It's an object that has a `type` and `params`.  Each Reaction What type has different expected params.  The values of the params can be raw values or expressions that are evaluated as [Lightrail Rules](lightrail-rules.md).  Lightrail Rules are surrounded by double braces (`{{}}`).  For example `"user@example.com"` is a raw value that does not need to be evaluated; `"{{event.referrer.email}}"` is a value that is replaced with `referrer.email` of the incomming event; `"{{event.user}}@{{event.domain}}"` is a string put together with `user` from the event, a literal @ sign, and `domain` from the event.  The examples that follow should make this clearer.
+
+### Formal definition
+
+**Reaction**
+| member | value |
+|--------|-------|
+|userSuppliedId|`string` the ID of the Reaction|
+|version|`number` 1 is the only supported value at this time|
+|enabled|`boolean` (optional) set to false to disable the Reaction|
+|name|`string` the friendly name of the Reaction|
+|when|`string` a Lightrail Rule that determines when the Reaction applies|
+|what|`object` a Reaction What that defines what happens when the Reaction applies|
+
+**Reaction What**
+| member | value |
+|--------|-------|
+|type|`string` the type of the Reaction What|
+|params|`object` the parameters for the execution of the Reaction What|
+
+### An example
+
+Here again is the message we're going to react to:
+
+```json
+{
+    "id": "5a4bf861-ba1a-4d2e-a66d-89c1b2f13e1e",
+    "type": "referral",
+    "referrer": {
+        "email": "helpfulfriend@example.com"
+    },
+    "referee": {
+        "email": "newcustomer@example.com"
+    }
+}
+```
+
+Here is the Reaction that will credit $5 to both the referrer and the referee:
+
+```json
+{
+    "userSuppliedId": "referralbonus",
+    "version": 1,
+    "enabled": true,
+    "name": "USD $5 for Referrer and Referee",
+    "when": "{{event.type == 'referral'}}",
+    "what": [
+        {
+            "type": "manageContact",
+            "params": {
+                "account": {
+                    "currency": "USD",
+                    "addValue": 500
+                },
+                "contact": {
+                    "email": "{{event.referrer.email}}"
+                }
+            }
+        },
+        {
+            "type": "manageContact",
+            "params": {
+                "account": {
+                    "currency": "USD",
+                    "addValue": 500
+                },
+                "contact": {
+                    "email": "{{event.referee.email}}"
+                }
+            }
+        }
+    ]
+}
+```
+
+Note that this Reaction has 2 Reaction Whats: one to credit the referrer and one to credit the referee.  The type of the Reaction Whats is `manageContact` and that the params are particular to that Reaction What type.  In the params we're specifying what contact we're managing and that the email address is evaluated using a value from the event.  We're also specifying that we want to add value to the USD account of that contact and those values are raw; they never change.
+
+A fuller definition of `manageContact` can be found below.
+
 ## Managing reactions
 
 ## Logs
