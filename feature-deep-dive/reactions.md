@@ -118,16 +118,103 @@ A fuller definition of `manageContact` can be found below.
 
 The REST API for managing your Reactions is simple.  All calls require your API key in the Authorization header.
 
-GET https://api.lightrail.com/v1/reactions to list your Reactions.
+GET https://api.lightrail.com/v1/react/reactions to list your Reactions.
 
-POST https://api.lightrail.com/v1/reactions with a Reaction in the body to create a Reaction.
+POST https://api.lightrail.com/v1/react/reactions with a Reaction in the body to create a Reaction.
 
-GET https://api.lightrail.com/v1/reactions/{reactionId} to get an individual Reaction.
+GET https://api.lightrail.com/v1/react/reactions/{reactionId} to get an individual Reaction.
 
-PUT https://api.lightrail.com/v1/reactions/{reactionId} to create or update a Reaction (reactionId in the path must match `userSuppliedId` in the Reaction object).
+PUT https://api.lightrail.com/v1/react/reactions/{reactionId} to create or update a Reaction (reactionId in the path must match `userSuppliedId` in the Reaction object).
 
-DELETE https://api.lightrail.com/v1/reactions/{reactionId} to delete a Reaction.
+DELETE https://api.lightrail.com/v1/react/reactions/{reactionId} to delete a Reaction.
 
 ## Logs
 
-We're sending events, and we're reacting to them, now let's see how they're doing.
+We're sending events, and we're reacting to them, now let's see how they're doing.  We can get the first 10 event logs from the last 10 minutes with the following API call:
+
+GET https://api.lightrail.com/v1/reactlogs
+
+This endpoint supports the following query parameters:
+
+| parameter | description |
+|-----------|-------------|
+|fromDate|ISO date offset to start getting logs from.|
+|limit|For pagination. The maximum number of results to return at once.|
+|offset|For pagination. The offset of the first results in the total results.|
+
+### Example referral logs
+
+Following on our referral Reaction from earlier here's a logm where we processed our example event:
+
+```json
+{
+	"logs": [
+		{
+			"date": "2018-02-22T20:45:50.079Z",
+			"event": {
+				"id": "5a4bf861-ba1a-4d2e-a66d-89c1b2f13e1e",
+				"type": "referral",
+				"referrer": {
+					"email": "helpfulfriend@example.com"
+				},
+				"referee": {
+					"email": "newcustomer@example.com"
+				}
+			},
+			"success": true,
+			"reactionLogs": [
+				{
+					"reaction": {
+						"userSuppliedId": "referralbonus",
+						"version": 1,
+						"enabled": true,
+						"name": "USD $5 for Referrer and Referee",
+						"when": "{{event.type == 'referral'}}",
+						"what": [
+							{
+								"type": "manageContact",
+								"params": {
+									"account": {
+										"currency": "USD",
+										"addValue": 500
+									},
+									"contact": {
+										"email": "{{event.referrer.email}}"
+									}
+								}
+							},
+							{
+								"type": "manageContact",
+								"params": {
+									"account": {
+										"currency": "USD",
+										"addValue": 500
+									},
+									"contact": {
+										"email": "{{event.referee.email}}"
+									}
+								}
+							}
+						]
+					},
+					"success": true,
+					"logs": [
+						"Searching for Contact by email 'helpfulfriend@example.com'.",
+						"Found Contact with contactId 'contact-a84841e6ca6f49dc80e6178cc2b26caa'.",
+						"Searching for existing Account Card for currency 'USD'.",
+						"Found Card with cardId 'card-95febc322b1e4955940cca27dfed6c9b'.",
+						"Creating transaction in USD for 500."
+					]
+				}
+			]
+		}
+	],
+	"fromDate": "2018-02-22T20:23:48.790Z",
+	"pagination": {
+		"count": 1,
+		"limit": 10,
+		"maxLimit": 100,
+		"offset": 0
+	}
+}
+```
