@@ -1,6 +1,6 @@
 # Lightrail Rules
 
-The Lightrail Rules is a simple language for defining powerful configuration logic.  It is used to evaluate [Redemption Rules](../use-cases/redemption-rules.md) and Reactions.
+Lightrail Rules is a simple language for defining powerful configuration logic.  It is used to evaluate [Redemption Rules](../use-cases/redemption-rules.md) and [Reactions](reactions.md).
 
 ## Syntax
 
