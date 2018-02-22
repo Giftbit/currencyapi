@@ -1,18 +1,18 @@
 # Reactions
 
-[Lightrail](https://www.lightrail.com) Reactions provides an endpoint for your own outbound webhook to send messages and configure actions to happen in Lightrail based on those messages.
+[Lightrail](https://www.lightrail.com) Reactions provides an endpoint for your own outbound webhook to send events and configure actions to happen in Lightrail based on those events.
 
 ## Input
 
-Sending messages or events to Reactions is easy.  Just POST to https://www.lightrail.com/v1/react/input with a JSON body and your API key in the Authorization header.  There are no restrictions on the format of the body.  Messages can trigger a reaction, multiple reactions, or none at all.
+Sending events to Reactions is easy.  Just POST to https://www.lightrail.com/v1/react/input with a JSON body and your API key in the Authorization header.  There are no restrictions on the format of the body.  Events can trigger a reaction, multiple reactions, or none at all.
 
 ### Idemotency
 
-The world is messy.  Network connections can fail and cause messages to be processed multiple times.  To ensure that messages are not processed multiple times put a unique identifier on your message.  Reactions will look for the following keys on the JSON object in order: `id`, `messageId`, `message_id`, `eventId`, `event_id`, `sg_message_id`.  If any of these are found then that message is uniquely identified and even if it is sent multiple times it will only be processed once.
+The world is messy.  Network connections can fail and cause events to be processed multiple times.  To ensure that events are not processed multiple times put a unique identifier on your event.  Reactions will look for the following keys on the JSON object in order: `id`, `messageId`, `message_id`, `eventId`, `event_id`, `sg_message_id`.  If any of these are found then that event is uniquely identified and even if it is sent multiple times it will only be processed once.
 
 ### Example
 
-In this example we're sending a simple message.  This is a referral event with both a referrer and referee email address.  We'll use this message later in a reaction that gives each an account credit.
+In this example we're sending a simple event.  This is a referral event with both a referrer and referee email address.  We'll use this event later in a reaction that gives each an account credit.
 
 ```bash
 curl -i \
@@ -23,9 +23,9 @@ curl -i \
     https://api.lightrail.com/v1/react/input
 ```
 
-### Libraries for sending messages
+### Libraries for sending events
 
-You can send messages to Reactions using your own REST library or use an analytics library that will make your life easier.  Segment has built libraries for sending messages in a number of environments including [Node](https://github.com/segmentio/analytics-node), [Java](https://github.com/segmentio/analytics-java), [Ruby](https://github.com/segmentio/analytics-ruby) and [PHP](https://github.com/segmentio/analytics-php).
+You can send events to Reactions using your own REST library or use an analytics library that will make your life easier.  Segment has built libraries for sending events in a number of environments including [Node](https://github.com/segmentio/analytics-node), [Java](https://github.com/segmentio/analytics-java), [Ruby](https://github.com/segmentio/analytics-ruby) and [PHP](https://github.com/segmentio/analytics-php).
 
 ## Reaction structure
 
@@ -38,6 +38,7 @@ Now that we're sending events we can react to those events.  A Reaction defines 
 ### Formal definition
 
 **Reaction**
+
 | member | value |
 |--------|-------|
 |userSuppliedId|`string` the ID of the Reaction|
@@ -48,14 +49,15 @@ Now that we're sending events we can react to those events.  A Reaction defines 
 |what|`object` a Reaction What that defines what happens when the Reaction applies|
 
 **Reaction What**
+
 | member | value |
 |--------|-------|
 |type|`string` the type of the Reaction What|
 |params|`object` the parameters for the execution of the Reaction What|
 
-### An example
+### Referral example
 
-Here again is the message we're going to react to:
+Here again is the event we're going to react to:
 
 ```json
 {
@@ -114,4 +116,18 @@ A fuller definition of `manageContact` can be found below.
 
 ## Managing reactions
 
+The REST API for managing your Reactions is simple.  All calls require your API key in the Authorization header.
+
+GET https://api.lightrail.com/v1/reactions to list your Reactions.
+
+POST https://api.lightrail.com/v1/reactions with a Reaction in the body to create a Reaction.
+
+GET https://api.lightrail.com/v1/reactions/{reactionId} to get an individual Reaction.
+
+PUT https://api.lightrail.com/v1/reactions/{reactionId} to create or update a Reaction (reactionId in the path must match `userSuppliedId` in the Reaction object).
+
+DELETE https://api.lightrail.com/v1/reactions/{reactionId} to delete a Reaction.
+
 ## Logs
+
+We're sending events, and we're reacting to them, now let's see how they're doing.
