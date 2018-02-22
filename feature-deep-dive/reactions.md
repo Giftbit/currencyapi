@@ -150,9 +150,9 @@ Following on our referral Reaction from earlier here's a logm where we processed
 {
     "logs": [
         {
-            "date": "2018-02-22T20:45:50.079Z",
+            "date": "2018-02-22T22:52:50.531Z",
             "event": {
-                "id": "5a4bf861-ba1a-4d2e-a66d-89c1b2f13e1e",
+                "id": "5a4bf861-ba1a-4d2e-a66d-1",
                 "type": "referral",
                 "referrer": {
                     "email": "helpfulfriend@example.com"
@@ -205,11 +205,54 @@ Following on our referral Reaction from earlier here's a logm where we processed
                         "Found Card with cardId 'card-95febc322b1e4955940cca27dfed6c9b'.",
                         "Creating transaction in USD for 500."
                     ]
+                },
+                {
+                    "reaction": {
+                        "userSuppliedId": "referralbonus",
+                        "version": 1,
+                        "enabled": true,
+                        "name": "USD $5 for Referrer and Referee",
+                        "when": "{{event.type == 'referral'}}",
+                        "what": [
+                            {
+                                "type": "manageContact",
+                                "params": {
+                                    "account": {
+                                        "currency": "USD",
+                                        "addValue": 500
+                                    },
+                                    "contact": {
+                                        "email": "{{event.referrer.email}}"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "manageContact",
+                                "params": {
+                                    "account": {
+                                        "currency": "USD",
+                                        "addValue": 500
+                                    },
+                                    "contact": {
+                                        "email": "{{event.referee.email}}"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "success": true,
+                    "logs": [
+                        "Searching for Contact by email 'newcustomer@example.com'.",
+                        "Found Contact with contactId 'contact-7619845529ca43a5ae6ec74a72ccb3f7'.",
+                        "Searching for existing Account Card for currency 'USD'.",
+                        "Found Card with cardId 'card-d0e72d1961f340ddaf9c8a63861210e9'.",
+                        "Creating transaction in USD for 500."
+                    ]
                 }
             ]
         }
     ],
-    "fromDate": "2018-02-22T20:23:48.790Z",
+    "fromDate": "2018-02-22T22:44:00.189Z",
     "pagination": {
         "count": 1,
         "limit": 10,
