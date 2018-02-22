@@ -4,7 +4,7 @@
 
 ## Input
 
-Sending messages or events to Reactions is easy.  Just POST to https://www.lightrail.com/v1/react/input with a JSON body and your API key in the Authorization header.  There are no restrictions on the format of the body.
+Sending messages or events to Reactions is easy.  Just POST to https://www.lightrail.com/v1/react/input with a JSON body and your API key in the Authorization header.  There are no restrictions on the format of the body.  Messages can trigger a reaction, multiple reactions, or none at all.
 
 ### Idemotency
 
