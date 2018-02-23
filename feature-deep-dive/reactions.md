@@ -1,10 +1,10 @@
 # Reactions
 
-[Lightrail](https://www.lightrail.com) Reactions provides an endpoint for your own outbound webhook to send events and configure actions to happen in Lightrail based on those events.
+[Lightrail](https://www.lightrail.com) Reactions takes events from your system and triggers actions in Lightrail.  It's flexible.  The events can be any structure that works for you and the actions can use and manipulate that data.
 
 ## Input
 
-Sending events to Reactions is easy.  Just POST to https://www.lightrail.com/v1/react/input with a JSON body and your API key in the Authorization header.  There are no restrictions on the format of the body.  Events can trigger a reaction, multiple reactions, or none at all.
+Sending events to Reactions is easy.  Just POST to https://www.lightrail.com/v1/react/input with a JSON body and your API key in the Authorization header.  There are no restrictions on the format of the body.  Events can trigger one reaction, multiple reactions, or none at all.
 
 ### Idemotency
 
