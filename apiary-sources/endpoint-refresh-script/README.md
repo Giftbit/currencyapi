@@ -3,9 +3,10 @@ The point of this script is to be able to programatically update the response bo
 
 ## Steps to run the script
 1. Create a new account on lightraildev.net.
-1. Switch to LIVE mode and generate an API key.
+1. Be sure to be in TEST mode and generate an API key.
 1. Run the script. If in intelliJ simply right click on it. You'll need to add the API key to program arguments. You can do this in intelliJ by editing the run configuration. From command line: `groovy refreshScript <API_KEY>`
 1. Go to the ping output file and change the email to user@example.com. Specifically this file is `/Lightrail-API-Docs/endpoints/ping-GET.md`.
+1. Go to the cards-cardId-deliver-POST.md file and change recipient email to `recipient@example.com`
 1. Commit changes.  
 
 ## How it works

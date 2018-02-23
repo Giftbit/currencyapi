@@ -19,5 +19,5 @@ Retrieves a particular Transaction by its ID based on the `fullcode`.
         
     + Body 
     
-            {"transaction":{"cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","dateCreated":"2018-01-29T20:26:18.992Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"RAWCODE","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-eefd98f834174294af3945d251f8441f"}],"transactionId":"transaction-4e8d9d0ecbf54288a0151b2347989489","transactionType":"DRAWDOWN","userSuppliedId":"transaction-234aweras4","value":-100,"valueAvailableAfterTransaction":4650}}
+            {"transaction":{"value":-100,"userSuppliedId":"transaction-234aweras4","dateCreated":"2018-02-21T00:23:20.303Z","transactionType":"DRAWDOWN","transactionAccessMethod":"RAWCODE","valueAvailableAfterTransaction":4650,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","currency":"USD","cardType":"GIFT_CARD","transactionBreakdown":[{"value":-100,"valueAvailableAfterTransaction":4650,"valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1"}],"transactionId":"transaction-51b9e07d4ca04867b7fef4f12ab47c7c","codeLastFour":"NC3D"}}
 

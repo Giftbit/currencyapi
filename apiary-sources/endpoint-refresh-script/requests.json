@@ -371,6 +371,17 @@
       "body": {
         "userSuppliedId":"{REQUEST_REPLACEMENT:unfreezePromotionOnAccount.response.body.transaction.transactionId}-cancel"
       }
+    },
+    {
+      "callId": "deliverGiftCard",
+      "method": "POST",
+      "endpoint": "/turnkey/giftcard/deliver",
+      "body": {
+        "cardId":"{REQUEST_REPLACEMENT:createCard1.response.body.card.cardId}",
+        "message": "Hi there, please enjoy this gift.",
+        "senderName": "The Rocketship team",
+        "recipientEmail": "tim@giftbit.com"
+      }
     }
   ]
 }

@@ -25,5 +25,5 @@ Updates a Contact.
 
     + Body
     
-            {"contact":{"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8","dateCreated":"2018-01-29T20:26:17.000Z","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","userSuppliedId":"createContact2"}}
+            {"contact":{"contactId":"contact-083fd74839c84a26974c93a6cbd98dca","userSuppliedId":"createContact2","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","dateCreated":"2018-02-21T00:23:18.000Z"}}
 

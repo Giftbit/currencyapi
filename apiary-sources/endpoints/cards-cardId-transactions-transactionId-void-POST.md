@@ -17,7 +17,7 @@ Voids a pending Transaction by unlocking the value withheld by the pending Trans
     
     + Body 
             
-            {"userSuppliedId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a-void"}
+            {"userSuppliedId":"transaction-2a47a9a1f8b1483b82f8692709963025-void"}
     
 + Response 200
     + Attributes
@@ -25,5 +25,5 @@ Voids a pending Transaction by unlocking the value withheld by the pending Trans
         
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:20.810Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","metadata":{"giftbit_initial_transaction_id":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a"},"parentTransactionId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-fc28fcd3f48140fa90b8ea66a479ccdf"}],"transactionId":"transaction-736d945905604f0990be592efdfed6d2","transactionType":"PENDING_VOID","userSuppliedId":"transaction-96ca273f8b0d4e78a86bb6392bf51d1a-void","value":100,"valueAvailableAfterTransaction":500}}
+            {"transaction":{"value":100,"userSuppliedId":"transaction-2a47a9a1f8b1483b82f8692709963025-void","dateCreated":"2018-02-21T00:23:21.943Z","transactionType":"PENDING_VOID","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":500,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":100,"valueAvailableAfterTransaction":500,"valueStoreId":"value-0de33ac5ca5243e7aab1b19cc2e90776"}],"transactionId":"transaction-1262387353e048ed9b215da932fe930a","parentTransactionId":"transaction-2a47a9a1f8b1483b82f8692709963025","metadata":{"giftbit_initial_transaction_id":"transaction-2a47a9a1f8b1483b82f8692709963025"}}}
 

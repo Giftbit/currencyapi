@@ -23,5 +23,5 @@ Retrieve a paginated list of Contacts.
        + pagination (Pagination)
 
     + Body
-            {"contacts":[{"contactId":"contact-5382784e8f394532a5b0cff7fa2c6af8","dateCreated":"2018-01-29T20:26:17.000Z","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","userSuppliedId":"createContact2"},{"contactId":"contact-067572a652874be6aec2664896965dae","dateCreated":"2018-01-29T20:26:16.000Z","email":"alice@example.com","firstName":null,"lastName":null,"userSuppliedId":"createContact1"}],"pagination":{"count":2,"limit":100,"maxLimit":1000,"offset":0,"totalCount":2}}
+            {"contacts":[{"contactId":"contact-083fd74839c84a26974c93a6cbd98dca","userSuppliedId":"createContact2","email":"bill@example.com","firstName":"bill","lastName":"lumbergh","dateCreated":"2018-02-21T00:23:18.000Z"},{"contactId":"contact-126abb61e0fa4e3c86fd6da50b741465","userSuppliedId":"createContact1","email":"alice@example.com","firstName":null,"lastName":null,"dateCreated":"2018-02-21T00:23:18.000Z"},{"contactId":"contact-2e571e7064ab4d9f8b5039fd791baea1","userSuppliedId":"dropinPreviewContact","email":"tim+23ar4esdf32awsx@giftbit.com","firstName":null,"lastName":null,"dateCreated":"2018-02-21T00:21:59.000Z"}],"pagination":{"count":3,"limit":100,"maxLimit":1000,"offset":0,"totalCount":3}}
 

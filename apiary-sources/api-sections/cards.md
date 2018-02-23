@@ -19,3 +19,5 @@ Use these endpoints to create and manage your Gift Cards and Account Cards.
 {% include 'endpoints/cards-cardId-unfreeze-POST.md' %}
 
 {% include 'endpoints/cards-cardId-cancel-POST.md' %}
+
+{% include 'endpoints/cards-cardId-deliver-POST.md' %}

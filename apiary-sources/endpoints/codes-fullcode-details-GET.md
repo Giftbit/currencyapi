@@ -18,4 +18,4 @@ The response includes the Value Stores (principal or attached promotions) as wel
 
     + Body
 
-            {"details":{"asAtDate":"2018-01-29T20:26:17.347Z","cardId":"card-eacdcbc40f0f4570b88a7b83959ecf70","cardType":"GIFT_CARD","codeLastFour":"2RZD","currency":"USD","valueStores":[{"expires":null,"programId":"program-37f8dc6bada64ace830affb1b7100b7f","restrictions":[],"startDate":null,"state":"ACTIVE","value":5000,"valueStoreId":"value-eefd98f834174294af3945d251f8441f","valueStoreType":"PRINCIPAL"}]}}
+            {"details":{"valueStores":[{"valueStoreType":"PRINCIPAL","value":5000,"state":"ACTIVE","expires":null,"startDate":null,"programId":"program-db6ae8091edd4bdd97522f575e753c9a","valueStoreId":"value-2923ec5903ab47c3b3d60f6813f107a1","restrictions":[]}],"currency":"USD","cardType":"GIFT_CARD","asAtDate":"2018-02-21T00:23:18.586Z","cardId":"card-9f1a5fb5b5154f90beb1ebfea696c967","codeLastFour":"NC3D"}}

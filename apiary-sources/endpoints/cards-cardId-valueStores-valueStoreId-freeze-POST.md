@@ -16,7 +16,7 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
         
     + Body 
     
-            {"userSuppliedId":"value-8be6b00b5ed148ba98d824a0d30434aa-freeze"}
+            {"userSuppliedId":"value-a446413ee82d456c88cb478ed44e5279-freeze"}
     
 + Response 200
     + Attributes
@@ -24,5 +24,5 @@ Freeze a Card's ValueStore, preventing all transactions against that ValueStore 
 
     + Body
 
-            {"transaction":{"cardId":"card-d99142eac3bd4abfbe657db000b614f6","cardType":"ACCOUNT_CARD","currency":"USD","dateCreated":"2018-01-29T20:26:21.011Z","giftbitUserId":"user-4646197086af471fa9265fd3d1546ffa","transactionAccessMethod":"CARDID","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-8be6b00b5ed148ba98d824a0d30434aa"}],"transactionId":"transaction-6f8e652d545541c6adcc09312b506ebf","transactionType":"FREEZE","userSuppliedId":"value-8be6b00b5ed148ba98d824a0d30434aa-freeze","value":-150,"valueAvailableAfterTransaction":0}}
+            {"transaction":{"value":-150,"userSuppliedId":"value-a446413ee82d456c88cb478ed44e5279-freeze","dateCreated":"2018-02-21T00:23:22.150Z","transactionType":"FREEZE","transactionAccessMethod":"CARDID","valueAvailableAfterTransaction":0,"giftbitUserId":"user-717a97087fcf4ff4a603e3d7afa08951-TEST","cardId":"card-4085e168a3924df7a6097010674a77ff","currency":"USD","cardType":"ACCOUNT_CARD","transactionBreakdown":[{"value":-150,"valueAvailableAfterTransaction":0,"valueStoreId":"value-a446413ee82d456c88cb478ed44e5279"}],"transactionId":"transaction-eecb2de3fcfd4dd88c701fc09999f13c"}}
 
