@@ -27,6 +27,30 @@ true || false
 true ? 'yes' : 'no'
 ```
 
+Numers include integer and decimal values, positive and negative infinity, and NaN.
+
+```javascript
+-1
+0
+1
+2
+3.14159
+Inf
+-Inf
+NaN
+```
+
+Strings can be created with single quotes or double quotes (`'`, `"`).  Literal single quotes and double quotes can be escaped with a backslash (`\'`, `\"`).  Literal backslash must also be escaped with a backslash (`\\`).
+
+```javascript
+''
+""
+'those are empty strings above'
+"this is not an empty string"
+'I\'m a string with an escape character.'
+"this \\ is how you backslash"
+```
+
 Parentheses can be used to group operations.
 
 ```javascript
