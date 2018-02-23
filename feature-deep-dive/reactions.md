@@ -114,7 +114,7 @@ Note that this Reaction has 2 Reaction Whats: one to credit the referrer and one
 
 A fuller definition of `manageContact` can be found below.
 
-## Managing reactions
+## Managing Reactions
 
 The REST API for managing your Reactions is simple.  All calls require your API key in the Authorization header.
 
@@ -127,6 +127,33 @@ GET https://api.lightrail.com/v1/react/reactions/{reactionId} to get an individu
 PUT https://api.lightrail.com/v1/react/reactions/{reactionId} to create or update a Reaction (reactionId in the path must match `userSuppliedId` in the Reaction object).
 
 DELETE https://api.lightrail.com/v1/react/reactions/{reactionId} to delete a Reaction.
+
+## Reaction Whats
+
+### manageContact
+
+Create or update a contact and optionally add value to an account.
+
+**type**
+
+`manageContact`
+
+**params**
+
+| parameter | description |
+|-----------|-------------|
+|contact    |`object` The contact to manage.|
+|contact.contactId|`string` (optional) The Lightrail contactId of the contact to manage.  One of contactId, shopperId or email must be defined.|
+|contact.shopperId|`string` (optional) The shopperId of the contact to manage.  One of contactId, shopperId or email must be defined.|
+|contact.email|`string` (optional) The email of the contact to manage.  One of contactId, shopperId or email must be defined.|
+|contact.firstName|`string` (optional) Update the first name of the contact if set.|
+|contact.lastName|`string` (optional) Update the last name of the contact if set.|
+|account    |`object` (optional) Account operations.|
+|account.currency|`string` (optional) The currency of the account to manage.|
+|account.addValue|`number` (optional) Value to add to the account.|
+|account.attachProgram|`object` (optional) A program to attach to the account.|
+|account.attachProgram.programId|`string` The programId of the program to attach.|
+|account.attachProgram.value|`number` (optional) The value to add when attaching the program.|
 
 ## Logs
 
