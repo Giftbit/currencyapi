@@ -1,12 +1,14 @@
 # Reactions
 
-[Lightrail](https://www.lightrail.com) Reactions takes events from your system and triggers actions in Lightrail.  It's flexible.  The events can be any structure that works for you and the actions can use and manipulate that data.
+[Lightrail](https://www.lightrail.com) Reactions takes events from your system and triggers actions in Lightrail.  It's flexible.  The events can be any structure that works for you and the actions can use and manipulate that data.  It decouples the system that generates the events from the promotion logic.
+
+Currently all Reactions management is done through REST calls.  We are exploring the best way to expose this feature in the web UI.
 
 ## Input
 
 Sending events to Reactions is easy.  Just POST to https://www.lightrail.com/v1/react/input with a JSON body and your API key in the Authorization header.  There are no restrictions on the format of the body.  Events can trigger one reaction, multiple reactions, or none at all.
 
-### Idemotency
+### Idempotency
 
 The world is messy.  Network connections can fail and cause events to be processed multiple times.  To ensure that events are not processed multiple times put a unique identifier on your event.  Reactions will look for the following keys on the JSON object in order: `id`, `messageId`, `message_id`, `eventId`, `event_id`, `sg_message_id`.  If any of these are found then that event is uniquely identified and even if it is sent multiple times it will only be processed once.
 
@@ -33,7 +35,7 @@ Now that we're sending events we can react to those events.  A Reaction defines 
 
 `when` defines when the Reaction will apply.  It's a [Lightrail Rule](lightrail-rules.md) string that is evaluated with the event.  If the Reaction When evaluates to `true` then the `what` will happen.  If the Reaction When evaluates to `false` then the `what` won't happen.  An example Reaction When is `"{{event.type == 'referral'}}"`.
 
-`what` defines what the Reaction does.  It's an object that has a `type` and `params`.  Each Reaction What type has different expected params.  The values of the params can be raw values or expressions that are evaluated as [Lightrail Rules](lightrail-rules.md).  Lightrail Rules are surrounded by double braces (`{{}}`).  For example `"user@example.com"` is a raw value that does not need to be evaluated; `"{{event.referrer.email}}"` is a value that is replaced with `referrer.email` of the incomming event; `"{{event.user}}@{{event.domain}}"` is a string put together with `user` from the event, a literal @ sign, and `domain` from the event.  The examples that follow should make this clearer.
+`what` defines what the Reaction does.  It's an object that has a `type` and `params`.  Each Reaction What type has different expected params.  The values of the params can be raw values or expressions that are evaluated as [Lightrail Rules](lightrail-rules.md).  Lightrail Rules are surrounded by double braces (`{{}}`).  For example `"user@example.com"` is a raw value that does not need to be evaluated; `"{{event.referrer.email}}"` is a value that is replaced with `referrer.email` of the incoming event; `"{{event.user}}@{{event.domain}}"` is a string put together with `user` from the event, a literal @ sign, and `domain` from the event.  The examples that follow should make this clearer.
 
 ### Formal definition
 
@@ -112,7 +114,7 @@ Here is the Reaction that will credit $5 to both the referrer and the referee:
 
 Note that this Reaction has 2 Reaction Whats: one to credit the referrer and one to credit the referee.  The type of the Reaction Whats is `manageContact` and that the params are particular to that Reaction What type.  In the params we're specifying what contact we're managing and that the email address is evaluated using a value from the event.  We're also specifying that we want to add value to the USD account of that contact and those values are raw; they never change.
 
-A fuller definition of `manageContact` can be found below.
+A fuller definition of `manageContact` can be found [below](#managecontact).
 
 ## Managing Reactions
 
@@ -171,7 +173,7 @@ This endpoint supports the following query parameters:
 
 ### Example referral logs
 
-Following on our referral Reaction from earlier here's a logm where we processed our example event:
+Following on our referral Reaction from earlier here's a log where we processed our example event:
 
 ```json
 {
