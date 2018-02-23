@@ -224,6 +224,7 @@ Following on our referral Reaction from earlier here's a logm where we processed
                             }
                         ]
                     },
+                    "whatIndex": 0,
                     "success": true,
                     "logs": [
                         "Searching for Contact by email 'helpfulfriend@example.com'.",
@@ -267,6 +268,7 @@ Following on our referral Reaction from earlier here's a logm where we processed
                             }
                         ]
                     },
+                    "whatIndex": 1,
                     "success": true,
                     "logs": [
                         "Searching for Contact by email 'newcustomer@example.com'.",
