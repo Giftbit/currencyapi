@@ -202,7 +202,7 @@ const shopperToken = lightrail.generateShopperToken({shopperId: "customer-id-fro
 ```php
 \Lightrail\Lightrail::$apiKey = getenv("LIGHTRAIL_API_KEY");
 \Lightrail\Lightrail::$sharedSecret = getenv("LIGHTRAIL_SHARED_SECRET");
-$shopperToken = LightrailShopperTokenFactory::generate(array("shopperId" => "customer-id-from-your-system"));
+$shopperToken = \Lightrail\LightrailShopperTokenFactory::generate(array("shopperId" => "customer-id-from-your-system"));
 ```
 
 ```java
