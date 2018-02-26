@@ -132,6 +132,53 @@ DELETE https://api.lightrail.com/v1/react/reactions/{reactionId} to delete a Rea
 
 ## Reaction Whats
 
+### http
+
+Make an HTTP request.
+
+**type**
+
+`http`
+
+**params**
+
+| parameter | description |
+|-----------|-------------|
+|body|`any` (optional) The body of the request.  By default if the `body` is a string the `Content-Type` will be set to `application/x-www-form-urlencoded`, otherwise the `Content-Type` will be set to `application/json` and body data serialized as JSON.  This behavior can be changed by setting `Content-Type` in `headers`.|
+|headers|`object` (optional) A map of additional headers to send with the request.|
+|method|`string` The method of the request.|
+|query|`object` (optional) A map of additional query parameters to send with the request.  Existing query parameters in `url` will be respected.|
+|url|`string` The URL to make the request to.|
+
+**example**
+
+In this example we POST JSON data to a test REST server.
+
+```json
+{
+    "userSuppliedId": "testHttpPost",
+    "version": 1,
+    "name": "testHttpPost",
+    "when": "{{event.type == 'httpTest'}}",
+    "what": [
+        {
+            "type": "http",
+            "params": {
+                "method": "POST",
+                "url": "https://postman-echo.com/post",
+                "body": {
+                    "key": "This is a member of the JSON object.",
+                    "event": "{{event}}"
+                },
+                "headers": {
+                    "X-Custom": "This is a custom extra HTTP header."
+                }
+            }
+        }
+    ]
+}
+```
+
 ### manageContact
 
 Create or update a contact and optionally add value to an account.
@@ -156,6 +203,34 @@ Create or update a contact and optionally add value to an account.
 |account.attachProgram|`object` (optional) A program to attach to the account.|
 |account.attachProgram.programId|`string` The programId of the program to attach.|
 |account.attachProgram.value|`number` (optional) The value to add when attaching the program.|
+
+**example**
+
+In this example a signup event triggers creation of a contact and USD account card.
+
+```json
+{
+    "userSuppliedId": "usdonsignup",
+    "version": 1,
+    "name": "Create USD account on signup",
+    "when": "{{event.type == 'signup'}}",
+    "what": [
+        {
+            "type": "manageContact",
+            "params": {
+                "account": {
+                    "currency": "USD"
+                },
+                "contact": {
+                    "firstName": "{{event.firstName}}",
+                    "lastName": "{{event.lastName}}",
+                    "email": "{{event.email}}"
+                }
+            }
+        }
+    ]
+}
+```
 
 ## Logs
 
