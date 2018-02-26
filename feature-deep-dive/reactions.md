@@ -168,7 +168,7 @@ In this example we POST JSON data to a test REST server.
                 "url": "https://postman-echo.com/post",
                 "body": {
                     "key": "This is a member of the JSON object.",
-                    "event": "{{event}}"
+                    "some_data": "{{event.data}}"
                 },
                 "headers": {
                     "X-Custom": "This is a custom extra HTTP header."
