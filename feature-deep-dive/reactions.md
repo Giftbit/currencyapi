@@ -144,11 +144,11 @@ Make an HTTP request.
 
 | parameter | description |
 |-----------|-------------|
+|method|`string` The method of the request.|
+|url|`string` The URL to make the request to.|
+|query|`object` (optional) A map of additional query parameters to send with the request.  Existing query parameters in `url` will be respected.|
 |body|`any` (optional) The body of the request.  By default if the `body` is a string the `Content-Type` will be set to `application/x-www-form-urlencoded`, otherwise the `Content-Type` will be set to `application/json` and body data serialized as JSON.  This behavior can be changed by setting `Content-Type` in `headers`.|
 |headers|`object` (optional) A map of additional headers to send with the request.|
-|method|`string` The method of the request.|
-|query|`object` (optional) A map of additional query parameters to send with the request.  Existing query parameters in `url` will be respected.|
-|url|`string` The URL to make the request to.|
 
 **example**
 
