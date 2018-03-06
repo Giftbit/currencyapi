@@ -34,7 +34,6 @@ Add the lightrail-ui script to the head of your card purchase page:
 
 ```html
     <head>
-        <!-- Include the Lightrail UI script in the header of your page -->
         <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
     </head>
 ```
@@ -45,6 +44,7 @@ Then at the bottom of the body create the dialog using the following code
         //...
         <script>
             var lightrailUI = new LightrailUI({shoppertoken});
+
             var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog();
             cardPurchaseDialog.mount();
         </script>
@@ -53,7 +53,7 @@ Then at the bottom of the body create the dialog using the following code
     </body>
 ```
 
-To open the dialog simply call the open method on your cardPurchaseDialog, ie:
+To open the dialog simply call the open method, ie:
 ```html
     <script>
             //...
@@ -77,11 +77,10 @@ The Gift Card Redemption Widget enables your customers to redeem gift cards to t
 
 When the recipient clicks the "apply to account" button in the email, they are taken to the redemption page indicated in your [Drop-in template](https://www.lightrail.com/app/#/cards/template).
 
-First, add the lightrail-ui script to the head redemption page: 
+First, add the lightrail-ui script to the head of your page: 
 
 ```html
     <head>
-        <!-- Include the Lightrail UI script in the header of your page -->
         <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
     </head>
 ```
@@ -94,6 +93,7 @@ Then add the following snippet to your redemption page:
         <div class="redemption-widget"></div>
         <script>
             var lightrailUI = new LightrailUI({shoppertoken});
+
             var redemptionWidget = lightrailUI.components.codeRedemption({fullcode:"{giftcode}"});
             redemptionWidget.mount("#redemption-widget");
         </script>
@@ -111,10 +111,9 @@ Next, your existing checkout process needs to be modified to allow the customer 
 
 #### Displaying Account Balance
 
-First, add the lightrail-ui script to the head redemption page: 
+First, add the lightrail-ui script to the head of your page: 
 ```html
     <head>
-        <!-- Include the Lightrail UI script in the header of your page -->
         <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
     </head>
 ```
@@ -124,6 +123,7 @@ You display a formatted account balance using the following code
 <p>Your Balance: <span id="account-balance"></span></p>
 <script>
         var lightrailUI = new LightrailUI({shoppertoken});
+
         var redemptionWidget = lightrailUI.writeAccountBalance("#account-balance");
 </script>
 ```
