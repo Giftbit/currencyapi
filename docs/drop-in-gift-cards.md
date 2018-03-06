@@ -18,7 +18,7 @@ We have preconfigured sample values for your template as a demo to help you get 
 You can optionally edit the other configuration value of your Drop-in Gift Card [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of widgets and gift card emails.
 (For development, toggle your Lightrail account to test mode, this will allow you to use Stripe's test credit cards.) 
 
-This is also where you'll connect your Stripe account and provide the URL to a redemption page where customers can redeem their gift cards (see Step 2).
+You'll also need to connect your Stripe account on your account integrations [page](https://www.lightrail.com/app/#/account/api) and provide the URL to a redemption page where customers can redeem their gift cards (see Step 2).
 
 If at any point you want to see a working example of the entire Drop-in Gift Card solution, check out our [sample app](https://github.com/Giftbit/stripe-integration-sample-webapp). 
 
@@ -30,32 +30,37 @@ Lightrail powers the entire gift card purchase and delivery flow.
 
 What you see here is our fictional brand called Rocketship. Once set up with our Drop-in solution, you will see your branding instead.
 
-Add the following snippet to your gift card purchase page: 
+Add the lightrail-ui script to the head of your card purchase page: 
 
 ```html
-<html>
     <head>
         <!-- Include the Lightrail UI script in the header of your page -->
         <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
     </head>
+```
+Then at the bottom of the body create the dialog using the following code
+
+```html
     <body>
-        <div>
-            <button id="#launch-cards">Buy a Gift Card!</button>
-        </div>
-        <!-- At the bottom of the body -->
-        <script 
+        //...
+        <script>
             var lightrailUI = new LightrailUI({shoppertoken});
             var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog();
             cardPurchaseDialog.mount();
-
-            document.getElementById("launch-cards").addEventListener("click", function(){
-                cardPurchaseDialog.open();
-            });
         </script>
         <!-- The Shopper Token acts as a public api token that is used for issuing the gift card. -->
         <!-- See below for details.  -->
     </body>
-</html>
+```
+
+To open the dialog simply call the open method on your cardPurchaseDialog, ie:
+```html
+    <script>
+            //...
+            document.getElementById("buy-card-button").addEventListener("click", function(){
+                cardPurchaseDialog.open();
+            });
+    </script>
 ```
 
 Note you will need to pass a server-generated Shopper Token into the above snippet - details [below](#drop-in-gift-cards/shopper-tokens). 
