@@ -123,8 +123,7 @@ You display a formatted account balance using the following code
 <p>Your Balance: <span id="account-balance"></span></p>
 <script>
         var lightrailUI = new LightrailUI({shoppertoken});
-
-        var redemptionWidget = lightrailUI.writeAccountBalance("#account-balance");
+        lightrailUI.writeAccountBalance("#account-balance");
 </script>
 ```
 
