@@ -33,14 +33,29 @@ What you see here is our fictional brand called Rocketship. Once set up with our
 Add the following snippet to your gift card purchase page: 
 
 ```html
-<div>
-    <script 
-        src="https://embed.lightrail.com/dropin/cardPurchase.js"
-        data-shoppertoken="{shopperToken}"> 
-    </script>
-    <!-- The Shopper Token acts as a public api token that is used for issuing the gift card. -->
-    <!-- See below for details.  -->
-</div>
+<html>
+    <head>
+        <!-- Include the Lightrail UI script in the header of your page -->
+        <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
+    </head>
+    <body>
+        <div>
+            <button id="#launch-cards">Buy a Gift Card!</button>
+        </div>
+        <!-- At the bottom of the body -->
+        <script 
+            var lightrailUI = new LightrailUI({shoppertoken});
+            var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog();
+            cardPurchaseDialog.mount();
+
+            document.getElementById("launch-cards").addEventListener("click", function(){
+                cardPurchaseDialog.open();
+            });
+        </script>
+        <!-- The Shopper Token acts as a public api token that is used for issuing the gift card. -->
+        <!-- See below for details.  -->
+    </body>
+</html>
 ```
 
 Note you will need to pass a server-generated Shopper Token into the above snippet - details [below](#drop-in-gift-cards/shopper-tokens). 
