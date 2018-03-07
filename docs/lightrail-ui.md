@@ -24,10 +24,10 @@ ie:
 ```
 
 The LightrailUI Object
-* [getAccountBalance()](#lightrail-ui/get-account-balancehandler)
+* [getAccountBalance()](#lightrail-ui/getaccountbalance(handler))
 * [writeAccountBalance()](#lightrail-ui/writeaccountbalanceelementidclass)
 * [components](#lightrail-ui/lightrail-ui/components)
-* *[cardPurchaseDialog()]()
+* * [cardPurchaseDialog()]()
 * * [codeRedemption()]()
 
 ### getAccountBalance(handler)
