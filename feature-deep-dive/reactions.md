@@ -31,7 +31,7 @@ You can send events to Reactions using your own REST library or use an analytics
 
 ## Evaluation
 
-Now that we're sending events we can react to those events.  A Reaction defines how that happens.  It's made up of a `userSuppliedId`, a `name`, a `when` and an array of `what`s.  It's evaluated in a context that includes the `event` (the full body of the input POST) object and the `shared` object.
+Now that we're sending events we can react to those events.  A Reaction defines how that happens.  It's made up of a `userSuppliedId`, a `name`, a `when` and an array of `what`s.  It's evaluated in a context that includes the `event` (the full body of the input POST) object and the `shared` object (containing values you [manage manually](#managing-the-shared-object)).
 
 `when` defines when the Reaction will apply.  It's a [Lightrail Rule](lightrail-rules.md) string that is evaluated with the event.  If the Reaction When evaluates to `true` then the `what` will happen.  If the Reaction When evaluates to `false` then the `what` won't happen.  An example Reaction When is `"{{event.type == 'referral'}}"`.
 
