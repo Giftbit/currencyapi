@@ -6,22 +6,21 @@ Lightrail UI is a javascript library that powers our Drop-in Gift Card solution.
 * Components
 * 
 
-### Including LightrailUI
-To include LightrailUI in your page add the following script to the `<head>` of your page.
+### LightrailUI
+
+#### Including LightrailUI
+To get started using LightrailUI, add the following script to the `<head>` of your pages.
 ```html
-    <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
+    <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
 ```
 
-### LightrailUI
-Use LightrailUI to create an instance of the LightrailUI object with your [shoppertoken](#drop-in-gift-cards/shopper-tokens). Once created you can use LightrailUI to to get a users account balance and add components to your page(s).
-
-ie:
+You can then start using LightrailUI by creating an instance of the LightrailUI object using a server generated [shopper token](#drop-in-gift-cards/shopper-tokens).
 ```javascript
         var shopperToken = "{shoppertoken}";
         var lightrailUI = new LightrailUI(shopperToken);
 ```
 
-The LightrailUI Object
+#### LightrailUI Object
 * [components](#lightrail-ui/lightrail-ui/components)
   * [cardPurchaseDialog](#lightrail-ui/lightrail-ui/cardPurchasedialog)
   * [codeRedemption]()
@@ -31,20 +30,21 @@ The LightrailUI Object
 
 #### Components
 
-The LightrailUI(shopperToken).components namespace contains lightrail components that can be mounted on your page and interacted with.
+The components namespace contains methods that allow you to create component objects. 
+You can then add components to your page, interact with them, and handle updates.
 
-###### Common methods
-Each component uses the following methods to extend functionality.
+##### Common Component methods
+Each component uses the following methods.
 
-####### getOptions()
+##### getOptions()
 This will return an object with the option values that have been set, as well as the available options. 
 You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/lighrail-ui/component-customization)
 
-####### setOptoins(options)
+##### setOptoins(options)
 This set / replace any previously set options in the component. Note, these options aren't automatically passed on to the mounted component.
 If you change options you should unmount and re-mount the component, ie: `unmount()` `mount()`
 
-###### on(event, handler)
+##### on(event, handler)
 This allows you to respond to component events with a callback handler function
 
 Common Events Dispatched are 
@@ -57,13 +57,13 @@ Common Events Dispatched are
 
 
 
-####### mount(element)
+###### mount(element)
 The `mount()` method mounts the component and accepts one param, either an Html Element or string using either the `#id`
 or `.classname` formats.
 
 Generally mount() should be the last method you call to ensure everything is setup before the component is added to your page.
 
-####### unmount()
+###### unmount()
 Unmount will remove the component from the page and clean up any instances, it is possible to recall mount() on an object to re-add it after.
 
 ##### cardPurchaseDialog
