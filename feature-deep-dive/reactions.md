@@ -29,9 +29,9 @@ curl -i \
 
 You can send events to Reactions using your own REST library or use an analytics library that will make your life easier.  Segment has built libraries for sending events in a number of environments including [Node](https://github.com/segmentio/analytics-node), [Java](https://github.com/segmentio/analytics-java), [Ruby](https://github.com/segmentio/analytics-ruby) and [PHP](https://github.com/segmentio/analytics-php).
 
-## Reaction structure
+## Evaluation
 
-Now that we're sending events we can react to those events.  A Reaction defines how that happens.  It's made up of a `userSuppliedId`, a `name`, a `when` and an array of `what`s.
+Now that we're sending events we can react to those events.  A Reaction defines how that happens.  It's made up of a `userSuppliedId`, a `name`, a `when` and an array of `what`s.  It's evaluated in a context that includes the `event` (the full body of the input POST) object and the `shared` object.
 
 `when` defines when the Reaction will apply.  It's a [Lightrail Rule](lightrail-rules.md) string that is evaluated with the event.  If the Reaction When evaluates to `true` then the `what` will happen.  If the Reaction When evaluates to `false` then the `what` won't happen.  An example Reaction When is `"{{event.type == 'referral'}}"`.
 
@@ -130,6 +130,16 @@ PUT https://api.lightrail.com/v1/react/reactions/{reactionId} to create or updat
 
 DELETE https://api.lightrail.com/v1/react/reactions/{reactionId} to delete a Reaction.
 
+## Managing the Shared Object
+
+Reactions are evaluated in an environment that includes an object called `shared` which of course is shared between all Reactions.  This object is encrypted at rest on the server and is the natural place to store API keys and other special values.
+
+GET https://api.lightrail.com/v1/react/shared to get the shared object.
+
+PUT https://api.lightrail.com/v1/react/shared to set the value of the shared object.
+
+DELETE https://api.lightrail.com/v1/react/shared clear the shared object.
+
 ## Reaction Whats
 
 ### http
@@ -171,7 +181,8 @@ In this example we POST JSON data to a test REST server.
                     "some_data": "{{event.data}}"
                 },
                 "headers": {
-                    "X-Custom": "This is a custom extra HTTP header."
+                    "X-Custom": "This is a custom extra HTTP header.",
+                    "Authorization": "Bearer {{shared.apikey}}"
                 }
             }
         }
