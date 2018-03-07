@@ -6,9 +6,7 @@ Lightrail UI is a javascript library that powers our Drop-in Gift Card solution.
 * Components
 * 
 
-## LightrailUI
-
-### Including LightrailUI
+## Including LightrailUI
 To get started using LightrailUI, add the following script to the `<head>` of your pages.
 ```html
     <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
@@ -20,7 +18,7 @@ You can then start using LightrailUI by creating an instance of the LightrailUI 
         var lightrailUI = new LightrailUI(shopperToken);
 ```
 
-### LightrailUI Object
+## LightrailUI Object
 * [components](#lightrail-ui/lightrail-ui/components)
   * [cardPurchaseDialog](#lightrail-ui/lightrail-ui/cardPurchasedialog)
   * [codeRedemption]()
@@ -40,7 +38,7 @@ Each component uses the following methods.
 This will return an object with the option values that have been set, as well as the available options. 
 You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/lighrail-ui/component-customization)
 
-##### setOptoins(options)
+##### setOptions(options)
 This set / replace any previously set options in the component. Note, these options aren't automatically passed on to the mounted component.
 If you change options you should unmount and re-mount the component, ie: `unmount()` `mount()`
 
@@ -66,7 +64,7 @@ Generally mount() should be the last method you call to ensure everything is set
 ###### unmount()
 Unmount will remove the component from the page and clean up any instances, it is possible to recall mount() on an object to re-add it after.
 
-##### cardPurchaseDialog
+#### cardPurchaseDialog
 
 The CardPurchase Object 
 
@@ -99,7 +97,7 @@ Custom Events
 | "purchaseError" | There was an error purchasing | {status: 401, data: {type: "", message: "Unauthorized"}} |
 
 
-##### codeRedemption
+#### codeRedemption
 
 The Code Redemption Component is a small form that can be embedded in your redemption page to easily and securely handle the redemption process.
 It was designed to be hosted at the claim url that is setup in the drop-in config. Then the fullcode param can be passed into the components options object, 
@@ -124,7 +122,7 @@ Custom Events
 | "tryAgain" | A previous claim failed and the user hit the Try Again button to re-submit a code.  | {} |
 | "redemption" | Successful redemption.  | {cardAmountCents: 1000, accountBalanceCents: 2000, formattedCardAmount: $10, formattedAccountBalance: $20, currency: "USD"} |
 
-#### getAccountBalance
+### getAccountBalance
 
 LightrailUI(shopperToken).getAccountBalance(handler) allows you to fetch the account balance for the logged-in user connected with the shoppertoken.
 
@@ -140,7 +138,7 @@ Usage:
 **Note:** We do some very basic formatting to produce the formattedBalance property right now, if you want to support other currency symbols or custom formatting please use the balanceInCents value along with currency to format the value.
 
 
-#### writeAccountBalance
+### writeAccountBalance
 
 LightrailUI(shopperToken).writeAccountBalance(element | id | classname) will fetch the account balance for the user link to the shoppertoken and write the formattedValue to an element in your page.
 
