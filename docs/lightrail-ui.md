@@ -3,25 +3,35 @@
 ## Lightrail UI 
 Lightrail UI is a javascript library that powers our Drop-in Gift Card solution. LightrailUI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
 
-* LightrailUI Object
+* [LightrailUI Object] (###ligtrailui-object)
 * Components
 * 
 
 ### Including LightrailUI
-##### TODO
+To include LightrailUI in your page add the following script to the head of your page.
+```html
+    <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
+```
 
+### LightrailUI(shopperToken)
+Use LightrailUI to create an instance of the LightrailUI object with your [shoppertoken](#drop-in-gift-cards/shopper-tokens). Once created you can use LightrailUI to to get a users account balance and add components to your page(s).
 
-### LightrailUI Object
-#### TODO
+The LightrailUI Object
+* getAccountBalance()
+* writeAccountBalance()
+* [components](#lightrail-ui/lightrail-ui/components)
+* * cardPurchaseDialog()
+* * codeRedemption()
 
+### getAccountBalance(handler)
+
+### writeAccountBalance(element|id|class)
 
 ### Components
 
+### cardPurchaseDialog(options)
 
-#### Card Purchase Dialog
-
-
-#### Code Redemption
+### codeRedemption(options)
 
 
 ## Drop-in Component Theming
