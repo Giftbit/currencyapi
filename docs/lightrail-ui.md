@@ -45,18 +45,40 @@ Each component within the namespace has a common set of methods to create, inter
 
 Each component uses the following methods.
 
-##### `getOptions()`
+#### getOptions
+`setOptions()`
+
 This will return an object with the option values that have been set, as well as the available options. 
 You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/lighrail-ui/component-customization)
 
-##### `setOptions(options)`
-This set / replace any previously set options in the component. Note, these options aren't automatically passed on to the mounted component.
-If you change options you should unmount and re-mount the component, ie: `unmount()` `mount()`
+```javascript
+    var options = component.getOptions();
+    console.log(options);
+```
 
-##### `on(event, handler)`
-This allows you to respond to component events with a callback handler function
+#### setOptions
+`setOptions({})`
 
-Common Events Dispatched are 
+Set / replace the components options object. These options aren't automatically passed on to the mounted component
+so if you use this, you should re-mount the component by calling `unmount()` and `mount()`.
+
+```javascript
+    var options = component.setOptions({theme_bg_primary: "#eee"});
+    console.log(options);
+```
+
+#### on
+`on(event, handler)`
+
+Allows you attach handlers to specific component events.
+
+```javascript
+    component.on("ready", function(){
+        onComponentReady();
+    });
+```
+
+Events Dispatched by all components:
 
 | event  | description | sample response |
 | ------------- | ------------- | ------------- |
@@ -66,23 +88,31 @@ Common Events Dispatched are
 
 
 
-###### `mount(element)`
-The `mount()` method mounts the component and accepts one param, either an Html Element or string using either the `#id`
+##### mount
+`mount(Element | #id | .classname)`
+
+The mount method adds the component to the page and accepts one param, either an Html Element or string for element lookup using either the `#id`
 or `.classname` formats.
 
 Generally mount() should be the last method you call to ensure everything is setup before the component is added to your page.
 
-###### `unmount()`
-Unmount will remove the component from the page and clean up any instances, it is possible to recall mount() on an object to re-add it after.
+##### unmount()
+Unmount will remove the component from the page and clean up internal references. 
+It will not remove event listeners added by calling the `on()` method though, we will be adding the ability to remove those separately in the future. 
+This way, it is possible to unmount() the component and then call mount() at a later time without having to re-define options or events.
+
+**Note:** Un-mount should be called before removing or nulling an object if the user isn't navigating away from the page.
+This is to ensure that any iframes etc added to the page will be cleaned up.
 
 
 ### Card Purchase Dialog
 
-The CardPurchase Object 
+The Card Purchase Dialog is a dialog that lets users quickly and securely purchase and email gift cards. 
+When open, it acts as an overlay on-top of the page. 
+It can be opened via code, or a launch button can be added to the page with a custom class and label by adding the correct properties to the options object.
 
 ```javascript
-        var options = {};
-        var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog(options);
+        var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog({theme_bg_primary: "#ccc"});
 
         cardPurchaseDialog.on("ready", function(error){
             cardPurchaseDialog.open();
@@ -99,7 +129,7 @@ The CardPurchase Object
         cardPurchaseDialog.mount();
 ```
 
-Custom Events
+**Events**
 
 | event  | description | sample response |
 | ------------- | ------------- | ------------- |
@@ -111,9 +141,10 @@ Custom Events
 
 ### Code Redemption
 
-The Code Redemption Component is a small form that can be embedded in your redemption page to easily and securely handle the redemption process.
+The Code Redemption Component is a small form that can be embedded in your redemption page to easily and securely handle code redemption.
 It was designed to be hosted at the claim url that is setup in the drop-in config. Then the fullcode param can be passed into the components options object, 
 and auto-populated for the user. Once a user redeems their gift code, you can take action by handling the "redemption" event, or use the "success_btn_cta_label" and "success_btn_cta_href" params to setup a redirect button within the components success state.
+
 ```javascript
         var options = {fullcode: 1235813};
         var codeRedemption = lightrailUI.components.codeRedemption(options);
@@ -126,7 +157,7 @@ and auto-populated for the user. Once a user redeems their gift code, you can ta
         cardPurchaseDialog.mount("#redemption-container");
 ```
 
-Custom Events
+**Events**
 
 | event  | description | sample response |
 | ------------- | ------------- | ------------- |
@@ -218,8 +249,9 @@ Below is a comprehensive list of values accepted by the **Card Purchase Dialog C
 21. `theme_input_color`
 22. `theme_label_color`
 23. `theme_stripe_placeholder_color`
-24. `launch_btn_label="Give a Gift"`
-25. `launch_btn_classname="rocketship-button__small"`
+24. `launch_btn_container: "#launch-button-container"`
+25. `launch_btn_label: "Give a Gift"`
+26. `launch_btn_classname: "rocketship-button__small"`
 
 _*All overrides are optional_
 
@@ -270,8 +302,8 @@ Below is a comprehensive list of values accepted by the **Code Redemption Compon
 14. `theme_btn_color_secondary`
 15. `theme_btn_bg_secondary_hover`
 16. `theme_btn_color_secondary_hover`
-17. `success_btn_cta_label="Start Shopping Today"`
-18. `success_btn_cta_href="landingpage"`
+17. `success_btn_cta_label: "Start Shopping Today"`
+18. `success_btn_cta_href: "landingpage"`
  
 ![Code redemption theming - 3](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/code-remption-theming-1.png)
 
