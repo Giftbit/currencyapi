@@ -1,20 +1,20 @@
-# LightrailUI
+# Lightrail UI
 
-Lightrail UI is a javascript library that powers our Drop-in Gift Card solution. LightrailUI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
+Lightrail UI is a javascript library that powers our Drop-in Gift Card solution. Lightrail UI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
 
-## LightrailUI Overview
-To get started using LightrailUI, add the following script to the `<head>` of your pages.
+## Lightrail UI Overview
+To get started using Lightrail UI, add the following script to the `<head>` of your pages.
 ```html
     <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
 ```
 
-You can then start using LightrailUI by creating an instance of the LightrailUI object using a server generated [shopper token](#drop-in-gift-cards/shopper-tokens).
+You can then start using Lightrail UI by creating an instance of the Lightrail UI object using a server generated [shopper token](#drop-in-gift-cards/shopper-tokens).
 ```javascript
         var shopperToken = "{shoppertoken}";
         var lightrailUI = new LightrailUI(shopperToken);
 ```
 
-Next you can instantiate a component or call a method to perform an action. 
+Next, you can instantiate a component or call a method to perform an action. 
 Here's an example of adding the Card Purchase Dialog to your page and opening it when ready.
 ```javascript
         var shopperToken = "{shoppertoken}";
@@ -28,9 +28,9 @@ Here's an example of adding the Card Purchase Dialog to your page and opening it
 ```
 
 
-## LightrailUI Object
+## Lightrail UI Object
 
-The LightrailUI object has the following properties
+The Lightrail UI object has the following properties
 * [components](#lightrail-ui/lightrail-ui/components)
   * [cardPurchaseDialog()](#lightrail-ui/lightrail-ui/cardPurchasedialog)
   * [codeRedemption()]()
@@ -79,7 +79,7 @@ Allows you attach handlers to specific component events.
 
 ```javascript
     component.on("ready", function(){
-        onComponentReady();
+        componentReadyDoACustomThing();
     });
 ```
 
@@ -102,12 +102,14 @@ or `.classname` formats.
 
 Generally mount() should be the last method you call to ensure everything is setup before the component is added to your page.
 
-#### unmount()
+#### unmount
+`unmount()`
+
 Unmount will remove the component from the page and clean up internal references. 
 It will not remove event listeners added by calling the `on()` method though, we will be adding the ability to remove those separately in the future. 
-This way, it is possible to unmount() the component and then call mount() at a later time without having to re-define options or events.
+This way, it is possible to `unmount()` the component and then call `mount()` at a later time without having to redefine options or events.
 
-**Note:** Un-mount should be called before removing or nulling an object if the user isn't navigating away from the page.
+**Note:** Unmount should be called before removing or nulling an object if the user isn't navigating away from the page.
 This is to ensure that any iframes etc added to the page will be cleaned up.
 
 

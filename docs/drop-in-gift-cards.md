@@ -8,6 +8,12 @@ The solution is component based, using widgets which are created from simple HTM
 When your customers receive a gift card, they can easily redeem and apply the gift card value to their account.
 Your checkout process requires a simple update to accept payment from your customer accounts.
 
+#### Customization and Advanced UI
+The appearance of components is fully customizable. 
+Using Lightrail UI you can also attach event listeners to the components to respond to customer activity. 
+For more information on this usage, see [Lightrail UI](#lightrail-ui).
+
+
 ### Getting Started
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
