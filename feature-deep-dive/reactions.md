@@ -35,7 +35,7 @@ Now that we're sending events we can react to those events.  A Reaction defines 
 
 `when` defines when the Reaction will apply.  It's a [Lightrail Rule](lightrail-rules.md) string that is evaluated with the event.  If the Reaction When evaluates to `true` then the `what` will happen.  If the Reaction When evaluates to `false` then the `what` won't happen.  An example Reaction When is `"{{event.type == 'referral'}}"`.
 
-`what` defines what the Reaction does.  It's an object that has a `type` and `params`.  The `type` selects the Reaction What that is called and each Reaction What expects different `params`.  The values inside params can be raw values or expressions that are evaluated as [Lightrail Rules](lightrail-rules.md).  Lightrail Rules are surrounded by double braces (`{{}}`).  For example `"user@example.com"` is a raw value that does not need to be evaluated; `"{{event.referrer.email}}"` is a value that is replaced with `referrer.email` of the incoming event; `"{{event.user}}@{{event.domain}}"` is a string put together with `user` from the event, a literal @ sign, and `domain` from the event.  The examples that follow should make this clearer.
+`what` defines what the Reaction does.  It's an object that has a `type` and `params`.  The `type` selects the [Reaction What](#reaction-whats) that we programmed ahead of time and you control by setting the `params`.  The types that are available are predefined.  The values inside params can be raw values or expressions that are evaluated as [Lightrail Rules](lightrail-rules.md).  Lightrail Rules are surrounded by double braces (`{{}}`).  For example `"user@example.com"` is a raw value that does not need to be evaluated; `"{{event.referrer.email}}"` is a value that is replaced with `referrer.email` of the incoming event; `"{{event.user}}@{{event.domain}}"` is a string put together with `user` from the event, a literal @ sign, and `domain` from the event.  The examples that follow should make this clearer.
 
 ### Formal definition
 
@@ -54,7 +54,7 @@ Now that we're sending events we can react to those events.  A Reaction defines 
 
 | member | value |
 |--------|-------|
-|type|`string` the type of the Reaction What|
+|type|`string` the type of the [Reaction What](#reaction-whats)|
 |params|`object` the parameters for the execution of the Reaction What|
 
 ### Referral example
@@ -141,6 +141,8 @@ PUT https://api.lightrail.com/v1/react/shared to set the value of the shared obj
 DELETE https://api.lightrail.com/v1/react/shared clear the shared object.
 
 ## Reaction Whats
+
+This is what your Reaction can do.  Each of these Reaction Whats is an action you can take by using the `type` and control the specifics by setting the `params`.
 
 ### http
 
