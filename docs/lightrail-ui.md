@@ -80,7 +80,8 @@ Allows you attach handlers to specific component events.
 
 Events Dispatched by all components:
 
-| event  | description | sample response |
+
+| Event  | Description | Sample Response |
 | ------------- | ------------- | ------------- |
 | "mount" | The component has been mounted successfully and is now loading.  | {} |
 | "ready" | The component has finished loading and initializing and is ready for use.  | {} |
@@ -88,7 +89,7 @@ Events Dispatched by all components:
 
 
 
-##### mount
+#### mount
 `mount(Element | #id | .classname)`
 
 The mount method adds the component to the page and accepts one param, either an Html Element or string for element lookup using either the `#id`
@@ -96,7 +97,7 @@ or `.classname` formats.
 
 Generally mount() should be the last method you call to ensure everything is setup before the component is added to your page.
 
-##### unmount()
+#### unmount()
 Unmount will remove the component from the page and clean up internal references. 
 It will not remove event listeners added by calling the `on()` method though, we will be adding the ability to remove those separately in the future. 
 This way, it is possible to unmount() the component and then call mount() at a later time without having to re-define options or events.
