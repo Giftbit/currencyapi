@@ -35,7 +35,9 @@ Now that we're sending events we can react to those events.  A Reaction defines 
 
 `when` defines when the Reaction will apply.  It's a [Lightrail Rule](lightrail-rules.md) string that is evaluated with the event.  If the Reaction When evaluates to `true` then the `what` will happen.  If the Reaction When evaluates to `false` then the `what` won't happen.  An example Reaction When is `"{{event.type == 'referral'}}"`.
 
-`what` defines what the Reaction does.  It's an object that has a `type` and `params`.  The `type` selects the [Reaction What](#reaction-whats) that we programmed ahead of time and you control by setting the `params`.  The types that are available are predefined.  The values inside params can be raw values or expressions that are evaluated as [Lightrail Rules](lightrail-rules.md).  Lightrail Rules are surrounded by double braces (`{{}}`).  For example `"user@example.com"` is a raw value that does not need to be evaluated; `"{{event.referrer.email}}"` is a value that is replaced with `referrer.email` of the incoming event; `"{{event.user}}@{{event.domain}}"` is a string put together with `user` from the event, a literal @ sign, and `domain` from the event.  The examples that follow should make this clearer.
+`what` defines what the Reaction does.  It's an object that has a `type` and `params`.  The `type` selects a predefined [Reaction What](#reaction-whats) that is available in the Lightrail system.  Each `type` of Reaction What is similar to a function that expects certain parameters in a `params` object (for details on the available `type`s, see [below](#reaction-whats)).  
+
+The values inside params can be raw values or expressions that are evaluated as [Lightrail Rules](lightrail-rules.md).  Lightrail Rules are surrounded by double braces (`{{}}`).  For example `"user@example.com"` is a raw value that does not need to be evaluated; `"{{event.referrer.email}}"` is a value that is replaced with `referrer.email` of the incoming event; `"{{event.user}}@{{event.domain}}"` is a string put together with `user` from the event, a literal @ sign, and `domain` from the event.  The examples that follow should make this clearer.
 
 ### Formal definition
 
@@ -142,11 +144,15 @@ DELETE https://api.lightrail.com/v1/react/shared clear the shared object.
 
 ## Reaction Whats
 
-This is what your Reaction can do.  Each of these Reaction Whats is an action you can take by using the `type` and control the specifics by setting the `params`.
+These are the actions that will be triggered when a qualifying event is received. 
 
-### http
+There are currently two `types` of Reaction Whats available: 
+* `http` for making an HTTP request
+* `manageContact` for creating or updating a contact and optionally adding value to an attached account
 
-Make an HTTP request.
+Each `type` of What requires particular `params` to be set ahead of time or passed in from the [event](#input) that triggers it. 
+
+### Make an HTTP request
 
 **type**
 
@@ -192,7 +198,7 @@ In this example we POST JSON data to a test REST server.
 }
 ```
 
-### manageContact
+### Manage a Contact
 
 Create or update a contact and optionally add value to an account.
 
