@@ -40,13 +40,18 @@ The LightrailUI object has the following properties
 
 ### Components Overview
 
-The components namespace contains the methods that allow you to create components. 
+The components namespace (`lightrailUI.components`) contains the methods that allow you to create components. 
 Each component within the namespace has a common set of methods to create, interact with and handle updates.
+
+ie:
+```javascript
+    var newComponent = lightrailUI.components.newComponent();
+```
 
 Each component uses the following methods.
 
 #### getOptions
-`setOptions()`
+`getOptions()`
 
 This will return an object with the option values that have been set, as well as the available options. 
 You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/lighrail-ui/component-customization)
@@ -132,7 +137,7 @@ It can be opened via code, or a launch button can be added to the page with a cu
 
 **Events**
 
-| event  | description | sample response |
+| Event  | Description | Sample Response |
 | ------------- | ------------- | ------------- |
 | "open" | The user hit the submit button and the component is attempting to redeem the users code.  | {} |
 | "close" | A previous claim failed and the user hit the Try Again button to re-submit a code.  | {} |
@@ -160,7 +165,7 @@ and auto-populated for the user. Once a user redeems their gift code, you can ta
 
 **Events**
 
-| event  | description | sample response |
+| Event  | Description | Sample Response |
 | ------------- | ------------- | ------------- |
 | "submit" | The user hit the submit button and the component is attempting to redeem the users code.  | {} |
 | "tryAgain" | A previous claim failed and the user hit the Try Again button to re-submit a code.  | {} |
