@@ -2,11 +2,7 @@
 
 Lightrail UI is a javascript library that powers our Drop-in Gift Card solution. LightrailUI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
 
-* [LightrailUI Object] (###ligtrailui-object)
-* Components
-* 
-
-## Including LightrailUI
+## LightrailUI Overview
 To get started using LightrailUI, add the following script to the `<head>` of your pages.
 ```html
     <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
@@ -18,31 +14,46 @@ You can then start using LightrailUI by creating an instance of the LightrailUI 
         var lightrailUI = new LightrailUI(shopperToken);
 ```
 
+Next you can instantiate a component or call a method to perform an action. 
+Here's an example of adding the Card Purchase Dialog to your page and opening it when ready.
+```javascript
+        var shopperToken = "{shoppertoken}";
+        var lightrailUI = new LightrailUI(shopperToken);
+        
+        var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog({theme_bg_primary: "#aaa"});
+        cardPurchaseDialog.on("ready", function(error){
+            cardPurchaseDialog.open();
+        });
+        cardPurchaseDialog.mount();
+```
+
+
 ## LightrailUI Object
+
+The LightrailUI object has the following properties
 * [components](#lightrail-ui/lightrail-ui/components)
-  * [cardPurchaseDialog](#lightrail-ui/lightrail-ui/cardPurchasedialog)
-  * [codeRedemption]()
-* [getAccountBalance](#lightrail-ui/getaccountbalance(handler))
-* [writeAccountBalance](#lightrail-ui/writeaccountbalanceelementidclass)
+  * [cardPurchaseDialog()](#lightrail-ui/lightrail-ui/cardPurchasedialog)
+  * [codeRedemption()]()
+* [getAccountBalance()](#lightrail-ui/getaccountbalance(handler))
+* [writeAccountBalance()](#lightrail-ui/writeaccountbalanceelementidclass)
 
 
-### Components
+### Components namespace
 
-The components namespace contains methods that allow you to create component objects. 
-You can then add components to your page, interact with them, and handle updates.
+The components namespace contains the methods that allow you to create components. 
+Each component within the namespace has a common set of methods to create, interact with and handle updates.
 
-#### Common Component methods
 Each component uses the following methods.
 
-##### getOptions()
+##### `getOptions()`
 This will return an object with the option values that have been set, as well as the available options. 
 You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/lighrail-ui/component-customization)
 
-##### setOptions(options)
+##### `setOptions(options)`
 This set / replace any previously set options in the component. Note, these options aren't automatically passed on to the mounted component.
 If you change options you should unmount and re-mount the component, ie: `unmount()` `mount()`
 
-##### on(event, handler)
+##### `on(event, handler)`
 This allows you to respond to component events with a callback handler function
 
 Common Events Dispatched are 
@@ -55,16 +66,17 @@ Common Events Dispatched are
 
 
 
-###### mount(element)
+###### `mount(element)`
 The `mount()` method mounts the component and accepts one param, either an Html Element or string using either the `#id`
 or `.classname` formats.
 
 Generally mount() should be the last method you call to ensure everything is setup before the component is added to your page.
 
-###### unmount()
+###### `unmount()`
 Unmount will remove the component from the page and clean up any instances, it is possible to recall mount() on an object to re-add it after.
 
-#### cardPurchaseDialog
+
+#### Card Purchase Dialog
 
 The CardPurchase Object 
 
@@ -97,7 +109,7 @@ Custom Events
 | "purchaseError" | There was an error purchasing | {status: 401, data: {type: "", message: "Unauthorized"}} |
 
 
-#### codeRedemption
+#### Code Redemption
 
 The Code Redemption Component is a small form that can be embedded in your redemption page to easily and securely handle the redemption process.
 It was designed to be hosted at the claim url that is setup in the drop-in config. Then the fullcode param can be passed into the components options object, 
