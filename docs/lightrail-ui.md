@@ -38,7 +38,7 @@ The LightrailUI object has the following properties
 * [writeAccountBalance()](#lightrail-ui/writeaccountbalanceelementidclass)
 
 
-### Components namespace
+### Components Overview
 
 The components namespace contains the methods that allow you to create components. 
 Each component within the namespace has a common set of methods to create, interact with and handle updates.
@@ -76,7 +76,7 @@ Generally mount() should be the last method you call to ensure everything is set
 Unmount will remove the component from the page and clean up any instances, it is possible to recall mount() on an object to re-add it after.
 
 
-#### Card Purchase Dialog
+### Card Purchase Dialog
 
 The CardPurchase Object 
 
@@ -109,7 +109,7 @@ Custom Events
 | "purchaseError" | There was an error purchasing | {status: 401, data: {type: "", message: "Unauthorized"}} |
 
 
-#### Code Redemption
+### Code Redemption
 
 The Code Redemption Component is a small form that can be embedded in your redemption page to easily and securely handle the redemption process.
 It was designed to be hosted at the claim url that is setup in the drop-in config. Then the fullcode param can be passed into the components options object, 
