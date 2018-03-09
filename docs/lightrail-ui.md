@@ -64,20 +64,63 @@ The Lightrail UI object has the following properties
 
 ### Components Overview
 
-The components namespace (`lightrailUI.components`) contains the methods that allow you to create components.
-ie:
+The components namespace (`lightrailUI.components`) contains the methods that allow you to create components to use in your page. 
+
+Currently it contains the following components:
+* [cardPurchaseDialog()](#lightrail-ui/card-purchase-dialog)
+* [codeRedemption()](#lightrail-ui/code-redemption)
+
+Each component within the namespace has a common set of methods that allow you to interact with it and handle updates. These methods are described below.
+
+#### mount
+`mount(Element | #id | .classname)`
+
+The mount method adds the component to the page and accepts one param, either an Html Element or string for element lookup using either the `#id`
+or `.classname` formats.
+
+Generally `mount()` should be the last method you call to ensure everything is setup properly before the component is added to your page.
+
+---
+
+#### unmount
+`unmount()`
+
+Unmount will remove the component from the page and clean up internal references. 
+It will not remove event listeners added by calling the `on()` method though, we will be adding the ability to remove those separately in the future. 
+This way, it is possible to `unmount()` the component and then call `mount()` at a later time without having to redefine options or events.
+
+**Note:** Unmount should be called before removing or nulling an object if the user isn't navigating away from the page.
+This is to ensure that any iframes etc added to the page will be cleaned up.
+
+---
+
+#### on
+`on(event, handler)`
+
+Allows you to attach handlers to specific component events.
+
 ```javascript
-    var newComponent = lightrailUI.components.newComponent();
+    component.on("ready", function(){
+        componentIsReadyDoACustomThing();
+    });
 ```
 
-Each component within the namespace has a common set of methods to create, interact with and handle updates.
+Events Dispatched by all components:
 
+
+| Event  | Description | Sample Response |
+| ------------- | ------------- | ------------- |
+| "mount" | The component has been mounted successfully and is now loading.  | {} |
+| "ready" | The component has finished loading and initializing and is ready for use.  | {} |
+| "error" | There was an error loading or processing data.   | {status: 401, data: {type: "", message: "Unauthorized"}} |
+
+---
 
 #### getOptions
 `getOptions()`
 
 This will return an object with the option values that have been set, as well as the available options. 
-You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/component-customization)
+You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/component-customization).
 
 ```javascript
     var options = component.getOptions();
@@ -99,56 +142,13 @@ so if you use this, you should re-mount the component by calling `unmount()` and
 
 ---
 
-#### on
-`on(event, handler)`
-
-Allows you attach handlers to specific component events.
-
-```javascript
-    component.on("ready", function(){
-        componentIsReadyDoACustomThing();
-    });
-```
-
-Events Dispatched by all components:
-
-
-| Event  | Description | Sample Response |
-| ------------- | ------------- | ------------- |
-| "mount" | The component has been mounted successfully and is now loading.  | {} |
-| "ready" | The component has finished loading and initializing and is ready for use.  | {} |
-| "error" | There was an error loading or processing data.   | {status: 401, data: {type: "", message: "Unauthorized"}} |
-
----
-
-#### mount
-`mount(Element | #id | .classname)`
-
-The mount method adds the component to the page and accepts one param, either an Html Element or string for element lookup using either the `#id`
-or `.classname` formats.
-
-Generally mount() should be the last method you call to ensure everything is setup before the component is added to your page.
-
----
-
-#### unmount
-`unmount()`
-
-Unmount will remove the component from the page and clean up internal references. 
-It will not remove event listeners added by calling the `on()` method though, we will be adding the ability to remove those separately in the future. 
-This way, it is possible to `unmount()` the component and then call `mount()` at a later time without having to redefine options or events.
-
-**Note:** Unmount should be called before removing or nulling an object if the user isn't navigating away from the page.
-This is to ensure that any iframes etc added to the page will be cleaned up.
-
----
 
 ### Card Purchase Dialog
 
 The Card Purchase Dialog is a dialog that lets users quickly and securely purchase and email gift cards. 
 
 By default it's hidden and can be opened by calling the `open()` method. 
-Alternatively, a launch button can be added to your page by adding the correct properties to the options object. *View [customizaion](#lightrail-ui/gift-card-purchase-theming) for more info*
+Alternatively, a launch button can be added to your page by adding the correct properties to the options object. *View [customization](#lightrail-ui/gift-card-purchase-theming) for more info.*
 
 ```javascript
         var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog({theme_bg_primary: "#ccc"});
@@ -172,9 +172,9 @@ Alternatively, a launch button can be added to your page by adding the correct p
 
 | Event  | Description | Sample Response |
 | ------------- | ------------- | ------------- |
-| "open" | The user hit the submit button and the component is attempting to redeem the users code.  | {} |
-| "close" | A previous claim failed and the user hit the Try Again button to re-submit a code.  | {} |
-| "purchaseComplete" | This event fires on successful redemption.  | {senderEmail: "user@aol.com", recipientEmail: "user2@aol.com", cardAmountCents: 10000, currency: "USD"} |
+| "open" | Open the Dialog. | {} |
+| "close" | Close the Dialog.  | {} |
+| "purchaseComplete" | A Gift Card was purchased and sent to another customer.  | {senderEmail: "user@aol.com", recipientEmail: "user2@aol.com", cardAmountCents: 10000, currency: "USD"} |
 | "purchaseError" | There was an error purchasing | {status: 401, data: {type: "", message: "Unauthorized"}} |
 
 
