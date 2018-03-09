@@ -1,6 +1,6 @@
 # Lightrail UI
 
-Lightrail UI is a javascript library that powers our Drop-in Gift Card solution. Lightrail UI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
+Lightrail UI is a javascript library that powers Lightrail's Drop-in Gift Card solution. Lightrail UI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
 
 ## Overview Example
 Here's a basic example of how you can add a Card Purchase Dialog to your page using the Lightrail UI library.
@@ -143,8 +143,9 @@ This is to ensure that any iframes etc added to the page will be cleaned up.
 ### Card Purchase Dialog
 
 The Card Purchase Dialog is a dialog that lets users quickly and securely purchase and email gift cards. 
-When open, it acts as an overlay on top of the page. 
-It can be opened via code, or a launch button can be added to the page with a custom class and label by adding the correct properties to the options object.
+
+By default it's hidden and can be opened by calling the `open()` method. 
+Alternatively, a launch button can be added to your page by adding the correct properties to the options object. *View [customizaion](#lightrail-ui/gift-card-purchase-theming) for more info*
 
 ```javascript
         var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog({theme_bg_primary: "#ccc"});
@@ -176,9 +177,12 @@ It can be opened via code, or a launch button can be added to the page with a cu
 
 ### Code Redemption
 
-The Code Redemption Component is a small form that can be embedded in your redemption page to easily and securely handle code redemption.
-It was designed to be hosted at the claim url that is setup in the drop-in config. Then the fullcode param can be passed into the components options object, 
-and auto-populated for the user. Once a user redeems their gift code, you can take action by handling the "redemption" event, or use the "success_btn_cta_label" and "success_btn_cta_href" params to setup a redirect button within the components success state.
+The Code Redemption Component contains a small form that can be embedded in your page to easily and securely handle code redemption.
+
+It was designed to be hosted at the claim url that is setup in the drop-in config so the fullcode can be passed in and auto-populated for the user. 
+
+Once a user redeems a gift code, you can respond by handling the "redemption" event dispatched by the component. 
+Alternatively, you can use the "success_btn_cta_label" and "success_btn_cta_href" params to setup a redirect button within the component.
 
 ```javascript
         var options = {fullcode: 1235813};
@@ -203,7 +207,7 @@ and auto-populated for the user. Once a user redeems their gift code, you can ta
 
 ### fetchAccountBalance
 
-LightrailUI(shopperToken).fetchAccountBalance(handler) allows you to fetch the account balance for the user connected with the shoppertoken.
+LightrailUI(shopperToken).fetchAccountBalance(handler) allows you to fetch the account balance for the user connected with the shoppertoken. *View [customizaion](#lightrail-ui/gift-card-purchase-theming) for more info*
 
 Usage:
 ```javascript
