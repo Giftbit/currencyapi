@@ -5,8 +5,6 @@ Lightrail UI is a javascript library that powers Lightrail's Drop-in Gift Card s
 ## Overview Example
 Here's a basic example of how you can add a Card Purchase Dialog to your page using the Lightrail UI library.
 
-*More info on shopper tokens [here](#drop-in-gift-cards/shopper-tokens).*
-
 ```html
 <html>
     <head>
@@ -24,10 +22,10 @@ Here's a basic example of how you can add a Card Purchase Dialog to your page us
             //Create instance of the Card Purchase Dialog component with a custom background color defined in the options object
             var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog({theme_bg_primary: "hotpink"});
             
-            //Oops lets fix that color
-            cardPurchaseDialog.setOptions({theme_bg_primary: "#ccc"});
+            //Oops, lets fix that background theme color
+            cardPurchaseDialog.setOptions({theme_bg_primary: "#eee"});
             
-            //Add a handler so we can enable our launch button when the dialog is ready
+            //Add a "ready" event handler to enable our launch button
             cardPurchaseDialog.on("ready", function(){
                 var launchButton = document.getElementById("launch-button");
                 
@@ -48,6 +46,11 @@ Here's a basic example of how you can add a Card Purchase Dialog to your page us
     </body>
 </html>
 ``` 
+
+*More info on [shopper tokens](#drop-in-gift-cards/shopper-tokens).*
+
+*More info on [customization & theming](#lightrail-ui/component-customization).*
+
 
 ## Lightrail UI Object
 
