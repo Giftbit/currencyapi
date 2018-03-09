@@ -2,10 +2,10 @@
 
 Lightrail UI is a javascript library that powers our Drop-in Gift Card solution. Lightrail UI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
 
-## Lightrail UI Overview Example
+## Overview Example
 Here's a basic example of how you can add a Card Purchase Dialog to your page using the Lightrail UI library.
 
-*More info on [shopper tokens](#drop-in-gift-cards/shopper-tokens).*
+*More info on shopper tokens [here](#drop-in-gift-cards/shopper-tokens).*
 
 ```html
 <html>
@@ -52,35 +52,36 @@ Here's a basic example of how you can add a Card Purchase Dialog to your page us
 ## Lightrail UI Object
 
 The Lightrail UI object has the following properties
-* [components](#lightrail-ui/lightrail-ui/components)
-  * [cardPurchaseDialog()](#lightrail-ui/lightrail-ui/cardPurchasedialog)
-  * [codeRedemption()]()
-* [getAccountBalance()](#lightrail-ui/getaccountbalance(handler))
-* [displayAccountBalance()](#lightrail-ui/writeaccountbalanceelementidclass)
+* [components](#lightrail-ui/components-overview)
+  * [cardPurchaseDialog()](#lightrail-ui/card-purchase-dialog)
+  * [codeRedemption()](#lightrail-ui/code-redemption)
+* [fetchAccountBalance()](#lightrail-ui/fetchaccountbalance)
+* [displayAccountBalance()](#lightrail-ui/displayaccountbalance)
 
 
 ### Components Overview
 
-The components namespace (`lightrailUI.components`) contains the methods that allow you to create components. 
-Each component within the namespace has a common set of methods to create, interact with and handle updates.
-
+The components namespace (`lightrailUI.components`) contains the methods that allow you to create components.
 ie:
 ```javascript
     var newComponent = lightrailUI.components.newComponent();
 ```
 
-Each component uses the following methods.
+Each component within the namespace has a common set of methods to create, interact with and handle updates.
+
 
 #### getOptions
 `getOptions()`
 
 This will return an object with the option values that have been set, as well as the available options. 
-You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/lighrail-ui/component-customization)
+You can also see a full list of options for each component below in [Component Customization](#lightrail-ui/component-customization)
 
 ```javascript
     var options = component.getOptions();
     console.log(options);
 ```
+
+---
 
 #### setOptions
 `setOptions({})`
@@ -92,6 +93,8 @@ so if you use this, you should re-mount the component by calling `unmount()` and
     var options = component.setOptions({theme_bg_primary: "#eee"});
     console.log(options);
 ```
+
+---
 
 #### on
 `on(event, handler)`
@@ -113,7 +116,7 @@ Events Dispatched by all components:
 | "ready" | The component has finished loading and initializing and is ready for use.  | {} |
 | "error" | There was an error loading or processing data.   | {status: 401, data: {type: "", message: "Unauthorized"}} |
 
-
+---
 
 #### mount
 `mount(Element | #id | .classname)`
@@ -122,6 +125,8 @@ The mount method adds the component to the page and accepts one param, either an
 or `.classname` formats.
 
 Generally mount() should be the last method you call to ensure everything is setup before the component is added to your page.
+
+---
 
 #### unmount
 `unmount()`
@@ -133,6 +138,7 @@ This way, it is possible to `unmount()` the component and then call `mount()` at
 **Note:** Unmount should be called before removing or nulling an object if the user isn't navigating away from the page.
 This is to ensure that any iframes etc added to the page will be cleaned up.
 
+---
 
 ### Card Purchase Dialog
 
@@ -168,7 +174,6 @@ It can be opened via code, or a launch button can be added to the page with a cu
 | "purchaseError" | There was an error purchasing | {status: 401, data: {type: "", message: "Unauthorized"}} |
 
 
-
 ### Code Redemption
 
 The Code Redemption Component is a small form that can be embedded in your redemption page to easily and securely handle code redemption.
@@ -194,7 +199,6 @@ and auto-populated for the user. Once a user redeems their gift code, you can ta
 | "submit" | The user hit the submit button and the component is attempting to redeem the users code.  | {} |
 | "tryAgain" | A previous claim failed and the user hit the Try Again button to re-submit a code.  | {} |
 | "redemption" | Successful redemption.  | {cardAmountCents: 1000, accountBalanceCents: 2000, formattedCardAmount: $10, formattedAccountBalance: $20, currency: "USD"} |
-
 
 
 ### fetchAccountBalance
@@ -223,7 +227,6 @@ ie:
 
     //ie: <p>Balance: <span id="account-balance">$50</span> </p>
 ```
-
 
 ## Component Customization
 
