@@ -18,7 +18,7 @@ Here's a basic example of how you can add a Card Purchase Dialog to your page us
         <!-- Now that you've included Lightrail UI, it's time to use it. -->
         <script>
             //Create an instance of LightrailUI using a server generated shopper token
-            var shopperToken = "{{shoppertoken}}";
+            var shopperToken = "{{shopperToken}}";
             var lightrailUI = new LightrailUI(shopperToken);
             
             //Create instance of the Card Purchase Dialog component with a custom background color defined in the options object

@@ -49,7 +49,9 @@ Then at the bottom of the body create the dialog using the following code
     <body>
         //...
         <script>
-            var lightrailUI = new LightrailUI({shoppertoken});
+            // Server generated shoppertoken
+            var shopperToken = "{{shopperToken}}";
+            var lightrailUI = new LightrailUI(shopperToken);
 
             var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog();
             cardPurchaseDialog.mount();
@@ -96,9 +98,10 @@ Then add the following snippet to your redemption page:
 ```html
     <body>
         //...
-        <div class="redemption-widget"></div>
+        <div id="redemption-widget"></div>
         <script>
-            var lightrailUI = new LightrailUI({shoppertoken});
+            var shopperToken = "{{shopperToken}}";
+            var lightrailUI = new LightrailUI(shopperToken);
 
             var redemptionWidget = lightrailUI.components.codeRedemption({fullcode:"{giftcode}"});
             redemptionWidget.mount("#redemption-widget");
@@ -128,8 +131,9 @@ You display a formatted account balance using the following code
 ```html
 <p>Your Balance: <span id="account-balance"></span></p>
 <script>
-        var lightrailUI = new LightrailUI({shoppertoken});
-        lightrailUI.writeAccountBalance("#account-balance");
+        var shopperToken = "{{shopperToken}}";
+        var lightrailUI = new LightrailUI(shopperToken);
+        lightrailUI.displayAccountBalance("#account-balance");
 </script>
 ```
 
