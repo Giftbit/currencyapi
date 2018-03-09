@@ -10,7 +10,7 @@ Here's a basic example of how you can add a Card Purchase Dialog to your page us
     <head>
         <title>Buy Gift Cards | Rocketship</title>
         
-        <!-- Include this script in the header of your page -->
+        <!-- Include this script in your page header -->
         <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
         
         <!-- Now that you've included Lightrail UI, it's time to use it. -->

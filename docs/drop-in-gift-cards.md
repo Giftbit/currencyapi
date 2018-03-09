@@ -19,9 +19,9 @@ For more information on this usage, see [Lightrail UI](#lightrail-ui).
 
 Note this quickstart assumes you are using Stripe to process payments: if you are using another payment processor and want to build a custom solution, please [contact us](mailto:hello@lightrail.com).
 
-We have preconfigured sample values for your template as a demo to help you get testing quickly. You can use all the default values to start, but if you are interested in running through an active test that includes a sample customer Gift Card redemption, you will need to update the **Email Claim Link** value in order to set up a testing Url which you have access to. Please note: before taking your Drop-in widgets to production, you will want to be sure to update all the values to match your custom implementation.
+We have preconfigured sample values for your template as a demo to help you get testing quickly. You can use all the default values to start, but if you are interested in running through an active test that includes a sample customer Gift Card redemption, you will need to update the **Email Claim Link** value in order to set up a testing Url which you have access to. Please note: before taking your Drop-in components to production, you will want to be sure to update all the values to match your custom implementation.
 
-You can optionally edit the other configuration value of your Drop-in Gift Card [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of widgets and gift card emails.
+You can optionally edit the other configuration value of your Drop-in Gift Card [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of components and gift card emails.
 (For development, toggle your Lightrail account to test mode, this will allow you to use Stripe's test credit cards.) 
 
 You'll also need to connect your Stripe account on your account integrations [page](https://www.lightrail.com/app/#/account/api) and provide the URL to a redemption page where customers can redeem their gift cards (see Step 2).
@@ -36,38 +36,48 @@ Lightrail powers the entire gift card purchase and delivery flow.
 
 What you see here is our fictional brand called Rocketship. Once set up with our Drop-in solution, you will see your branding instead.
 
-Add the lightrail-ui script to the head of your card purchase page: 
+Lets look at some sample code used to put the Gift Card Purchase Component into a page.
 
 ```html
+<html>
     <head>
-        <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
+        <!-- Include the Lightrail UI javascript library in your page header -->
+        <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
     </head>
-```
-Then at the bottom of the body create the dialog using the following code
-
-```html
     <body>
-        //...
+        <div id="launch-button-container">
+            <!-- Container to inject launch button into -->
+        </div>
         <script>
-            // Server generated shoppertoken
+            // Server generated shopperToken
             var shopperToken = "{{shopperToken}}";
             var lightrailUI = new LightrailUI(shopperToken);
-
-            var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog();
+        
+            //Tell the component to inject a launch button in #launch-button-container
+            var options = {
+               launch_btn_container: "#launch-button-container",
+               launch_btn_label: "Buy Gift Card",
+               launch_btn_classname: "ltrl_button"
+            };
+            
+            //Initialize the component and mount / add it to the page
+            var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog(options);
             cardPurchaseDialog.mount();
         </script>
-        <!-- The Shopper Token acts as a public api token that is used for issuing the gift card. -->
-        <!-- See below for details.  -->
     </body>
+</html>
 ```
 
-To open the dialog simply call the open method, ie:
+Alternatively, you could use your own button:
 ```html
+    <div class="launch-button-container">
+        <button id="buy-card-launch-button">Buy Gift Card</button>
+    </div>
     <script>
-            //...
-            document.getElementById("buy-card-button").addEventListener("click", function(){
-                cardPurchaseDialog.open();
-            });
+        //...
+        document.getElementById("buy-card-launch-button").addEventListener("click", function(){
+            cardPurchaseDialog.open();
+        });
     </script>
 ```
 
@@ -85,29 +95,34 @@ The Gift Card Redemption Widget enables your customers to redeem gift cards to t
 
 When the recipient clicks the "apply to account" button in the email, they are taken to the redemption page indicated in your [Drop-in template](https://www.lightrail.com/app/#/cards/template).
 
-First, add the lightrail-ui script to the head of your page: 
 
 ```html
+<html>
     <head>
-        <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
+        <!-- Include the Lightrail UI javascript library in your page header -->
+        <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
     </head>
-```
-
-Then add the following snippet to your redemption page:
-
-```html
     <body>
-        //...
-        <div id="redemption-widget"></div>
-        <script>
-            var shopperToken = "{{shopperToken}}";
-            var lightrailUI = new LightrailUI(shopperToken);
-
-            var redemptionWidget = lightrailUI.components.codeRedemption({fullcode:"{giftcode}"});
-            redemptionWidget.mount("#redemption-widget");
-        </script>
-        <!-- The code should be passed into the widget via the fullcode option. Ideally passed automatically from the url. -->
-    </body>
+            <div id="redemption-component"></div>
+            
+            <!-- Then add the following snippet to your redemption page -->
+            <script>
+                // Server generated shopperToken
+                var shopperToken = "{{shopperToken}}";
+                var lightrailUI = new LightrailUI(shopperToken);
+    
+                //Initialize our redemption component with a fullcode param so that it's auto-populated for the user
+                //It's a good idea to ensure your sites log-in / registration flows won't break this
+                var fullcodeValue = getUrlParamValue("fullcode");
+                var options = {
+                    fullcode: fullcodeValue
+                };
+                //Create the component and mount it inside of the redemption-component div
+                var redemption = lightrailUI.components.codeRedemption(options);
+                redemption.mount("#redemption-component");
+            </script>
+        </body>
+</html>
 ```
 
 When a gift card is redeemed, the Redemption Widget applies the gift card amount to the customer's account. If the customer does not have an account in Lightrail already, a new account will be created automatically.
@@ -118,26 +133,38 @@ Next, your existing checkout process needs to be modified to allow the customer 
 
 ### Step 3: Checkout
 
-#### Displaying Account Balance
+#### Fetch and Display Account Balance
 
-First, add the lightrail-ui script to the head of your page: 
 ```html
+<html>
     <head>
-        <script type="text/javascript" src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
+        <!-- Include the Lightrail UI javascript library in your page header -->
+        <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
     </head>
+    <body>
+        <p>Your Account Balance: <span id="account-balance"></span></p>
+        <script>
+                // Server generated shopperToken
+                var shopperToken = "{{shopperToken}}";
+                var lightrailUI = new LightrailUI(shopperToken);
+                
+                //Fetch and Display a simply formatted balance in the account-balance span
+                lightrailUI.displayAccountBalance("#account-balance");
+                
+                //Alternatively, use fetchAccountBalance for more control
+                lightrailUI.fetchAccountBalance(function(balance){
+                    var formattedBalance = yourCustomFormatter(balance.balanceInCents, balance.currency);
+                    document.getElementById("account-balance").innerHTML = formattedBalance;
+                });
+        </script>
+    </body>
+</html>
 ```
 
-You display a formatted account balance using the following code
-```html
-<p>Your Balance: <span id="account-balance"></span></p>
-<script>
-        var shopperToken = "{{shopperToken}}";
-        var lightrailUI = new LightrailUI(shopperToken);
-        lightrailUI.displayAccountBalance("#account-balance");
-</script>
-```
+This can be used anywhere it makes sense to display an account balance to your customer. 
+In the checkout, it gives your customer the information to choose whether or not to apply their account credit to their purchase.
 
-This gives your customer the information to choose whether or not to apply their account credit to their purchase. In our [sample webapp](https://github.com/Giftbit/stripe-integration-sample-webapp/blob/master/shared/views/checkout.html), the customer simply selects a checkbox to use their account credit.
+In our [sample webapp](https://github.com/Giftbit/stripe-integration-sample-webapp/blob/master/shared/views/checkout.html), the customer simply selects a checkbox to use their account credit.
 
 #### Accept Payment
 You will need to add a custom script to your checkout page to apply your customer's account credit to their purchase and accept a secondary payment method (such as a credit card) to cover any remaining balance. 
@@ -232,10 +259,10 @@ At this point, the charge has been posted to both Lightrail and Stripe. You can 
 
 ### Authentication
 Create your Lightrail API key from the [Integrations](https://www.lightrail.com/app/#/account/api) section of your Lightrail account.
-Your Lightrail API key is used to complete the server side requests from checkout, and also to generate Shopper Tokens which are passed into the widgets.  
+Your Lightrail API key is used to complete the server side requests from checkout, and also to generate Shopper Tokens which are passed into the Lightrail UI library for component authentication.  
 
 #### Shopper Tokens
-Shopper Tokens act like customer-specific API tokens for use in the drop-in widgets. 
+Shopper Tokens act like customer-specific API tokens for use in the drop-in components. 
 They are based on a unique customer identifier from your e-commerce system: the `shopperId`. This is what links the customer from your system to their account in Lightrail. 
 
 You must generate them server side using one of our [client libraries](https://www.lightrail.com/docs/#client-libraries/client-libraries). (If you are working in a language that we don't currently offer a client library for, please [contact us](mailto:hello@lightrail.com) to discuss creating your own tokens.) 
@@ -271,7 +298,7 @@ Lightrail.shared_secret = ENV["LIGHTRAIL_SHARED_SECRET"]
 shopper_token = Lightrail::ShopperTokenFactory.generate({shopper_id: "customer-id-from-your-system"})
 ```
 
-Note, the redemption and account balance widgets must be on authenticated pages as they require a `shopperId`.
+Note, usage of Lightrail UI components must be on authenticated pages as it requires a `shopperId`.
 You may decide whether you'd like your customers to be signed in to purchase gift cards. 
 If you'd like to allow gift card purchase from an unauthenticated page simply generate a Shopper Token with `shopperId: ""`.
 
