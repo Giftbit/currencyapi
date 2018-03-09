@@ -2,31 +2,52 @@
 
 Lightrail UI is a javascript library that powers our Drop-in Gift Card solution. Lightrail UI makes it easy to embed drop-in components into your page, interact with them, and respond to customer activity.
 
-## Lightrail UI Overview
-To get started using Lightrail UI, add the following script to the `<head>` of your pages.
+## Lightrail UI Overview Example
+Here's a basic example of how you can add a Card Purchase Dialog to your page using the Lightrail UI library.
+
+*More info on [shopper tokens](#drop-in-gift-cards/shopper-tokens).*
+
 ```html
-    <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
-```
-
-You can then start using Lightrail UI by creating an instance of the Lightrail UI object using a server generated [shopper token](#drop-in-gift-cards/shopper-tokens).
-```javascript
-        var shopperToken = "{shoppertoken}";
-        var lightrailUI = new LightrailUI(shopperToken);
-```
-
-Next, you can instantiate a component or call a method to perform an action. 
-Here's an example of adding the Card Purchase Dialog to your page and opening it when ready.
-```javascript
-        var shopperToken = "{shoppertoken}";
-        var lightrailUI = new LightrailUI(shopperToken);
+<html>
+    <head>
+        <title>Buy Gift Cards | Rocketship</title>
         
-        var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog({theme_bg_primary: "#aaa"});
-        cardPurchaseDialog.on("ready", function(error){
-            cardPurchaseDialog.open();
-        });
-        cardPurchaseDialog.mount();
-```
-
+        <!-- Include this script in the header of your page -->
+        <script src="https://embed.lightrail.com/dropin/v1/lightrail-ui.js"></script>
+        
+        <!-- Now that you've included Lightrail UI, it's time to use it. -->
+        <script>
+            //Create an instance of LightrailUI using a server generated shopper token
+            var shopperToken = "{{shoppertoken}}";
+            var lightrailUI = new LightrailUI(shopperToken);
+            
+            //Create instance of the Card Purchase Dialog component with a custom background color defined in the options object
+            var cardPurchaseDialog = lightrailUI.components.cardPurchaseDialog({theme_bg_primary: "hotpink"});
+            
+            //Oops lets fix that color
+            cardPurchaseDialog.setOptions({theme_bg_primary: "#ccc"});
+            
+            //Add a handler so we can enable our launch button when the dialog is ready
+            cardPurchaseDialog.on("ready", function(){
+                var launchButton = document.getElementById("launch-button");
+                
+                launchButton.setAttribute("disabled", "false");
+                launchButton.addEventListener("click", function(){
+                    cardPurchaseDialog.open();
+                });
+            });
+            
+            //This will load/mount the component once the document is finished loading
+            cardPurchaseDialog.mount();
+        </script>
+    </head>
+    <body>
+        <div class="launch-container">
+            <button id="launch-button" disabled="true">Buy a Gift Card!</button>
+        </div>
+    </body>
+</html>
+``` 
 
 ## Lightrail UI Object
 
@@ -35,7 +56,7 @@ The Lightrail UI object has the following properties
   * [cardPurchaseDialog()](#lightrail-ui/lightrail-ui/cardPurchasedialog)
   * [codeRedemption()]()
 * [getAccountBalance()](#lightrail-ui/getaccountbalance(handler))
-* [writeAccountBalance()](#lightrail-ui/writeaccountbalanceelementidclass)
+* [displayAccountBalance()](#lightrail-ui/writeaccountbalanceelementidclass)
 
 
 ### Components Overview
@@ -79,7 +100,7 @@ Allows you attach handlers to specific component events.
 
 ```javascript
     component.on("ready", function(){
-        componentReadyDoACustomThing();
+        componentIsReadyDoACustomThing();
     });
 ```
 
@@ -116,7 +137,7 @@ This is to ensure that any iframes etc added to the page will be cleaned up.
 ### Card Purchase Dialog
 
 The Card Purchase Dialog is a dialog that lets users quickly and securely purchase and email gift cards. 
-When open, it acts as an overlay on-top of the page. 
+When open, it acts as an overlay on top of the page. 
 It can be opened via code, or a launch button can be added to the page with a custom class and label by adding the correct properties to the options object.
 
 ```javascript
@@ -137,7 +158,7 @@ It can be opened via code, or a launch button can be added to the page with a cu
         cardPurchaseDialog.mount();
 ```
 
-**Events**
+** Card Purchase Events**
 
 | Event  | Description | Sample Response |
 | ------------- | ------------- | ------------- |
@@ -145,6 +166,7 @@ It can be opened via code, or a launch button can be added to the page with a cu
 | "close" | A previous claim failed and the user hit the Try Again button to re-submit a code.  | {} |
 | "purchaseComplete" | This event fires on successful redemption.  | {senderEmail: "user@aol.com", recipientEmail: "user2@aol.com", cardAmountCents: 10000, currency: "USD"} |
 | "purchaseError" | There was an error purchasing | {status: 401, data: {type: "", message: "Unauthorized"}} |
+
 
 
 ### Code Redemption
@@ -165,7 +187,7 @@ and auto-populated for the user. Once a user redeems their gift code, you can ta
         cardPurchaseDialog.mount("#redemption-container");
 ```
 
-**Events**
+**Code Redemption Events**
 
 | Event  | Description | Sample Response |
 | ------------- | ------------- | ------------- |
@@ -173,13 +195,15 @@ and auto-populated for the user. Once a user redeems their gift code, you can ta
 | "tryAgain" | A previous claim failed and the user hit the Try Again button to re-submit a code.  | {} |
 | "redemption" | Successful redemption.  | {cardAmountCents: 1000, accountBalanceCents: 2000, formattedCardAmount: $10, formattedAccountBalance: $20, currency: "USD"} |
 
-### getAccountBalance
 
-LightrailUI(shopperToken).getAccountBalance(handler) allows you to fetch the account balance for the logged-in user connected with the shoppertoken.
+
+### fetchAccountBalance
+
+LightrailUI(shopperToken).fetchAccountBalance(handler) allows you to fetch the account balance for the user connected with the shoppertoken.
 
 Usage:
 ```javascript
-        lightrailUI.getAccountBalance(function(response){
+        lightrailUI.fetchAccountBalance(function(response){
             var balanceInCents = response.balanceInCents;
             var currency = response.currency;
             var formattedBalance = response.formattedBalance;
@@ -189,13 +213,13 @@ Usage:
 **Note:** We do some very basic formatting to produce the formattedBalance property right now, if you want to support other currency symbols or custom formatting please use the balanceInCents value along with currency to format the value.
 
 
-### writeAccountBalance
+### displayAccountBalance
 
-LightrailUI(shopperToken).writeAccountBalance(element | id | classname) will fetch the account balance for the user link to the shoppertoken and write the formattedValue to an element in your page.
+LightrailUI(shopperToken).displayAccountBalance(Element | id | classname) will write the formattedValue to an element in your page.
 
 ie:
 ```javascript
-    lightrailUI.writeAccountBalance("#account-balance");
+    lightrailUI.displayAccountBalance("#account-balance");
 
     //ie: <p>Balance: <span id="account-balance">$50</span> </p>
 ```
@@ -203,11 +227,11 @@ ie:
 
 ## Component Customization
 
-This document outlines how to customize **Gift Card Purchase Dialog** and **Code Redemption** Components created by **Lightrail**. 
+This section outlines how to customize **Gift Card Purchase Dialog** and **Code Redemption** Components created by **Lightrail**. 
 
 ### Theme properties
 
-The drop in components are customizable via options passed in when your create your component. Each property should be a string color value or other CSS property like `padding`.
+The drop in components are customizable via options passed in when you create your component. Each property should be a string color value or other CSS property like `padding`.
 
 Values can be passed in as follows: 
 
@@ -216,11 +240,11 @@ Values can be passed in as follows:
 - **rgb(a)** - `rgba(255, 255, 255, 0.2)`
 - **Padding** - `theme_padding="50px 10px 1em 0"`
 
-Should you have any questions regarding themeing, please contact hello@lightrail.com
+Should you have any questions regarding theming, please contact hello@lightrail.com
 
 ### Gift Card Purchase Theming
 
-**Example: **
+**Example:**
 
 ```javascript
     var options = {
@@ -279,12 +303,12 @@ _*All overrides are optional_
 
 ### Code Redemption Theming
 
-**Example: **
+**Example:**
 
 ```javascript
     var options = {
-        fullcode: "EMAIL_URL_PARAM_VALUE"
-        theme_bg_primary: "#FF0"
+        fullcode: "EMAIL_URL_PARAM_VALUE",
+        theme_bg_primary: "#FF0",
         theme_btn_color_gift_amount_hover: "white"
     };
 
