@@ -4,7 +4,7 @@
 Lightrail's Drop-in Gift Card solution makes it easy to offer gift cards to your customers. 
 Integrating into Lightrail is an easy process that can be completed in no more than a few days.
 
-The solution is component based, using widgets which are created from simple HTML snippets.
+The solution is component based, using elements generated from our client-side library Lightrail UI.
 When your customers receive a gift card, they can easily redeem and apply the gift card value to their account.
 Your checkout process requires a simple update to accept payment from your customer accounts.
 
