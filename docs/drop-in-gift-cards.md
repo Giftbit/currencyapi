@@ -2,31 +2,102 @@
 
 ## Quickstart
 Lightrail's Drop-in Gift Card solution makes it easy to offer gift cards to your customers. 
-Integrating into Lightrail is an easy process that can be completed in no more than a few days.
+Integrating into Lightrail is an easy process that can be completed in no more than a few hours.
 
-The solution is component based, using widgets which are created from simple HTML snippets.
+The solution is component based, using elements generated from our client-side library Lightrail UI.
 When your customers receive a gift card, they can easily redeem and apply the gift card value to their account.
 Your checkout process requires a simple update to accept payment from your customer accounts.
-
-#### Customization and Advanced UI
-The appearance of components is fully customizable. 
-Using Lightrail UI you can also attach event listeners to the components to respond to customer activity. 
-For more information on this usage, see [Lightrail UI](#lightrail-ui).
-
 
 ### Getting Started
 [Sign up](https://www.lightrail.com/app/#/register) for a Lightrail account. 
 
 Note this quickstart assumes you are using Stripe to process payments: if you are using another payment processor and want to build a custom solution, please [contact us](mailto:hello@lightrail.com).
 
-We have preconfigured sample values for your template as a demo to help you get testing quickly. You can use all the default values to start, but if you are interested in running through an active test that includes a sample customer Gift Card redemption, you will need to update the **Email Claim Link** value in order to set up a testing Url which you have access to. Please note: before taking your Drop-in components to production, you will want to be sure to update all the values to match your custom implementation.
+We have preconfigured sample values for your [Drop-in Gift Card template](https://www.lightrail.com/app/#/cards/dropin) as a demo to help you get testing quickly. You can use all the default values to start, but if you are interested in running through an active test that includes a sample customer Gift Card redemption, you will need to update the **Email Claim Link** value in order to set up a testing url which you have access to. Please note: before taking your Drop-in components to production, you will want to be sure to update all the values to match your custom implementation.
 
-You can optionally edit the other configuration value of your Drop-in Gift Card [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of components and gift card emails.
+You can optionally edit the other configuration values of your Drop-in [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of components and gift card emails.
 (For development, toggle your Lightrail account to test mode, this will allow you to use Stripe's test credit cards.) 
 
 You'll also need to connect your Stripe account on your account integrations [page](https://www.lightrail.com/app/#/account/api) and provide the URL to a redemption page where customers can redeem their gift cards (see Step 2).
 
-If at any point you want to see a working example of the entire Drop-in Gift Card solution, check out our [sample app](https://github.com/Giftbit/stripe-integration-sample-webapp). 
+If at any point you want to see a working example of the entire Drop-in Gift Card solution, check out our [sample app](https://github.com/Giftbit/stripe-integration-sample-webapp).
+
+### Authentication
+Create your Lightrail API key from the [Integrations](https://www.lightrail.com/app/#/account/api) section of your Lightrail account. 
+Your Lightrail API key is used to complete the server side requests from checkout, and also to generate Shopper Tokens which are passed into the Lightrail UI library for component authentication.  
+
+#### Shopper Tokens
+Shopper Tokens act like customer-specific API tokens to be used client-side in the drop-in components. 
+They are based on a unique customer identifier from your e-commerce system: the `shopperId`. This is what links the customer from your system to their account in Lightrail. 
+
+Shopper Tokens must be generated server side using one of our [client libraries](https://www.lightrail.com/docs/#client-libraries/client-libraries). (If you are working in a language that we don't currently offer a client library for, please [contact us](mailto:hello@lightrail.com) to discuss creating your own tokens.) 
+
+You'll also need your shared secret key from the [Integrations](https://www.lightrail.com/app/#/account/api) section of your account.  
+
+##### Generating a Shopper Token:
+
+First install the client library in the language of your choice:
+```javascript
+npm install lightrail-client
+```
+
+```php
+composer require lightrail/lightrail
+```
+
+```java
+<!-- add to your maven POM file -->
+<dependency>
+  <groupId>com.lightrail</groupId>
+  <artifactId>lightrail-client</artifactId>
+  <version>2.0.1</version>
+</dependency>
+```
+
+```ruby
+gem install lightrail_client
+```
+
+Creating a Shopper Token in server side code (this will be passed to the client-side components in Steps 1, 2, & 3): 
+```javascript
+const lightrail = require("lightrail-client");
+ 
+lightrail.configure({
+    apiKey: process.env.LIGHTRAIL_API_KEY,
+    sharedSecret: process.env.LIGHTRAIL_SHARED_SECRET
+});
+const shopperToken = lightrail.generateShopperToken({shopperId: "customer-id-from-your-system"});
+```
+
+```php
+// if using an autoload import statement the Lightrail library will load automatically
+
+\Lightrail\Lightrail::$apiKey = getenv("LIGHTRAIL_API_KEY");
+\Lightrail\Lightrail::$sharedSecret = getenv("LIGHTRAIL_SHARED_SECRET");
+$shopperToken = \Lightrail\LightrailShopperTokenFactory::generate(array("shopperId" => "customer-id-from-your-system"));
+```
+
+```java
+import com.lightrail.*
+
+// NOTE the Java client is currently inconsistent with other client libraries, it will be updated soon. 
+// For shopper token creation, pass in the shopperId from your system and the validity of the token in seconds
+Lightrail.apiKey = System.getenv("LIGHTRAIL_API_KEY");
+Lightrail.clientSecret = System.getenv("LIGHTRAIL_SHARED_SECRET");
+String shopperToken = LightrailClientTokenFactory.generate("customer-id-from-your-system", 600);
+```
+
+```ruby
+require 'lightrail_client'
+
+Lightrail.api_key = ENV["LIGHTRAIL_API_KEY"]
+Lightrail.shared_secret = ENV["LIGHTRAIL_SHARED_SECRET"]
+shopper_token = Lightrail::ShopperTokenFactory.generate({shopper_id: "customer-id-from-your-system"})
+```
+
+Note, usage of Lightrail UI components must be on authenticated pages as it requires a `shopperId`.
+You may decide whether you'd like your customers to be signed in to purchase gift cards. 
+If you'd like to allow gift card purchase from an unauthenticated page simply generate a Shopper Token with `shopperId: ""`. 
 
 ### Step 1: Selling Gift Cards
 The Gift Card Purchase Widget allows your customers to purchase gift cards from your site. 
@@ -36,8 +107,7 @@ Lightrail powers the entire gift card purchase and delivery flow.
 
 What you see here is our fictional brand called Rocketship. Once set up with our Drop-in solution, you will see your branding instead.
 
-Lets look at some sample code used to put the Gift Card Purchase Component into a page.
-
+Adding the Gift Card Purchase Component:
 ```html
 <html>
     <head>
@@ -81,7 +151,7 @@ Alternatively, you could use your own button:
     </script>
 ```
 
-Note you will need to pass a server-generated Shopper Token into the above snippet - details [below](#drop-in-gift-cards/shopper-tokens). 
+Note you will need to pass a server-generated Shopper Token into the above snippet - details [above](#drop-in-gift-cards/shopper-tokens). 
 
 The gift card is automatically delivered to the recipient in a branded email. The email includes a button to apply the gift card to the recipient's account.
 
@@ -95,7 +165,7 @@ The Gift Card Redemption Widget enables your customers to redeem gift cards to t
 
 When the recipient clicks the "apply to account" button in the email, they are taken to the redemption page indicated in your [Drop-in template](https://www.lightrail.com/app/#/cards/template).
 
-
+Adding the Gift Card Redemption Component:
 ```html
 <html>
     <head>
@@ -135,6 +205,7 @@ Next, your existing checkout process needs to be modified to allow the customer 
 
 #### Fetch and Display Account Balance
 
+Displaying Balances:
 ```html
 <html>
     <head>
@@ -178,14 +249,41 @@ This script will need to do the following:
 
 For an example, we recommend that you take a look at the [checkout page of our sample webapp](https://github.com/Giftbit/stripe-integration-sample-webapp/blob/master/shared/views/checkout.html). The sample checkout handles the logic of splitting the transaction between the customer's account credit and Stripe; it also loads a Stripe Elements form to handle the credit card portion of the payment if needed. (Templating in the example is done with Mustache but is not required.)
 
+#### Lightrail Stripe Clients
+
+Install the Lightrail Stripe client in the language of your choice to handle the split tender transactions:
+```javascript
+npm install lightrail-stripe
+```
+
+```php
+composer require lightrail/lightrail-stripe
+
+```
+
+```java
+<!-- your maven POM file -->
+<dependency>
+  <groupId>com.lightrail</groupId>
+  <artifactId>lightrail-stripe-client</artifactId>
+  <version>2.0.1</version>
+</dependency>
+```
+
+```ruby
+gem install lightrail_stripe
+```
+
 #### Post the Transaction (server side)
 The transaction is handled by backend methods using one of our client libraries (or methods that you [write yourself](https://github.com/Giftbit/Lightrail-API-Docs/blob/drop-in-gift-cards/use-cases/stripe-split.md)). You'll need to set up two endpoints to handle submissions from the custom form you added to [accept payment](#drop-in-gift-cards/accept-payment) to: 
 1. simulate charges (check the customer's account balance),
 1. post the charge and redirect your customer to a success page. 
 
 ##### Simulate a Charge / Balance Check
-When your customer chooses to use their account credit, you need to see whether the account can cover the requested amount. In our [sample webapp](https://github.com/Giftbit/stripe-integration-sample-webapp/blob/master/shared/views/checkout.html), this is done by having the frontend call a `/simulate` endpoint that makes use of a method from one of our client libraries to simulate posting a charge to a Lightrail account. Here's a Node example:
+When your customer chooses to use their account credit, you need to see whether the account can cover the requested amount. In our [sample webapp](https://github.com/Giftbit/stripe-integration-sample-webapp/blob/master/shared/views/checkout.html), this is done by having the frontend call a `/simulate` endpoint that makes use of a method from one of our client libraries to simulate posting a charge to a Lightrail account. 
 
+
+Node example of simulate balance check:
 ```javascript
 /**
  * REST endpoint that simulates the charge and returns JSON.
@@ -217,8 +315,9 @@ function simulate(req, res) {
 Use the Lightrail transaction value that comes back to set the parameters for actually posting the charge. 
 
 ##### Post the Charge
-Our client libraries make it easy to post a split-tender charge where part of the transaction is covered by a Lightrail account, and part is covered by Stripe. Here's a Node example of how to handle posting a charge: 
+Our client libraries make it easy to post a split-tender charge where part of the transaction is covered by a Lightrail account, and part is covered by Stripe.  
 
+Node example of how to handle posting a charge:
 ```javascript
 /**
  * REST endpoint that performs the charge and returns HTML.
@@ -257,50 +356,8 @@ function charge(req, res) {
 
 At this point, the charge has been posted to both Lightrail and Stripe. You can handle post-checkout flow as you otherwise would. 
 
-### Authentication
-Create your Lightrail API key from the [Integrations](https://www.lightrail.com/app/#/account/api) section of your Lightrail account.
-Your Lightrail API key is used to complete the server side requests from checkout, and also to generate Shopper Tokens which are passed into the Lightrail UI library for component authentication.  
-
-#### Shopper Tokens
-Shopper Tokens act like customer-specific API tokens for use in the drop-in components. 
-They are based on a unique customer identifier from your e-commerce system: the `shopperId`. This is what links the customer from your system to their account in Lightrail. 
-
-You must generate them server side using one of our [client libraries](https://www.lightrail.com/docs/#client-libraries/client-libraries). (If you are working in a language that we don't currently offer a client library for, please [contact us](mailto:hello@lightrail.com) to discuss creating your own tokens.) 
-
-You'll need an API key along with your shared secret key from the Integrations section of your account (see above).
-For example, using the Lightrail Javascript client the Shopper Token can be created as follows:
-
-```javascript
-lightrail.configure({
-    apiKey: process.env.LIGHTRAIL_API_KEY,
-    sharedSecret: process.env.LIGHTRAIL_SHARED_SECRET
-});
-const shopperToken = lightrail.generateShopperToken({shopperId: "customer-id-from-your-system"});
-```
-
-```php
-\Lightrail\Lightrail::$apiKey = getenv("LIGHTRAIL_API_KEY");
-\Lightrail\Lightrail::$sharedSecret = getenv("LIGHTRAIL_SHARED_SECRET");
-$shopperToken = \Lightrail\LightrailShopperTokenFactory::generate(array("shopperId" => "customer-id-from-your-system"));
-```
-
-```java
-// NOTE the Java client is currently inconsistent with other client libraries, it will be updated soon. 
-// For shopper token creation, pass in the shopperId from your system and the validity of the token in seconds
-Lightrail.apiKey = System.getenv("LIGHTRAIL_API_KEY");
-Lightrail.clientSecret = System.getenv("LIGHTRAIL_SHARED_SECRET");
-String shopperToken = LightrailClientTokenFactory.generate("customer-id-from-your-system", 600);
-```
-
-```ruby
-Lightrail.api_key = ENV["LIGHTRAIL_API_KEY"]
-Lightrail.shared_secret = ENV["LIGHTRAIL_SHARED_SECRET"]
-shopper_token = Lightrail::ShopperTokenFactory.generate({shopper_id: "customer-id-from-your-system"})
-```
-
-Note, usage of Lightrail UI components must be on authenticated pages as it requires a `shopperId`.
-You may decide whether you'd like your customers to be signed in to purchase gift cards. 
-If you'd like to allow gift card purchase from an unauthenticated page simply generate a Shopper Token with `shopperId: ""`.
+## Customization and Advanced UI
+The appearance of components is fully customizable. Using Lightrail UI you can also attach event listeners to the components to respond to customer activity. For more information on this usage, see [Lightrail UI](#lightrail-ui).
 
 ## Support
 Looking for an example? Check out our [sample app](https://github.com/Giftbit/stripe-integration-sample-webapp) which is a working example of the entire Drop-in Gift Card solution.
