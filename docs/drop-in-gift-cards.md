@@ -2,7 +2,7 @@
 
 ## Quickstart
 Lightrail's Drop-in Gift Card solution makes it easy to offer gift cards to your customers. 
-Integrating into Lightrail is an easy process that can be completed in no more than a few days.
+Integrating into Lightrail is an easy process that can be completed in no more than a few hours.
 
 The solution is component based, using elements generated from our client-side library Lightrail UI.
 When your customers receive a gift card, they can easily redeem and apply the gift card value to their account.
@@ -13,9 +13,9 @@ Your checkout process requires a simple update to accept payment from your custo
 
 Note this quickstart assumes you are using Stripe to process payments: if you are using another payment processor and want to build a custom solution, please [contact us](mailto:hello@lightrail.com).
 
-We have preconfigured sample values for your template as a demo to help you get testing quickly. You can use all the default values to start, but if you are interested in running through an active test that includes a sample customer Gift Card redemption, you will need to update the **Email Claim Link** value in order to set up a testing Url which you have access to. Please note: before taking your Drop-in components to production, you will want to be sure to update all the values to match your custom implementation.
+We have preconfigured sample values for your [Drop-in Gift Card template](https://www.lightrail.com/app/#/cards/dropin) as a demo to help you get testing quickly. You can use all the default values to start, but if you are interested in running through an active test that includes a sample customer Gift Card redemption, you will need to update the **Email Claim Link** value in order to set up a testing url which you have access to. Please note: before taking your Drop-in components to production, you will want to be sure to update all the values to match your custom implementation.
 
-You can optionally edit the other configuration value of your Drop-in Gift Card [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of components and gift card emails.
+You can optionally edit the other configuration values of your Drop-in [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of components and gift card emails.
 (For development, toggle your Lightrail account to test mode, this will allow you to use Stripe's test credit cards.) 
 
 You'll also need to connect your Stripe account on your account integrations [page](https://www.lightrail.com/app/#/account/api) and provide the URL to a redemption page where customers can redeem their gift cards (see Step 2).
@@ -26,7 +26,7 @@ If at any point you want to see a working example of the entire Drop-in Gift Car
 Create your Lightrail API key from the [Integrations](https://www.lightrail.com/app/#/account/api) section of your Lightrail account. 
 Your Lightrail API key is used to complete the server side requests from checkout, and also to generate Shopper Tokens which are passed into the Lightrail UI library for component authentication.  
 
-#### Step 1: Shopper Tokens
+#### Shopper Tokens
 Shopper Tokens act like customer-specific API tokens to be used client-side in the drop-in components. 
 They are based on a unique customer identifier from your e-commerce system: the `shopperId`. This is what links the customer from your system to their account in Lightrail. 
 
@@ -36,18 +36,17 @@ You'll also need your shared secret key from the [Integrations](https://www.ligh
 
 ##### Generating a Shopper Token:
 
-First install client libraries:
+First install the client library in the language of your choice:
 ```javascript
 npm install lightrail-client
 ```
 
 ```php
 composer require lightrail/lightrail
-
 ```
 
 ```java
-<!-- your maven POM file -->
+<!-- add to your maven POM file -->
 <dependency>
   <groupId>com.lightrail</groupId>
   <artifactId>lightrail-client</artifactId>
@@ -59,7 +58,7 @@ composer require lightrail/lightrail
 gem install lightrail_client
 ```
 
-Creating a Shopper Token in server side code: 
+Creating a Shopper Token in server side code (this will be passed to the client-side components in Steps 1, 2, & 3): 
 ```javascript
 const lightrail = require("lightrail-client");
  
@@ -100,7 +99,7 @@ Note, usage of Lightrail UI components must be on authenticated pages as it requ
 You may decide whether you'd like your customers to be signed in to purchase gift cards. 
 If you'd like to allow gift card purchase from an unauthenticated page simply generate a Shopper Token with `shopperId: ""`. 
 
-### Step 2: Selling Gift Cards
+### Step 1: Selling Gift Cards
 The Gift Card Purchase Widget allows your customers to purchase gift cards from your site. 
 Lightrail powers the entire gift card purchase and delivery flow. 
 
@@ -156,7 +155,7 @@ Note you will need to pass a server-generated Shopper Token into the above snipp
 
 The gift card is automatically delivered to the recipient in a branded email. The email includes a button to apply the gift card to the recipient's account.
 
-### Step 3: Redeeming Gift Cards
+### Step 2: Redeeming Gift Cards
 
 The Gift Card Redemption Widget enables your customers to redeem gift cards to their account.
 
@@ -202,7 +201,7 @@ The Redemption Widget uses a Shopper Token generated by your system to identify 
 
 Next, your existing checkout process needs to be modified to allow the customer to pay with their account, which now contains the balance of the gift card they received. 
 
-### Step 4: Checkout
+### Step 3: Checkout
 
 #### Fetch and Display Account Balance
 
