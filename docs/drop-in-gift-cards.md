@@ -16,9 +16,9 @@ Note this quickstart assumes you are using Stripe to process payments: if you ar
 We have preconfigured sample values for your [Drop-in Gift Card template](https://www.lightrail.com/app/#/cards/dropin) as a demo to help you get testing quickly. You can use all the default values to start, but if you are interested in running through an active test that includes a sample customer Gift Card redemption, you will need to update the **Email Claim Link** value in order to set up a testing url which you have access to. Please note: before taking your Drop-in components to production, you will want to be sure to update all the values to match your custom implementation.
 
 You can optionally edit the other configuration values of your Drop-in [template](https://www.lightrail.com/app/#/cards/dropin) within your Lightrail account to customize the appearance of components and gift card emails.
-(For development, toggle your Lightrail account to test mode, this will allow you to use Stripe's test credit cards.) 
+Note: For development, toggle your Lightrail account to test mode, this will allow you to use [Stripe's test credit cards](https://stripe.com/docs/testing#cards).
 
-Also, before going live or to see test stripe charges show up in your stripe account, you'll need to connect your Stripe account on your account's integrations [page](https://www.lightrail.com/app/#/account/api). 
+Also, before going live or to see test Stripe charges show up in your Stripe account, you'll need to connect your Stripe account on your account's integrations [page](https://www.lightrail.com/app/#/account/api). 
 
 If at any point you want to see a working example of the entire Drop-in Gift Card solution, check out our [sample app](https://github.com/Giftbit/stripe-integration-sample-webapp).
 
