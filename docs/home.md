@@ -2,8 +2,6 @@
 
 Welcome to Lightrail. Lightrail is a platform for managing value.
 
-**NOTICE: Our docs have recently been updated.** If you're looking for the previous full reference docs, you'll find them [here](https://www.lightrail.com/docs/reference).
-
 Lightrail offers a [Drop-in Gift Card solution](https://www.lightrail.com/docs/#drop-in-gift-cards/drop-in-gift-cards) and also provides the functionality to create custom account credit and gift card integrations. Lightrail enables you to create promotions on top of your account credit or gift card programs allowing you to build long lasting relationships with your customers.
  
 We recommend beginning with our quickstarts below as they support many integrations and utilize our [client libraries](https://github.com/Giftbit/Lightrail-API-Docs/blob/master/docs/client-libraries.md#client-libraries). For more complex integrations, see our full [reference documentation](https://www.lightrail.com/docs/reference).
