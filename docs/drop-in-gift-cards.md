@@ -158,7 +158,7 @@ The gift card is automatically delivered to the recipient in a branded email. Th
 Note you will need to pass a server-generated Shopper Token into the above snippet - details [above](#drop-in-gift-cards/shopper-tokens). 
 
 #### Enable Your Customers to Pay Using Saved Credit Cards
-Allow your customers to pay with the credit cards you've saved for them in Stripe. This will give the customer the option to pay using an existing card, if they have one, or to enter a new one. 
+Allow your customers to pay with credit cards you've saved for them in Stripe. This will give the customer the option to pay using an existing card, if they have one, or to enter a new one. 
 
 <br/>
 
