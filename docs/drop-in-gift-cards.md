@@ -164,7 +164,7 @@ Allow your customers to pay with the credit cards you've saved for them in Strip
 
 ![Purchase Using Saved Credit Card](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/saved-credit-cards.png)
 
-To enable this, you need to *provide the customer ID from Stripe* when you generate the Shopper Token. 
+To enable this, you need to **provide the customer ID from Stripe** when you generate the Shopper Token. 
 
 How to pass in the `stripeCustomerId` during Shopper Token generation to enable the use of saved credit cards:
 ```javascript
