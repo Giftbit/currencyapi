@@ -166,7 +166,7 @@ Allow your customers to pay with the credit cards you've saved for them in Strip
 
 To enable this, you need to *provide the customer ID from Stripe* when you generate the Shopper Token. 
 
-Passing in a `stipeCustomerId` during Shopper Token generation to enable use of saved credit cards:
+How to pass in the `stripeCustomerId` during Shopper Token generation to enable the use of saved credit cards:
 ```javascript
 const options = {
     metadata: {stripeCustomerId: "cus_abcd1234"}
