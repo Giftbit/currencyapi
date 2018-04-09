@@ -99,6 +99,8 @@ Note, usage of Lightrail UI components must be on authenticated pages as it requ
 You may decide whether you'd like your customers to be signed in to purchase gift cards. 
 If you'd like to allow gift card purchase from an unauthenticated page simply generate a Shopper Token with `shopperId: ""`. 
 
+Also, you can enable customers to pay using saved credit cards. See [below](#drop-in-gift-cards/enable-your-customers-to-pay-using-saved-credit-cards) details. 
+
 ### Step 1: Selling Gift Cards
 The Gift Card Purchase Component allows your customers to purchase gift cards from your site. 
 Lightrail powers the entire gift card purchase and delivery flow. 
@@ -151,9 +153,39 @@ Alternatively, you could use your own button:
     </script>
 ```
 
+The gift card is automatically delivered to the recipient in a branded email. The email includes a button to apply the gift card to the recipient's account.
+
 Note you will need to pass a server-generated Shopper Token into the above snippet - details [above](#drop-in-gift-cards/shopper-tokens). 
 
-The gift card is automatically delivered to the recipient in a branded email. The email includes a button to apply the gift card to the recipient's account.
+#### Enable Your Customers to Pay Using Saved Credit Cards
+Allow your customers to pay with the credit cards you've saved for them in Stripe. This will give the customer the option to pay using an existing card, if they have one, or to enter a new one. 
+
+<br/>
+
+![Purchase Using Saved Credit Card](https://raw.githubusercontent.com/Giftbit/Lightrail-API-Docs/master/docs/assets/saved-credit-cards.png)
+
+To enable this, you need to *provide the customer ID from Stripe* when you generate the Shopper Token. 
+
+Passing in a `stipeCustomerId` during Shopper Token generation to enable use of saved credit cards:
+```javascript
+const options = {
+    metadata: {stripeCustomerId: "cus_abcd1234"}
+};
+const shopperToken = lightrail.generateShopperToken({shopperId: "customer-id-from-your-system"}, options);
+
+```
+
+```php
+$shopperToken = \Lightrail\LightrailShopperTokenFactory::generate(array("shopperId" => "customer-id-from-your-system"), array("metadata" => array("stripeCustomerId" => "cus_abcd1234")));
+```
+
+```java
+// Not yet supported. Please let us know at hello@lightrail.com if you require this.  
+```
+
+```ruby
+shopper_token = Lightrail::ShopperTokenFactory.generate({shopper_id: "customer-id-from-your-system"}, {metadata: {stripeCustomerId: "cus_abcd1234"}})
+```
 
 ### Step 2: Redeeming Gift Cards
 
