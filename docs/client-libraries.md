@@ -10,7 +10,6 @@ Here is the list of Lightrail client libraries for different languages and techn
 #### PHP
 - [Lightrail PHP Client](https://github.com/Giftbit/lightrail-client-php)
 - [Lightrail Stripe Integration for PHP](https://github.com/Giftbit/lightrail-stripe-php)
-- [Lightrail WooCommerce Plugin](https://wordpress.org/plugins/lightrail-for-woocommerce/)
 
 #### Ruby
 - [Lightrail Ruby Client](https://github.com/Giftbit/lightrail-client-ruby)
@@ -34,6 +33,3 @@ Here is the list of Lightrail client libraries for different languages and techn
 - [Lightrail Stripe Integration for .NET](https://github.com/Giftbit/lightrail-stripe-dotnet)
 
 For a working example of the Stripe Integration libraries, check out our [Lightrail Stripe Sample App](https://github.com/Giftbit/stripe-integration-sample-webapp).
-
-#### WooCommerce
-[Lightrail WooCommerce Plugin](https://wordpress.org/plugins/lightrail-for-woocommerce/)
